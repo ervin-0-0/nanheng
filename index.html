@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
 <a class="skip-link" href="#main">跳到主要內容</a>
@@ -226,6 +226,11 @@
     <symbol id="cloud" viewBox="0 0 160 64">
       <path d="M20 64 a20 20 0 0 1 4 -39.6 A 30 30 0 0 1 80 14 a 26 26 0 0 1 44 12 a 19 19 0 0 1 16 38 Z" fill="#FFFFFF"/>
     </symbol>
+    <!-- Facebook -->
+    <symbol id="icon-fb" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="12" fill="#1877F2"/>
+      <path d="M13.4 23.8v-9.2h3l.45-3.5H13.4V8.9c0-1 .3-1.7 1.75-1.7h1.85V4.1c-.32-.05-1.42-.14-2.7-.14-2.67 0-4.5 1.63-4.5 4.62v2.52H6.8v3.5h3v9.2z" fill="#fff"/>
+    </symbol>
     <!-- 箭頭 -->
     <symbol id="chev" viewBox="0 0 12 12">
       <path d="M4.5 2.5 L8 6 L4.5 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -259,6 +264,10 @@
     </a>
   </nav>
 
+  <a class="header-fb" href="https://www.facebook.com/profile.php?id=100063551122273" target="_blank" rel="noopener" aria-label="Facebook 粉絲專頁「龜島浪攤子」（另開新視窗）">
+    <svg aria-hidden="true"><use href="#icon-fb"/></svg>
+  </a>
+
   <button class="menu-btn" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="mobile-menu">
     <span></span><span></span><span></span>
   </button>
@@ -276,6 +285,9 @@
     <li><a href="#contact"><span class="en">Contact</span>聯絡我們</a></li>
   </ul>
   <a class="btn" href="tel:0977755973">撥打 0977 755 973 <span class="btn-arrow"><svg><use href="#chev"/></svg></span></a>
+  <a class="fb-link" href="https://www.facebook.com/profile.php?id=100063551122273" target="_blank" rel="noopener">
+    <svg aria-hidden="true"><use href="#icon-fb"/></svg>追蹤粉專「龜島浪攤子」
+  </a>
 </div>
 
 <main id="main">
@@ -884,7 +896,7 @@
       </li>
       <li>
         <span class="contact-label">Facebook</span>
-        <a class="contact-mid" href="https://www.facebook.com/profile.php?id=100063551122273" target="_blank" rel="noopener">龜島浪攤子</a>
+        <a class="contact-mid contact-fb" href="https://www.facebook.com/profile.php?id=100063551122273" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-fb"/></svg>龜島浪攤子</a>
       </li>
     </ul>
   </div>
@@ -914,6 +926,9 @@
         </p>
         <p>高雄市六龜區南橫愛護動物協會<br>（龜島浪攤子）</p>
         <p class="footer-slogan">#沒有出生沒有流浪</p>
+        <a class="fb-link fb-link--footer" href="https://www.facebook.com/profile.php?id=100063551122273" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#icon-fb"/></svg>追蹤我們的 Facebook
+        </a>
       </div>
       <nav class="footer-nav" aria-label="頁尾選單">
         <a href="#about">關於我們</a>

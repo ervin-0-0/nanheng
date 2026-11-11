@@ -289,6 +289,41 @@ mark {
 .nav-cta svg { width: 17px; height: 17px; }
 .nav-cta:hover { transform: translateY(2px); box-shadow: 0 2px 0 var(--coral-dk); }
 
+/* Facebook 連結 */
+.header-fb {
+  flex: none;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  display: grid; place-items: center;
+  box-shadow: 0 3px 0 var(--peach-2);
+  transition: transform .15s, box-shadow .15s;
+}
+.header-fb svg { width: 30px; height: 30px; }
+.header-fb:hover { transform: translateY(2px); box-shadow: 0 1px 0 var(--peach-2); }
+
+.fb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: #1877F2;
+  text-decoration: none;
+}
+.fb-link svg { width: 28px; height: 28px; flex: none; }
+.fb-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.mobile-menu .fb-link { align-self: center; }
+.fb-link--footer {
+  margin-top: 14px;
+  color: #fff;
+  background: rgba(255, 255, 255, .2);
+  padding: 5px 18px 5px 5px;
+  border-radius: 999px;
+}
+.fb-link--footer svg { box-shadow: 0 0 0 2px #fff; border-radius: 50%; }
+.contact-fb { display: inline-flex; align-items: center; gap: 10px; }
+.contact-fb svg { width: 28px; height: 28px; flex: none; }
+
 .menu-btn {
   display: none;
   width: 48px; height: 48px;
