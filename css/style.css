@@ -231,7 +231,6 @@ mark {
 @keyframes drop-in { from { transform: translateY(-56px); opacity: 0; } }
 
 .road-in { transform-origin: 322px 126px; animation: road-in 1.3s cubic-bezier(.2,.8,.2,1) .5s both; }
-.road-in--d { transform-origin: 1150px 170px; }
 @keyframes road-in { from { transform: scale(.15); opacity: 0; } }
 
 /* 場景裡的小動態 */
@@ -522,8 +521,9 @@ svg svg { max-width: none; }
 /* 插圖與標題放在同一個等比舞台裡，任何螢幕寬度下相對位置都不變 */
 .hero-stage {
   position: relative;
-  width: min(100%, calc(100vh * 1440 / 860));
-  width: min(100%, calc(100svh * 1440 / 860));
+  /* 場景比例 1440:800；寬度跟著視窗高度走，首屏剛好一個畫面 */
+  width: min(100%, calc(100vh * 1.8));
+  width: min(100%, calc(100svh * 1.8));
   min-width: min(100%, 980px);
   margin-inline: auto;
   container-type: inline-size;
@@ -535,8 +535,8 @@ svg svg { max-width: none; }
   position: absolute;
   z-index: 2;
   left: 7%;
-  bottom: 8%;
-  max-width: 31cqw;
+  top: 21%;
+  max-width: 36cqw;
 }
 .hero-title {
   font-size: clamp(30px, 3.9cqw, 76px);
@@ -1286,7 +1286,7 @@ svg svg { max-width: none; }
   /* ---- 首屏：手機／平板用直式場景 ---- */
   .hero { padding-top: calc(var(--header-h) + 14px); }
   .hero-stage { width: 100%; min-width: 0; max-width: 620px; }
-  .hero-copy { position: relative; left: auto; bottom: auto; max-width: none; padding: 0 clamp(20px, 6cqw, 40px); }
+  .hero-copy { position: relative; left: auto; top: auto; max-width: none; padding: 0 clamp(20px, 6cqw, 40px); }
   .hero-title { font-size: clamp(32px, 9.4cqw, 58px); line-height: 1.42; }
   .hero-en { font-size: clamp(12.5px, 3.3cqw, 17px); margin-top: 10px; }
   .hero-en-more { display: none; }
