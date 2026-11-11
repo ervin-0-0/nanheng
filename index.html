@@ -13,219 +13,418 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=7">
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}.float-cta{transform:none!important;opacity:1!important;pointer-events:auto!important}</style></noscript>
 </head>
 <body>
 <a class="skip-link" href="#main">跳到主要內容</a>
 
-<!-- ============ SVG 插畫零件庫（全站共用） ============ -->
+<!-- ============ SVG 插畫零件庫（全站共用） ============
+     畫法：無描邊的手繪色塊＋白底黑瞳大眼睛＋黑色麥克筆線條（class="k"）。
+     class="a-*" 是待機動畫（搖尾巴、眨眼、東張西望…），定義在 css/style.css。
+     顏色用 CSS 變數換：--fur 毛色、--ear 耳朵、--shirt 上衣、--k 線條色… -->
 <svg class="sprite" aria-hidden="true" focusable="false">
   <defs>
+
+    <!-- ===== 狗頭（坐、站、趴共用） ===== -->
+    <g id="dh">
+      <path d="M44 20 C 43 10.5, 50.5 5, 61 6 C 69 6.6, 75.5 9.5, 78.5 15.5 C 85 15, 90.5 19, 90 26 C 89.6 32, 85 35.5, 80 35 C 78.5 41.5, 71.5 46, 62 45.5 C 51 45, 45 39.5, 44 30 Z" fill="var(--fur,#F3E7CF)"/>
+      <path d="M62 6 C 69 6.6, 75.5 9.5, 78.5 15.5 C 76.6 22, 68 23, 64 17.6 C 61.4 14, 61 9, 62 6 Z" fill="var(--patch,transparent)"/>
+      <path d="M84 17.4 C 88 16, 91.6 18.6, 91 22.4 C 90.5 25.6, 87 26.6, 84.4 25 C 81.8 23.4, 81.4 18.6, 84 17.4 Z" fill="var(--nose,#1F1B1A)"/>
+      <path class="k" d="M71.5 36.5 C 75 39.5, 80.5 38.5, 82.5 35"/>
+      <path d="M55.5 33 C 57.5 31.6, 61 32, 61.6 34 C 62 36, 58.6 37, 56.4 36.2 C 54.6 35.6, 54.4 33.8, 55.5 33 Z" fill="var(--cheek,#E0503C)"/>
+      <path class="a-ear" style="transform-origin:49px 10px" d="M49 7.6 C 41 5.6, 34.4 12, 34.6 22 C 34.8 30.6, 38.6 37.6, 45 37 C 50.4 36.4, 53 29.6, 53.6 21.4 C 54 14.6, 54.4 9, 49 7.6 Z" fill="var(--ear,#B5452D)"/>
+    </g>
+    <g id="dh-eyes">
+      <g class="a-blink" style="transform-origin:66.6px 21.4px">
+        <path d="M56.6 21 C 56.6 17.4, 59 15, 62 15.2 C 65 15.4, 67.2 18, 67 21.6 C 66.8 25, 64.6 27.4, 61.6 27.2 C 58.6 27, 56.6 24.4, 56.6 21 Z" fill="#fff"/>
+        <path d="M66.2 21.4 C 66.2 18, 68.6 15.8, 71.4 16 C 74.2 16.2, 76.2 18.6, 76 22 C 75.8 25.2, 73.8 27.4, 71 27.2 C 68.2 27, 66.2 24.6, 66.2 21.4 Z" fill="#fff"/>
+        <g class="a-look">
+          <circle cx="63.6" cy="22" r="2.7" fill="#1F1B1A"/>
+          <circle cx="72.8" cy="22.4" r="2.5" fill="#1F1B1A"/>
+        </g>
+      </g>
+    </g>
+    <path id="dh-tongue" class="a-pant" style="transform-origin:77px 38.6px" d="M74 38.8 C 74 43.8, 80 44.6, 80.4 39.2 Z" fill="var(--tongue,#E0503C)"/>
+
     <!-- 坐著的狗（面向右） -->
     <symbol id="dog" viewBox="0 0 92 82">
-      <path d="M22 54 C 9 48, 6 33, 13 26" fill="none" stroke="var(--fur,#E3A15E)" stroke-width="7" stroke-linecap="round">
-        <animateTransform attributeName="transform" type="rotate" values="0 22 54;-24 22 54;0 22 54" dur="0.7s" repeatCount="indefinite"/>
-      </path>
-      <ellipse cx="38" cy="56" rx="23" ry="17" fill="var(--fur,#E3A15E)"/>
-      <ellipse cx="29" cy="68" rx="14" ry="10" fill="var(--fur2,#D58F4C)"/>
-      <rect x="47" y="54" width="9" height="25" rx="4.5" fill="var(--fur,#E3A15E)"/>
-      <rect x="56" y="56" width="9" height="23" rx="4.5" fill="var(--fur2,#D58F4C)"/>
-      <ellipse cx="52" cy="54" rx="10" ry="12" fill="var(--chest,#FFF3E2)"/>
-      <circle cx="61" cy="31" r="15.5" fill="var(--fur,#E3A15E)"/>
-      <ellipse cx="73.5" cy="36" rx="9.5" ry="7" fill="var(--chest,#FFF3E2)"/>
-      <circle cx="81.5" cy="32.5" r="3.2" fill="#3B2A26"/>
-      <circle cx="63.5" cy="26.5" r="2.3" fill="var(--eye,#3B2A26)"/>
-      <path d="M72 41 q4.5 3.4 9 0" stroke="#3B2A26" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-      <path d="M75.5 42.5 q2.4 6 5 0.4z" fill="#F07F7F"/>
-      <path d="M51 17 C 44 17, 42 31, 46.5 40 C 51.5 38, 55.5 29, 55.5 20 Z" fill="var(--ear,#B9733A)"/>
-      <circle cx="56" cy="38" r="2.6" fill="#F7B4AE" opacity=".7"/>
+      <path class="a-wag" style="transform-origin:21px 61px" d="M21 61 C 11 58, 6 48, 9 37" fill="none" stroke="var(--fur,#F3E7CF)" stroke-width="8.4" stroke-linecap="round"/>
+      <path d="M50 35 C 37 36, 24 46, 20 60 C 17.6 69, 20 78.4, 29 79.4 L 61 80 C 65 80, 67 77.4, 66.6 73 L 64.4 50 C 63.6 42, 58 35, 50 35 Z" fill="var(--fur,#F3E7CF)"/>
+      <path d="M30 44 C 38 41, 45 45, 44 52 C 43 58, 35 59, 30 55 C 26.6 52, 27 46, 30 44 Z" fill="var(--spot,transparent)"/>
+      <path class="k" d="M25 72 C 26.6 63.4, 36 60.6, 41.4 67.4 M54 69 V 78.4 M60.4 70.6 V 78.4"/>
+      <g class="a-nod" style="transform-origin:54px 40px">
+        <use href="#dh"/><use href="#dh-eyes"/><use href="#dh-tongue"/>
+      </g>
+      <path d="M48.5 39.5 C 52 43.6, 58 45, 63 43.4" fill="none" stroke="var(--collar,#3A8DC9)" stroke-width="4.6" stroke-linecap="round"/>
+      <circle cx="56.4" cy="46.6" r="2.6" fill="#F6C445"/>
+    </symbol>
+
+    <!-- 站著的狗（面向右） -->
+    <symbol id="dog-stand" viewBox="0 0 108 78">
+      <path class="a-wag" style="transform-origin:19px 37px" d="M19 37 C 10 33, 6 22, 10 12" fill="none" stroke="var(--fur,#F3E7CF)" stroke-width="8.4" stroke-linecap="round"/>
+      <path d="M28 46 L 26.6 71 C 26.6 76, 36 76, 36 71 L 37 48 Z M63 46 L 64 71 C 64 76, 73.4 76, 73.4 71 L 72 46 Z" fill="var(--fur2,#E0CFAE)"/>
+      <path d="M16 37 C 16 29, 26 25.6, 40 26.6 C 52 27.4, 62 25, 70 28 C 77.4 31, 77 44, 71 49 C 60 54.6, 30 54.6, 22 50.6 C 17 47.6, 16 42, 16 37 Z" fill="var(--fur,#F3E7CF)"/>
+      <path d="M19 44 C 18 54, 19.6 62, 19.6 71 C 19.6 76, 30 76, 30 71 C 30 62, 31 55, 32 49 Z M54 49 C 54 56, 55 62, 55 71 C 55 76, 65.6 76, 65.6 71 C 65.6 61, 65.6 54, 66.6 47 Z" fill="var(--fur,#F3E7CF)"/>
+      <path d="M34 27.6 C 43 26, 51 29, 50 36 C 49 42, 40 43, 35.6 39 C 32 36, 31.6 30, 34 27.6 Z" fill="var(--spot,transparent)"/>
+      <g transform="translate(16 -6)">
+        <g class="a-nod" style="transform-origin:54px 40px">
+          <use href="#dh"/><use href="#dh-eyes"/><use href="#dh-tongue"/>
+        </g>
+        <path d="M48.5 39.5 C 52 43.6, 58 45, 63 43.4" fill="none" stroke="var(--collar,#3A8DC9)" stroke-width="4.6" stroke-linecap="round"/>
+        <circle cx="56.4" cy="46.6" r="2.6" fill="#F6C445"/>
+      </g>
     </symbol>
 
     <!-- 趴著的狗 -->
     <symbol id="dog-lie" viewBox="0 0 110 56">
-      <path d="M14 38 C 4 36, 2 26, 8 20" fill="none" stroke="var(--fur,#E3A15E)" stroke-width="6" stroke-linecap="round">
-        <animateTransform attributeName="transform" type="rotate" values="0 14 38;-14 14 38;0 14 38" dur="1.6s" repeatCount="indefinite"/>
-      </path>
-      <ellipse cx="44" cy="38" rx="32" ry="14" fill="var(--fur,#E3A15E)"/>
-      <rect x="62" y="44" width="34" height="9" rx="4.5" fill="var(--fur2,#D58F4C)"/>
-      <circle cx="80" cy="30" r="14" fill="var(--fur,#E3A15E)"/>
-      <ellipse cx="92" cy="36" rx="9" ry="6.5" fill="var(--chest,#FFF3E2)"/>
-      <circle cx="99.5" cy="33" r="3" fill="#3B2A26"/>
-      <path d="M79 28 q3 2.4 6 0" stroke="var(--eye,#3B2A26)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <path d="M70 18 C 64 18, 62 30, 66 37 C 71 35, 74 27, 74 20 Z" fill="var(--ear,#B9733A)"/>
+      <path class="a-wag a-wag--slow" style="transform-origin:18px 44px" d="M18 44 C 8 42, 4 32, 8 24" fill="none" stroke="var(--fur,#F3E7CF)" stroke-width="8" stroke-linecap="round"/>
+      <path d="M70 30 C 58 21, 32 20, 19 30 C 11.6 36, 12 48, 19 53.4 L 96 54 C 100.6 54, 101.6 48.6, 97.6 46.6 C 90 43.6, 78 43, 70 44 Z" fill="var(--fur,#F3E7CF)"/>
+      <path d="M32 25 C 41 22, 50 25, 49 32 C 48 38, 39 39, 34 35.6 C 30 33, 29.6 27, 32 25 Z" fill="var(--spot,transparent)"/>
+      <path class="k" d="M20 50 C 20 41, 30 37, 37.6 42 M64 50 C 73 48.4, 84 48.6, 93 50.6"/>
+      <g transform="translate(17 -3)">
+        <g class="a-nod" style="transform-origin:54px 40px">
+          <use href="#dh"/><use href="#dh-eyes"/>
+        </g>
+        <path d="M48.5 39.5 C 52 43.6, 58 45, 63 43.4" fill="none" stroke="var(--collar,#3A8DC9)" stroke-width="4.6" stroke-linecap="round"/>
+      </g>
     </symbol>
 
-    <!-- 坐著的貓（左耳剪耳＝已結紮） -->
+    <!-- ===== 貓 ===== -->
+    <!-- 坐著的貓（左耳平口＝剪耳，已結紮） -->
     <symbol id="cat" viewBox="0 0 64 84">
-      <path d="M42 76 C 62 76, 64 56, 55 47" fill="none" stroke="var(--fur,#F2C48D)" stroke-width="6.5" stroke-linecap="round">
-        <animateTransform attributeName="transform" type="rotate" values="0 42 76;9 42 76;0 42 76" dur="2.6s" repeatCount="indefinite"/>
-      </path>
-      <path d="M15 80 C 10 58, 17 42, 32 42 C 47 42, 54 58, 49 80 Z" fill="var(--fur,#F2C48D)"/>
-      <ellipse cx="32" cy="65" rx="9.5" ry="13" fill="var(--chest,#FFF6EA)"/>
-      <path d="M18 26 L17.2 14.5 L20.5 11.8 L29 18 Z" fill="var(--fur,#F2C48D)"/>
-      <path d="M46 26 L47 10 L35 18 Z" fill="var(--fur,#F2C48D)"/>
-      <circle cx="32" cy="32" r="16" fill="var(--fur,#F2C48D)"/>
-      <circle cx="40" cy="22" r="7" fill="var(--patch,transparent)"/>
-      <path d="M43.5 22 L44 15 L38.5 19 Z" fill="#F7B4AE"/>
-      <circle cx="25.5" cy="32" r="2.2" fill="var(--eye,#3B2A26)"/>
-      <circle cx="38.5" cy="32" r="2.2" fill="var(--eye,#3B2A26)"/>
-      <path d="M30.4 36.4 h3.2 l-1.6 2.2z" fill="#E97B7B"/>
-      <path d="M32 38.6 q-2 2.6 -4.4 1.2 M32 38.6 q2 2.6 4.4 1.2" stroke="#3B2A26" stroke-width="1.3" fill="none" stroke-linecap="round"/>
-      <path d="M20 37 l-8 -1.5 M20 39.5 l-8 1.5 M44 37 l8 -1.5 M44 39.5 l8 1.5" stroke="#3B2A26" stroke-width="1" stroke-linecap="round" opacity=".55"/>
-      <circle cx="22" cy="38" r="2.6" fill="#F7B4AE" opacity=".7"/>
-      <circle cx="42" cy="38" r="2.6" fill="#F7B4AE" opacity=".7"/>
+      <path class="a-swish" style="transform-origin:45px 75px" d="M45 76 C 58 77, 62 63, 56 52" fill="none" stroke="var(--fur,#EE8A2B)" stroke-width="7.4" stroke-linecap="round"/>
+      <path d="M17 79.4 C 12.6 66, 17 49, 31 47 C 47 46.6, 53 66, 47 80 C 38 82.6, 25 82.4, 17 79.4 Z" fill="var(--fur,#EE8A2B)"/>
+      <path d="M26 79.6 C 23 69, 26 58, 32 57.6 C 38 58, 41 69, 38.4 80 C 34 81, 30 80.8, 26 79.6 Z" fill="var(--chest,transparent)"/>
+      <path class="k" d="M27.6 73.4 V 80 M36.6 73.4 V 80"/>
+      <path d="M9.6 30 C 9 22, 10.6 15, 12 11 L 19.4 7.4 L 26 13.4 C 30 12.4, 35 12.4, 39 13.6 L 45.4 7 C 47.6 5, 51 6, 51.4 9.4 C 53.6 15.6, 55.6 22.6, 55 31 C 54 42, 44 48.6, 32 48.6 C 20 48.6, 10.6 41.6, 9.6 30 Z" fill="var(--fur,#EE8A2B)"/>
+      <path d="M39 13.6 L 45.4 7 C 47.6 5, 51 6, 51.4 9.4 C 53 14, 54.6 19, 55 25 C 48 27, 40.6 21.6, 39 13.6 Z" fill="var(--patch,transparent)"/>
+      <path d="M24 14.4 v4.6 M32 13 v5.6 M40 14.4 v4.6" fill="none" stroke="var(--stripe,transparent)" stroke-width="2.6" stroke-linecap="round"/>
+      <g style="opacity:var(--sprout,0)">
+        <path d="M32 13.6 V 6" fill="none" stroke="#2F8F6B" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M32 7 C 28 7.6, 24.6 5, 25 1.6 C 29 .6, 32 3, 32 7 Z M32 6 C 35.6 7, 39.6 5, 39.6 1.4 C 35.6 0, 32.4 2.4, 32 6 Z" fill="#2F8F6B"/>
+      </g>
+      <g class="a-blink" style="transform-origin:32px 29.8px">
+        <path d="M18.4 29.6 C 18.4 26, 21 23.6, 24.8 23.8 C 28.4 24, 31 26.6, 30.8 30 C 30.6 33.4, 28 35.6, 24.4 35.4 C 20.8 35.2, 18.4 33, 18.4 29.6 Z" fill="#fff"/>
+        <path d="M32.6 29.8 C 32.6 26.2, 35.2 23.8, 38.8 24 C 42.4 24.2, 45 26.8, 44.8 30.2 C 44.6 33.6, 42 35.8, 38.4 35.6 C 34.8 35.4, 32.6 33.2, 32.6 29.8 Z" fill="#fff"/>
+        <g class="a-look">
+          <circle cx="26.8" cy="30.4" r="3" fill="#1F1B1A"/>
+          <circle cx="40.8" cy="30.6" r="3" fill="#1F1B1A"/>
+        </g>
+      </g>
+      <path d="M29.4 37 C 31 36, 33.4 36, 34.8 37 C 34.8 39, 33.2 40.8, 32 40.8 C 30.8 40.8, 29.4 39, 29.4 37 Z" fill="var(--nose,#C7362B)"/>
+      <path d="M13.6 36.6 L 6.6 35.4 M13.8 40.6 L 7 42.6 M50.4 36.6 L 57.4 35.4 M50.2 40.6 L 57 42.6" fill="none" stroke="var(--wh,#1F1B1A)" stroke-width="2.3" stroke-linecap="round"/>
     </symbol>
 
-    <!-- 趴著的貓 -->
+    <!-- 母雞蹲的貓（睡著） -->
     <symbol id="cat-loaf" viewBox="0 0 84 52">
-      <path d="M12 44 C 2 44, 2 32, 10 30" fill="none" stroke="var(--fur,#8C8C8C)" stroke-width="6" stroke-linecap="round"/>
-      <path d="M8 48 C 8 30, 22 20, 40 20 C 56 20, 66 30, 66 48 Z" fill="var(--fur,#8C8C8C)"/>
-      <path d="M52 16 L51 5 L59.5 11 Z M72 16 L73.5 4 L64.5 11 Z" fill="var(--fur,#8C8C8C)"/>
-      <circle cx="62" cy="24" r="13" fill="var(--fur,#8C8C8C)"/>
-      <path d="M55 24 q2.5 2 5 0 M64 24 q2.5 2 5 0" stroke="var(--eye,#3B2A26)" stroke-width="1.7" fill="none" stroke-linecap="round"/>
-      <path d="M60.6 28 h2.8 l-1.4 1.8z" fill="#E97B7B"/>
-      <path d="M40 22 q4 6 0 12 M30 23 q4 6 0 12" stroke="var(--stripe,transparent)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path class="a-swish" style="transform-origin:14px 45px" d="M14 46 C 4 46, 2 36, 9 32" fill="none" stroke="var(--fur,#7FA7C4)" stroke-width="6.6" stroke-linecap="round"/>
+      <path class="a-breathe" style="transform-origin:38px 50px" d="M8 49.6 C 5.6 33, 20 20.6, 40 20.6 C 55 20.6, 66 30, 66.6 49.6 C 48 51.6, 26 51.6, 8 49.6 Z" fill="var(--fur,#7FA7C4)"/>
+      <path d="M24 26 C 26 30, 26 34, 24.6 37 M34 23.6 C 36 27.6, 36 31.6, 34.6 34.6" fill="none" stroke="var(--stripe,transparent)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M48 26 C 47.6 20, 49 14, 50 10 L 51.6 5.6 C 52 4, 54 3.6, 55 5 L 59.6 11 C 61.6 10.6, 63.6 10.6, 65.6 11 L 70.4 4.6 C 71.4 3.2, 73.6 3.8, 73.8 5.6 L 75 11 C 76.6 15, 77 20, 76.6 26 C 76 34, 70 39, 62 39 C 54 39, 48.4 34, 48 26 Z" fill="var(--fur,#7FA7C4)"/>
+      <path class="k" d="M54.4 24.6 q2.6 2.6 5.2 0 M64.6 24.6 q2.6 2.6 5.2 0" stroke-width="2.2"/>
+      <path d="M60.2 28.6 C 61.2 28, 62.8 28, 63.8 28.6 C 63.8 30, 62.8 31.2, 62 31.2 C 61.2 31.2, 60.2 30, 60.2 28.6 Z" fill="var(--nose,#C7362B)"/>
+      <path d="M52 29.4 L 46.4 28.6 M52.2 32.4 L 46.8 34 M72 29.4 L 77.6 28.6 M71.8 32.4 L 77.2 34" fill="none" stroke="var(--wh,#1F1B1A)" stroke-width="2" stroke-linecap="round"/>
     </symbol>
+
+    <!-- ===== 人物零件 ===== -->
+    <g id="p-legs">
+      <path d="M21.6 96 L 21 131 L 30.6 131 L 31 96 Z M33 96 L 33.4 131 L 43 131 L 42.4 96 Z" fill="var(--pants,#2F8F6B)"/>
+      <path d="M15 139 C 15 133, 19 129.6, 24 129.6 L 31.4 129.6 L 31.4 143 L 18 143 C 15.6 143, 15 141, 15 139 Z M49 139 C 49 133, 45 129.6, 40 129.6 L 32.6 129.6 L 32.6 143 L 46 143 C 48.4 143, 49 141, 49 139 Z" fill="var(--shoe,#E0503C)"/>
+    </g>
+    <g id="p-torso">
+      <path d="M17.6 53 C 17.6 46.6, 22 43.6, 32 43.6 C 42 43.6, 46.4 46.6, 46.4 53 L 49 96 C 49.4 100, 44 101.4, 32 101.4 C 20 101.4, 14.6 100, 15 96 Z" fill="var(--shirt,#3A8DC9)"/>
+      <path d="M17.6 62 H 46.4 M17 72 H 47 M16.4 82 H 47.6 M16 92 H 48" fill="none" stroke="var(--stripe,transparent)" stroke-width="3.4"/>
+      <g style="opacity:var(--apron-o,1)">
+        <path class="k" d="M24.6 58.4 L 27 45.4 M39.4 58.4 L 37 45.4" stroke-width="2"/>
+        <path d="M22 60 C 22 58.6, 23 58, 24.4 58 L 39.6 58 C 41 58, 42 58.6, 42 60 L 43 90 C 43 93, 41.4 94.4, 38.6 94.4 L 25.4 94.4 C 22.6 94.4, 21 93, 21 90 Z" fill="var(--apron,#FFFDF8)"/>
+        <path d="M32 81.6 C 28 78.6, 25.6 76, 25.6 73.2 C 25.6 69.6, 30.4 68.8, 32 72.4 C 33.6 68.8, 38.4 69.6, 38.4 73.2 C 38.4 76, 36 78.6, 32 81.6 Z" fill="var(--apron-mark,#E0503C)"/>
+      </g>
+    </g>
+    <g id="p-arm-l">
+      <path d="M18.6 54.6 C 12 63, 10.6 76, 11.6 88" fill="none" stroke="var(--shirt,#3A8DC9)" stroke-width="8.4" stroke-linecap="round"/>
+      <circle cx="11.6" cy="93.2" r="4.6" fill="var(--skin,#F4B994)"/>
+    </g>
+    <g id="p-arm-r">
+      <path d="M45.4 54.6 C 52 63, 53.4 76, 52.4 88" fill="none" stroke="var(--shirt,#3A8DC9)" stroke-width="8.4" stroke-linecap="round"/>
+      <circle cx="52.4" cy="93.2" r="4.6" fill="var(--skin,#F4B994)"/>
+    </g>
+    <g id="p-head">
+      <path style="opacity:var(--pony,0)" d="M45 13 C 57 14, 61 30, 54 42 C 52 45, 48.4 43, 49.4 40 C 51 33, 49 26, 44 21 Z" fill="var(--hair,#1F1B1A)"/>
+      <path style="opacity:var(--bun,0)" d="M26.6 3 C 26.6 -1, 30 -3.4, 33.4 -3 C 37 -2.6, 39.4 0, 39 3.6 C 38.6 7, 35.4 8.6, 32 8.2 C 28.8 7.8, 26.6 6, 26.6 3 Z" fill="var(--hair,#1F1B1A)"/>
+      <path d="M27.4 36 h9.2 v9 c-3 2.4 -6.2 2.4 -9.2 0 Z" fill="var(--skin2,#E9A47C)"/>
+      <path d="M17.4 24.6 C 17 14.6, 23.4 8.4, 32 8.4 C 40.6 8.4, 47 14.6, 46.6 24.6 C 46.2 34, 40 40.6, 32 40.6 C 24 40.6, 17.8 34, 17.4 24.6 Z" fill="var(--skin,#F4B994)"/>
+      <path d="M15.6 26 C 13 12, 22 3.6, 33 3.6 C 44 3.6, 51 11.6, 48.4 26 C 46.4 19.6, 42.6 16.4, 37.6 15 C 31 18.4, 23 18.4, 19.6 16.6 C 17.6 19.4, 16.4 22.6, 15.6 26 Z" fill="var(--hair,#1F1B1A)"/>
+      <g style="opacity:var(--hat-o,0)">
+        <path d="M18.4 15.6 C 19 6, 25.6 1.6, 32 1.6 C 38.4 1.6, 45 6, 45.6 15.6 Z" fill="var(--hat,#F6C445)"/>
+        <path d="M10.6 17 C 18 12.4, 46 12.4, 53.4 17 C 55.6 18.8, 53 21.4, 49.6 20.4 C 40 17.4, 24 17.4, 14.4 20.4 C 11 21.4, 8.4 18.8, 10.6 17 Z" fill="var(--hat,#F6C445)"/>
+        <path d="M19 12.6 C 27 10.6, 37 10.6, 45 12.6" fill="none" stroke="var(--hatband,#E0503C)" stroke-width="2.6" stroke-linecap="round"/>
+      </g>
+    </g>
+    <g id="p-eyes">
+      <g class="a-blink" style="transform-origin:32px 26.6px">
+        <path d="M22.4 26.4 C 22.4 23.8, 24.2 22.2, 26.6 22.4 C 29 22.6, 30.6 24.4, 30.4 27 C 30.2 29.4, 28.6 31, 26.2 30.8 C 23.8 30.6, 22.4 28.8, 22.4 26.4 Z" fill="#fff"/>
+        <path d="M33.6 26.6 C 33.6 24, 35.4 22.4, 37.8 22.6 C 40.2 22.8, 41.8 24.6, 41.6 27.2 C 41.4 29.6, 39.8 31.2, 37.4 31 C 35 30.8, 33.6 29, 33.6 26.6 Z" fill="#fff"/>
+        <g class="a-look">
+          <circle cx="27.6" cy="27" r="2" fill="#1F1B1A"/>
+          <circle cx="38.8" cy="27.2" r="2" fill="#1F1B1A"/>
+        </g>
+      </g>
+      <path d="M19.6 32 C 21 31, 23.6 31.4, 24 32.8 C 24.2 34.2, 21.8 34.8, 20.2 34.2 C 19 33.8, 18.8 32.6, 19.6 32 Z M40 32.2 C 41.4 31.2, 44 31.6, 44.4 33 C 44.6 34.4, 42.2 35, 40.6 34.4 C 39.4 34, 39.2 32.8, 40 32.2 Z" fill="var(--cheek,#E0503C)"/>
+    </g>
+    <g id="p-face">
+      <use href="#p-eyes"/>
+      <path class="k" d="M29.8 35.8 q2.2 1.5 4.4 0" stroke-width="1.6"/>
+    </g>
+    <g id="p-face-happy">
+      <use href="#p-eyes"/>
+      <path d="M28.4 34.4 q3.6 5 7.2 0 Z" fill="#1F1B1A"/>
+    </g>
 
     <!-- 站著的人 -->
     <symbol id="person" viewBox="0 0 64 150">
-      <rect x="19" y="92" width="11" height="48" rx="5.5" fill="var(--pants,#5DBE9E)"/>
-      <rect x="34" y="92" width="11" height="48" rx="5.5" fill="var(--pants,#5DBE9E)"/>
-      <ellipse cx="24" cy="142" rx="9" ry="4.5" fill="var(--shoe,#3E9C7E)"/>
-      <ellipse cx="40" cy="142" rx="9" ry="4.5" fill="var(--shoe,#3E9C7E)"/>
-      <rect x="27" y="38" width="10" height="10" fill="#F4CBAE"/>
-      <rect x="4" y="50" width="11" height="40" rx="5.5" transform="rotate(9 9 50)" fill="var(--shirt,#F59C8F)"/>
-      <rect x="49" y="50" width="11" height="40" rx="5.5" transform="rotate(-9 55 50)" fill="var(--shirt,#F59C8F)"/>
-      <circle cx="7" cy="90" r="5" fill="#F4CBAE"/>
-      <circle cx="57" cy="90" r="5" fill="#F4CBAE"/>
-      <rect x="12" y="44" width="40" height="54" rx="17" fill="var(--shirt,#F59C8F)"/>
-      <circle cx="32" cy="25" r="15" fill="#F6D3B9"/>
-      <path d="M16 26 C 14 6, 50 6, 48 26 C 44 16, 26 14, 16 26 Z" fill="var(--hair,#3B2A26)"/>
-      <path d="M46 18 C 56 22, 56 38, 50 44 C 48 36, 50 26, 46 18 Z" fill="var(--tail,transparent)"/>
-      <circle cx="26.5" cy="27" r="1.8" fill="#3B2A26"/>
-      <circle cx="37.5" cy="27" r="1.8" fill="#3B2A26"/>
-      <path d="M28 32.5 q4 3 8 0" stroke="#3B2A26" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-      <circle cx="22.5" cy="31.5" r="2.8" fill="#F5A79D" opacity=".6"/>
-      <circle cx="41.5" cy="31.5" r="2.8" fill="#F5A79D" opacity=".6"/>
+      <use href="#p-arm-l"/><use href="#p-arm-r"/>
+      <use href="#p-legs"/><use href="#p-torso"/><use href="#p-head"/><use href="#p-face"/>
     </symbol>
 
-    <!-- 抱著東西的人（雙手在胸前） -->
+    <!-- 揮手的人 -->
+    <symbol id="person-wave" viewBox="0 0 64 150">
+      <use href="#p-arm-l"/>
+      <g class="a-wave" style="transform-origin:45.4px 55px">
+        <path d="M45.4 55 C 53 51, 57 43, 56.6 33" fill="none" stroke="var(--shirt,#3A8DC9)" stroke-width="8.4" stroke-linecap="round"/>
+        <circle cx="56.4" cy="27" r="4.6" fill="var(--skin,#F4B994)"/>
+      </g>
+      <use href="#p-legs"/><use href="#p-torso"/><use href="#p-head"/><use href="#p-face-happy"/>
+    </symbol>
+
+    <!-- 抱著毛孩的人：先畫身體，放上毛孩，再疊 #arms-front -->
     <symbol id="person-hold" viewBox="0 0 64 150">
-      <rect x="19" y="92" width="11" height="48" rx="5.5" fill="var(--pants,#5DBE9E)"/>
-      <rect x="34" y="92" width="11" height="48" rx="5.5" fill="var(--pants,#5DBE9E)"/>
-      <ellipse cx="24" cy="142" rx="9" ry="4.5" fill="var(--shoe,#3E9C7E)"/>
-      <ellipse cx="40" cy="142" rx="9" ry="4.5" fill="var(--shoe,#3E9C7E)"/>
-      <rect x="27" y="38" width="10" height="10" fill="#F4CBAE"/>
-      <rect x="12" y="44" width="40" height="54" rx="17" fill="var(--shirt,#F59C8F)"/>
-      <circle cx="32" cy="25" r="15" fill="#F6D3B9"/>
-      <path d="M16 26 C 14 6, 50 6, 48 26 C 44 16, 26 14, 16 26 Z" fill="var(--hair,#3B2A26)"/>
-      <path d="M46 18 C 56 22, 56 38, 50 44 C 48 36, 50 26, 46 18 Z" fill="var(--tail,transparent)"/>
-      <path d="M26 27 q1.8 -1.8 3.6 0 M35 27 q1.8 -1.8 3.6 0" stroke="#3B2A26" stroke-width="1.7" fill="none" stroke-linecap="round"/>
-      <path d="M28 32.5 q4 3 8 0" stroke="#3B2A26" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-      <circle cx="22.5" cy="31.5" r="2.8" fill="#F5A79D" opacity=".6"/>
-      <circle cx="41.5" cy="31.5" r="2.8" fill="#F5A79D" opacity=".6"/>
+      <use href="#p-legs"/><use href="#p-torso"/><use href="#p-head"/><use href="#p-face-happy"/>
     </symbol>
     <symbol id="arms-front" viewBox="0 0 64 150">
-      <path d="M12 54 C 4 70, 8 82, 30 80" fill="none" stroke="var(--shirt,#F59C8F)" stroke-width="11" stroke-linecap="round"/>
-      <path d="M52 54 C 60 70, 56 82, 34 80" fill="none" stroke="var(--shirt,#F59C8F)" stroke-width="11" stroke-linecap="round"/>
-      <circle cx="30" cy="80" r="5" fill="#F4CBAE"/>
-      <circle cx="35" cy="79" r="5" fill="#F4CBAE"/>
+      <path d="M18.6 55 C 8 66, 10 80, 27 82.6 M45.4 55 C 56 66, 54 80, 37 82.6" fill="none" stroke="var(--shirt,#3A8DC9)" stroke-width="8.4" stroke-linecap="round"/>
+      <circle cx="29.4" cy="82.8" r="4.6" fill="var(--skin,#F4B994)"/>
+      <circle cx="34.6" cy="82.6" r="4.6" fill="var(--skin,#F4B994)"/>
     </symbol>
 
     <!-- 蹲著餵食的人（面向右） -->
     <symbol id="person-squat" viewBox="0 0 92 112">
-      <rect x="26" y="70" width="40" height="15" rx="7.5" fill="var(--pants,#5DBE9E)"/>
-      <rect x="54" y="74" width="13" height="32" rx="6.5" fill="var(--pants,#5DBE9E)"/>
-      <ellipse cx="64" cy="106" rx="10" ry="4.5" fill="var(--shoe,#3E9C7E)"/>
-      <ellipse cx="30" cy="104" rx="9" ry="4.5" fill="var(--shoe,#3E9C7E)"/>
-      <rect x="22" y="82" width="12" height="22" rx="6" fill="var(--pants,#5DBE9E)"/>
-      <rect x="16" y="38" width="34" height="44" rx="15" transform="rotate(10 33 60)" fill="var(--shirt,#F59C8F)"/>
-      <path d="M42 48 C 56 56, 64 64, 76 70" fill="none" stroke="var(--shirt,#F59C8F)" stroke-width="10" stroke-linecap="round"/>
-      <circle cx="78" cy="71" r="5" fill="#F4CBAE"/>
-      <circle cx="36" cy="24" r="14" fill="#F6D3B9"/>
-      <path d="M21 25 C 19 6, 52 6, 50 23 C 44 14, 30 14, 21 25 Z" fill="var(--hair,#3B2A26)"/>
-      <path d="M22 18 C 12 22, 12 36, 18 42 C 20 34, 18 26, 22 18 Z" fill="var(--tail,transparent)"/>
-      <circle cx="42.5" cy="25" r="1.8" fill="#3B2A26"/>
-      <path d="M40 31 q3 2.2 6 0" stroke="#3B2A26" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      <circle cx="45" cy="30" r="2.6" fill="#F5A79D" opacity=".6"/>
+      <path d="M49 51 C 54 57, 58 62, 59.6 67" fill="none" stroke="var(--shirt2,#2E76AC)" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="60" cy="71" r="4.2" fill="var(--skin2,#E9A47C)"/>
+      <path d="M31 86 L 58 72 L 42 96" fill="none" stroke="var(--pants2,#26775A)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M32 93 L 44.6 93 L 44.6 98.4 C 50 98.8, 53.2 101, 53.2 104 L 32 104 Z" fill="var(--shoe2,#C7362B)"/>
+      <path d="M17 86 C 14 72, 26 52, 40 42 C 46 38, 56 40, 58 46 C 60 56, 50 70, 42 90 C 36 96, 22 96, 17 86 Z" fill="var(--shirt,#3A8DC9)"/>
+      <path d="M25.6 73.6 q7.6 1.4 14.6 7 M30.6 63.2 q7.6 1.4 14.6 7 M36.2 52.8 q7.4 1.4 14.2 7" fill="none" stroke="var(--stripe,#FFFDF8)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M16 88 C 15 80, 24 76.4, 32 79.4 C 38 82, 38 92, 32 96 C 24 99, 17 96, 16 88 Z" fill="var(--pants,#2F8F6B)"/>
+      <path d="M28 88 L 62 74 L 43 98" fill="none" stroke="var(--pants,#2F8F6B)" stroke-width="12.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M36 95.4 L 49.6 95.4 L 49.6 101 C 56 101.4, 59.6 104, 59.6 108 L 36 108 Z" fill="var(--shoe,#E0503C)"/>
+      <g class="a-reach" style="transform-origin:47px 50px">
+        <path d="M47 50 C 51 54, 56 59, 61 62" fill="none" stroke="var(--shirt,#3A8DC9)" stroke-width="8.4" stroke-linecap="round"/>
+        <path d="M62.6 63 C 68 65.6, 74 68, 80 70" fill="none" stroke="var(--skin,#F4B994)" stroke-width="6.4" stroke-linecap="round"/>
+        <circle cx="82.6" cy="70.8" r="4.6" fill="var(--skin,#F4B994)"/>
+        <circle cx="87" cy="68.2" r="2.5" fill="#8A4B2A"/>
+      </g>
+      <path class="a-sway" style="transform-origin:42px 22px" d="M42 20 C 32 20, 27 31, 31 41 C 32.6 44.6, 37 43, 36 39.4 C 34.8 34, 38 29, 44 27 Z" fill="var(--hair,#1F1B1A)"/>
+      <path d="M48 37 L 46.6 47 L 57 48 L 57.6 39 Z" fill="var(--skin2,#E9A47C)"/>
+      <path d="M40 25 C 40 16, 46.4 10.4, 54 10.4 C 62 10.4, 68 16.4, 68 25 C 68 34, 62 40, 54 40 C 46 40, 40 34, 40 25 Z" fill="var(--skin,#F4B994)"/>
+      <path d="M38.4 27 C 35.6 13, 45 5.4, 55.4 5.4 C 64.4 5.4, 70 12, 69 20.4 C 65 16, 60 14.4, 54.4 15 C 51.6 20, 47.6 24, 44.4 25 C 44.4 29.6, 43.6 33, 41.6 36 C 39.4 34, 38.6 30.6, 38.4 27 Z" fill="var(--hair,#1F1B1A)"/>
+      <g class="a-blink" style="transform-origin:60px 25.4px">
+        <path d="M52.8 25.2 C 52.8 22.6, 54.6 21, 57 21.2 C 59.4 21.4, 61 23.2, 60.8 25.8 C 60.6 28.2, 59 29.8, 56.6 29.6 C 54.2 29.4, 52.8 27.6, 52.8 25.2 Z" fill="#fff"/>
+        <path d="M61 25 C 61 22.6, 62.6 21.2, 64.8 21.4 C 67 21.6, 68.4 23.2, 68.2 25.6 C 68 27.8, 66.6 29.2, 64.4 29 C 62.2 28.8, 61 27.2, 61 25 Z" fill="#fff"/>
+        <g class="a-look">
+          <circle cx="58.2" cy="25.8" r="2" fill="#1F1B1A"/>
+          <circle cx="65.8" cy="25.6" r="1.9" fill="#1F1B1A"/>
+        </g>
+      </g>
+      <path class="k" d="M59.6 35 q2 1.3 4 -.3" stroke-width="1.6"/>
+      <path d="M50.6 31 C 52 30, 54.6 30.4, 55 31.8 C 55.2 33.2, 52.8 33.8, 51.2 33.2 C 50 32.8, 49.8 31.6, 50.6 31 Z" fill="var(--cheek,#E0503C)"/>
     </symbol>
 
-    <!-- 飯碗 -->
+    <!-- ===== 場景零件 ===== -->
     <symbol id="bowl" viewBox="0 0 40 20">
-      <path d="M4 6 h32 l-4 12 h-24 z" fill="var(--bowl,#E5776E)"/>
-      <ellipse cx="20" cy="6" rx="16" ry="4" fill="#C8875A"/>
-      <circle cx="14" cy="4.6" r="2" fill="#A86B40"/><circle cx="21" cy="3.6" r="2" fill="#A86B40"/><circle cx="27" cy="5" r="2" fill="#A86B40"/>
+      <path d="M6 6.4 C 9 2.4, 14 1.4, 20 1.6 C 26 1.4, 31 2.4, 34 6.4 Z" fill="#8A4B2A"/>
+      <path d="M3.6 6.4 C 3.4 5.4, 4.2 4.8, 5.2 4.8 L 34.8 5 C 35.8 5, 36.6 5.6, 36.4 6.6 C 35.6 11.6, 33.6 16, 31 18.4 L 9 18.2 C 6.4 16, 4.4 11.6, 3.6 6.4 Z" fill="var(--bowl,#E0503C)"/>
+      <path d="M11 12 h6 M22 12 h7" fill="none" stroke="#FFFDF8" stroke-width="2.4" stroke-linecap="round"/>
     </symbol>
 
-    <!-- 圓樹 -->
     <symbol id="tree" viewBox="0 0 56 96">
-      <rect x="25" y="44" width="7" height="52" rx="3.5" fill="var(--trunk,#F08A6C)"/>
-      <circle cx="21" cy="34" r="19" fill="var(--leaf,#3FAE93)"/>
-      <circle cx="35" cy="27" r="19" fill="var(--leaf,#3FAE93)"/>
-    </symbol>
-    <!-- 松樹 -->
-    <symbol id="pine" viewBox="0 0 40 84">
-      <rect x="17.5" y="56" width="5" height="28" rx="2.5" fill="var(--trunk,#F08A6C)"/>
-      <path d="M20 2 L34 26 H6 Z M20 16 L37 44 H3 Z M20 32 L40 62 H0 Z" fill="var(--leaf,#4FB494)"/>
-    </symbol>
-    <!-- 房子 -->
-    <symbol id="house" viewBox="0 0 120 100">
-      <rect x="14" y="40" width="92" height="60" fill="var(--wall,#FFFFFF)"/>
-      <path d="M0 46 L60 4 L120 46 Z" fill="var(--roof,#F2836B)"/>
-      <rect x="28" y="56" width="16" height="16" rx="2" fill="var(--win,#FFE97A)"/>
-      <rect x="48" y="56" width="16" height="16" rx="2" fill="var(--win,#FFE97A)"/>
-      <rect x="78" y="62" width="18" height="38" rx="2" fill="var(--door,#F7C3B8)"/>
-    </symbol>
-    <!-- 狗屋 -->
-    <symbol id="doghouse" viewBox="0 0 80 70">
-      <rect x="8" y="28" width="64" height="42" fill="var(--wall,#FFE97A)"/>
-      <path d="M0 32 L40 2 L80 32 Z" fill="var(--roof,#F2836B)"/>
-      <path d="M28 70 V50 a12 12 0 0 1 24 0 V70 Z" fill="#6B4A3E"/>
-    </symbol>
-    <!-- 地標針（腳印） -->
-    <symbol id="pin" viewBox="0 0 56 72">
-      <path d="M28 70 C 22 58, 4 46, 4 28 A 24 24 0 0 1 52 28 C 52 46, 34 58, 28 70 Z" fill="#fff" stroke="var(--pinc,#E5776E)" stroke-width="3"/>
-      <g fill="var(--pinc,#E5776E)">
-        <ellipse cx="28" cy="34" rx="8" ry="6.4"/>
-        <circle cx="18.5" cy="25" r="3.4"/><circle cx="24.6" cy="20" r="3.4"/><circle cx="31.4" cy="20" r="3.4"/><circle cx="37.5" cy="25" r="3.4"/>
+      <path d="M27.6 54 C 28 68, 27 82, 26 94" fill="none" stroke="var(--trunk,#6B3F2A)" stroke-width="6.4" stroke-linecap="round"/>
+      <path d="M27.6 77 L 35.6 67.4" fill="none" stroke="var(--trunk,#6B3F2A)" stroke-width="3.6" stroke-linecap="round"/>
+      <g class="a-sway" style="transform-origin:28px 58px">
+        <path d="M27 58 C 13 60, 3 49, 7 37 C 3 25, 12 13, 24 15 C 30 5, 47 6, 50 19 C 58 27, 55 43, 45 47 C 43 55, 33 60, 27 58 Z" fill="var(--leaf,#9CC25B)"/>
+        <circle cx="18" cy="31" r="2.6" fill="#FFFDF8"/><circle cx="36.6" cy="22" r="2.6" fill="var(--berry,#E0503C)"/><circle cx="43" cy="38" r="2.6" fill="#FFFDF8"/><circle cx="26" cy="45" r="2.6" fill="var(--berry,#E0503C)"/><circle cx="30" cy="33" r="2.2" fill="#F6C445"/>
       </g>
     </symbol>
-    <!-- 腳印 -->
+
+    <symbol id="pine" viewBox="0 0 40 84">
+      <path d="M20 58 V 82" fill="none" stroke="var(--trunk,#6B3F2A)" stroke-width="5.6" stroke-linecap="round"/>
+      <path d="M20 3 C 24 9, 28.6 15, 31.6 22 C 29 24.6, 26.4 24, 24.6 23.4 C 28 30, 32.6 36, 35.6 42.6 C 32.6 45.6, 29.4 44.6, 26.6 44 C 30.6 50, 35 56, 38 62 C 30 67.6, 10 67.6, 2 62 C 5 56, 9.4 50, 13.4 44 C 10.6 44.6, 7.4 45.6, 4.4 42.6 C 7.4 36, 12 30, 15.4 23.4 C 13.6 24, 11 24.6, 8.4 22 C 11.4 15, 16 9, 20 3 Z" fill="var(--leaf,#2F8F6B)"/>
+      <path d="M17 34 l5 3 M12 54 l5 3 M24 52 l5 3" fill="none" stroke="var(--pine-mark,#F3E7CF)" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+    </symbol>
+
+    <symbol id="bush" viewBox="0 0 60 34">
+      <path d="M6 32 C -2 28, 2 16, 12 16 C 12 6, 28 2, 34 10 C 42 4, 56 10, 52 20 C 60 22, 60 32, 52 32 Z" fill="var(--leaf,#2F8F6B)"/>
+      <circle cx="17" cy="23" r="2.4" fill="#F5A6BE"/><circle cx="30" cy="17" r="2.4" fill="#F6C445"/><circle cx="42" cy="24" r="2.4" fill="#F5A6BE"/>
+    </symbol>
+
+    <symbol id="house" viewBox="0 0 120 100">
+      <path class="puff" d="M92 7 C 96 3, 103 5, 102 10 C 106 11, 105 17, 100 16.6 C 96 18, 91 15, 93 11.6 C 90.6 10.4, 90.6 8, 92 7 Z" fill="var(--smoke,#F6C445)"/>
+      <path d="M84 36 L 84.6 18 L 94 18.4 L 94 42 Z" fill="var(--wall,#F3E7CF)"/>
+      <path d="M17 46 C 17 44.6, 18 44, 19.4 44 L 101 45 C 102.6 45, 103.4 46, 103.4 47.4 L 103 96 C 103 97.4, 102 98, 100.6 98 L 19 97.6 C 17.6 97.6, 16.6 96.6, 16.6 95.4 Z" fill="var(--wall,#F3E7CF)"/>
+      <path d="M58 6 C 59.6 4.6, 61.6 4.6, 63 6 L 115 43 C 118 45.6, 117 50, 113 50.4 L 8 50 C 4 50, 2.6 45.6, 5.6 43 Z" fill="var(--roof,#E0503C)"/>
+      <path d="M36 36 q5 4.4 10 0 q5 4.4 10 0 q5 4.4 10 0 q5 4.4 10 0 M48 23 q5 4.4 10 0 q5 4.4 10 0" fill="none" stroke="var(--roofline,#B63A2A)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M27 62 C 27 60.6, 28 60, 29.4 60 L 51 60.4 C 52.4 60.4, 53 61.4, 53 62.6 L 52.6 81 C 52.6 82.4, 51.6 83, 50.4 83 L 29 82.6 C 27.6 82.6, 27 81.6, 27 80.4 Z" fill="var(--win,#F6C445)"/>
+      <path class="k" d="M40 60.4 V 82.8 M27 71.6 H 53" stroke-width="2.2"/>
+      <path d="M70 98 V 68 C 70 61.6, 74.6 58, 81 58 C 87.4 58, 92 61.6, 92 68 V 98 Z" fill="var(--door,#3A8DC9)"/>
+      <circle cx="87.4" cy="80" r="2" fill="#F6C445"/>
+    </symbol>
+
+    <symbol id="doghouse" viewBox="0 0 80 70">
+      <path d="M10.6 31 L 69.6 31.4 L 69 68 L 11 67.6 Z" fill="var(--wall,#F6C445)"/>
+      <path d="M27 68 V 51 C 27 43.6, 32.6 39, 40 39 C 47.4 39, 53 43.6, 53 51 V 68 Z" fill="#1F1B1A"/>
+      <path d="M38 4 C 39.2 3, 40.8 3, 42 4 L 77 30 C 79.6 32, 78.4 35.6, 75.4 35.6 L 4.6 35.2 C 1.6 35.2, .4 32, 3 30 Z" fill="var(--roof,#3A8DC9)"/>
+      <g fill="#FFFDF8">
+        <rect x="34" y="19" width="12" height="4.2" rx="1"/><circle cx="33.6" cy="19" r="2.5"/><circle cx="33.6" cy="23.2" r="2.5"/><circle cx="46.4" cy="19" r="2.5"/><circle cx="46.4" cy="23.2" r="2.5"/>
+      </g>
+    </symbol>
+
+    <symbol id="fence" viewBox="0 0 120 44">
+      <path d="M5 18 H 115 M5 32 H 115" fill="none" stroke="var(--fence,#EE8A2B)" stroke-width="5" stroke-linecap="round"/>
+      <path d="M15 40 V 8 M45 40 V 6 M75 40 V 8 M105 40 V 6" fill="none" stroke="var(--fence,#EE8A2B)" stroke-width="9" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="pin" viewBox="0 0 56 72">
+      <path d="M28 69 C 22 57, 5 46, 5 28 C 5 15, 15.4 5, 28 5 C 40.6 5, 51 15, 51 28 C 51 46, 34 57, 28 69 Z" fill="var(--pinc,#E0503C)"/>
+      <g fill="#FFFDF8">
+        <ellipse cx="28" cy="33" rx="7.8" ry="6.2"/>
+        <circle cx="18.8" cy="24.4" r="3.3"/><circle cx="24.8" cy="19.4" r="3.3"/><circle cx="31.2" cy="19.4" r="3.3"/><circle cx="37.2" cy="24.4" r="3.3"/>
+      </g>
+    </symbol>
+
     <symbol id="paw" viewBox="0 0 40 40">
       <ellipse cx="20" cy="26" rx="9" ry="7.4"/>
       <circle cx="9" cy="16" r="4"/><circle cx="16" cy="9.6" r="4"/><circle cx="24" cy="9.6" r="4"/><circle cx="31" cy="16" r="4"/>
     </symbol>
-    <!-- 花 -->
+
     <symbol id="flower" viewBox="0 0 30 56">
-      <path d="M15 22 V56" stroke="#3FAE93" stroke-width="3"/>
-      <path d="M15 42 C 6 40, 4 32, 6 30 C 12 32, 15 36, 15 42 Z M15 46 C 24 44, 26 36, 24 34 C 18 36, 15 40, 15 46 Z" fill="#3FAE93"/>
-      <g fill="var(--petal,#F2836B)"><circle cx="15" cy="8" r="6"/><circle cx="8" cy="15" r="6"/><circle cx="22" cy="15" r="6"/><circle cx="15" cy="21" r="6"/></g>
-      <circle cx="15" cy="14.5" r="4.4" fill="var(--core,#FFE97A)"/>
+      <path d="M15 26 C 14 36, 15.4 46, 15 55" fill="none" stroke="#2F8F6B" stroke-width="3" stroke-linecap="round"/>
+      <path d="M15 45 C 8 44.6, 4.4 38.6, 5.6 34 C 11.4 34.6, 15 39, 15 45 Z" fill="#2F8F6B"/>
+      <g class="a-sway" style="transform-origin:15px 30px">
+        <path d="M15 3 C 19 3, 21 6.6, 20 9.6 C 23.6 8, 27.6 11, 26.6 15 C 25.8 18.6, 22 19.6, 19.6 18.4 C 21.6 21.6, 19 26, 15 26 C 11 26, 8.4 21.6, 10.4 18.4 C 8 19.6, 4.2 18.6, 3.4 15 C 2.4 11, 6.4 8, 10 9.6 C 9 6.6, 11 3, 15 3 Z" fill="var(--petal,#F5A6BE)"/>
+        <circle cx="15" cy="14.6" r="3.6" fill="var(--core,#F6C445)"/>
+      </g>
     </symbol>
-    <!-- 草 -->
+
     <symbol id="grass" viewBox="0 0 30 20">
-      <path d="M4 20 C 4 12, 2 8, 0 4 C 6 8, 8 14, 9 20 Z M12 20 C 12 10, 14 5, 16 0 C 18 8, 17 14, 17 20 Z M21 20 C 22 13, 25 8, 30 6 C 28 12, 26 16, 26 20 Z" fill="var(--leaf,#4FB494)"/>
+      <path d="M2 20 C 1 13, 3 8, 6 4 C 9 8, 10 12, 10.6 15 C 11.4 9, 13 4, 16 1 C 19 5, 19.6 11, 20 15 C 21 11, 23.6 7.6, 27 6 C 29 11, 28.6 16, 28 20 Z" fill="var(--leaf,#2F8F6B)"/>
     </symbol>
-    <!-- 小貨車（載飼料） -->
+
+    <!-- 載飼料的小貨車 -->
     <symbol id="truck" viewBox="0 0 132 76">
-      <rect x="4" y="30" width="78" height="30" rx="4" fill="#FFFFFF" stroke="#E5776E" stroke-width="3"/>
-      <rect x="10" y="12" width="22" height="22" rx="5" fill="#FFF3E2" stroke="#D9B48A" stroke-width="2"/>
-      <rect x="30" y="8" width="22" height="26" rx="5" fill="#FFF3E2" stroke="#D9B48A" stroke-width="2"/>
-      <rect x="50" y="14" width="22" height="20" rx="5" fill="#FFF3E2" stroke="#D9B48A" stroke-width="2"/>
-      <path d="M14 22 h14 M34 20 h14 M54 23 h14" stroke="#E5776E" stroke-width="2.4" stroke-linecap="round"/>
-      <path d="M82 60 V22 a6 6 0 0 1 6 -6 h18 c6 0 9 3 12 8 l10 16 v20 z" fill="#E5776E"/>
-      <path d="M92 22 h14 c3 0 5 1.6 6.6 4 l7 12 H92 z" fill="#BEE9F2"/>
-      <circle cx="26" cy="62" r="11" fill="#4B3B36"/><circle cx="26" cy="62" r="4.4" fill="#DADADA"/>
-      <circle cx="104" cy="62" r="11" fill="#4B3B36"/><circle cx="104" cy="62" r="4.4" fill="#DADADA"/>
+      <path d="M12 34 C 10 26, 12 18, 15 14 C 20 11.6, 28 11.6, 33 14 C 36 18, 37 26, 35 34 Z" fill="#E0503C"/>
+      <path d="M32 34 C 30 24, 32 14, 35 9 C 40 6.6, 48 6.6, 53 9 C 56 14, 57 24, 55 34 Z" fill="#F6C445"/>
+      <path d="M52 34 C 50 27, 52 20, 55 16 C 60 13.6, 68 13.6, 73 16 C 76 20, 77 27, 75 34 Z" fill="#F5A6BE"/>
+      <path class="k" d="M18 22 h11 M38.6 19 h11 M58.6 24 h11" stroke-width="2.2"/>
+      <path d="M5 34 C 5 32.6, 6 32, 7.4 32 L 84 32.6 L 86 60 L 7 59.6 C 5.6 59.6, 4.6 58.6, 4.6 57.4 Z" fill="#F3E7CF"/>
+      <path d="M86 60 V 24 C 86 20.4, 88.6 18, 92 18 L 107 18.4 C 112 18.6, 115.6 20.6, 118 25 L 126.4 39.6 C 127.6 41.6, 128 43.6, 128 45.6 V 60 Z" fill="var(--truck,#3A8DC9)"/>
+      <path d="M94 24 L 106.4 24.2 C 109 24.4, 111 25.6, 112.4 28 L 118 38 L 94 38 Z" fill="#FFFDF8"/>
+      <circle cx="123.6" cy="48.6" r="2.8" fill="#F6C445"/>
+      <g class="a-roll" style="transform-origin:28px 62px">
+        <circle cx="28" cy="62" r="10.6" fill="#1F1B1A"/><circle cx="28" cy="62" r="4.4" fill="#F3E7CF"/><circle cx="30" cy="62" r="1.3" fill="#1F1B1A"/>
+      </g>
+      <g class="a-roll" style="transform-origin:106px 62px">
+        <circle cx="106" cy="62" r="10.6" fill="#1F1B1A"/><circle cx="106" cy="62" r="4.4" fill="#F3E7CF"/><circle cx="108" cy="62" r="1.3" fill="#1F1B1A"/>
+      </g>
     </symbol>
-    <!-- 愛心 -->
+
+    <!-- 飼料袋 -->
+    <symbol id="bag" viewBox="0 0 44 56">
+      <path d="M7 54 C 4 40, 4 20, 8 8 C 10 5, 14 6.6, 16 4.6 C 20 6.6, 24 6.6, 28 4.6 C 30 6.6, 34 5, 36 8 C 40 20, 40 40, 37 54 Z" fill="var(--bag,#EE8A2B)"/>
+      <path class="k" d="M10 12.6 h24" stroke-width="2.2"/>
+      <path d="M5.6 27 h32.8 c.4 4.6 .2 9.4 -.2 14 h-32.4 c-.4 -4.6 -.6 -9.4 -.2 -14 Z" fill="#FFFDF8"/>
+      <g fill="var(--bagc,#1F1B1A)">
+        <ellipse cx="22" cy="36.4" rx="3.4" ry="2.8"/><circle cx="17.6" cy="32.8" r="1.5"/><circle cx="20.6" cy="30.6" r="1.5"/><circle cx="23.6" cy="30.6" r="1.5"/><circle cx="26.6" cy="32.8" r="1.5"/>
+      </g>
+    </symbol>
+
+    <!-- 誘捕籠：先畫 #cage-b，放進貓，再疊 #cage-f -->
+    <symbol id="cage-b" viewBox="0 0 120 90">
+      <path d="M8 22 C 8 18.6, 10.6 16, 14 16 L 106 16.6 C 109.4 16.6, 112 19, 112 22.4 L 111.6 78 C 111.6 81.4, 109 84, 105.6 84 L 14 83.6 C 10.6 83.6, 8 81, 8 77.6 Z" fill="var(--cage-bg,#FFFDF8)"/>
+    </symbol>
+    <symbol id="cage-f" viewBox="0 0 120 90">
+      <path class="k" d="M25 17 V 83.4 M42 17 V 83.6 M60 17 V 83.8 M78 17 V 83.8 M95 17 V 83.8" stroke-width="2.6"/>
+      <path class="k" d="M8 22 C 8 18.6, 10.6 16, 14 16 L 106 16.6 C 109.4 16.6, 112 19, 112 22.4 L 111.6 78 C 111.6 81.4, 109 84, 105.6 84 L 14 83.6 C 10.6 83.6, 8 81, 8 77.6 Z" stroke-width="3.2"/>
+      <path class="k" d="M46 16 C 46 4, 74 4, 74 16" stroke-width="3.6"/>
+    </symbol>
+
+    <!-- 醫藥箱 -->
+    <symbol id="med" viewBox="0 0 60 48">
+      <path class="k" d="M22 12 V 8 C 22 5, 24 4, 26 4 h8 c2 0 4 1 4 4 v4" stroke-width="3"/>
+      <path d="M5 18 C 5 14.6, 7.6 12, 11 12 L 49 12.4 C 52.4 12.4, 55 15, 55 18.4 L 54.6 38 C 54.6 41.4, 52 44, 48.6 44 L 11 43.6 C 7.6 43.6, 5 41, 5 37.6 Z" fill="var(--med,#FFFDF8)"/>
+      <path class="a-pulse" style="transform-origin:30px 28.4px" d="M26.4 19.4 h7.2 v5.4 h5.4 v7.2 h-5.4 v5.4 h-7.2 v-5.4 h-5.4 v-7.2 h5.4 Z" fill="#E0503C"/>
+    </symbol>
+
     <symbol id="heart" viewBox="0 0 32 28">
-      <path d="M16 27 C 6 20, 0 14, 0 8 A 8 8 0 0 1 16 5 A 8 8 0 0 1 32 8 C 32 14, 26 20, 16 27 Z"/>
+      <path d="M16 26 C 7 19.6, 1.4 14, 1.4 8.6 C 1.4 1.2, 12 -1, 16 6.6 C 19.6 -.4, 30.6 1.6, 30.6 8.8 C 30.6 14, 25 19.6, 16 26 Z"/>
     </symbol>
-    <!-- 雲 -->
+
     <symbol id="cloud" viewBox="0 0 160 64">
-      <path d="M20 64 a20 20 0 0 1 4 -39.6 A 30 30 0 0 1 80 14 a 26 26 0 0 1 44 12 a 19 19 0 0 1 16 38 Z" fill="#FFFFFF"/>
+      <path d="M22 62 C 8 62, 2 50, 8 40 C 12 32, 20 28, 28 30 C 30 16, 46 6, 62 10 C 70 2, 92 0, 104 12 C 114 6, 132 12, 132 28 C 146 26, 158 38, 152 52 C 148 60, 140 62, 132 62 Z" fill="var(--cloud,#BFDDF2)"/>
     </symbol>
+
+    <symbol id="sun" viewBox="0 0 80 80">
+      <g class="a-spin" style="transform-origin:40px 40px">
+        <path d="M40 5 v9 M40 66 v9 M5 40 h9 M66 40 h9 M15 15 l6.4 6.4 M58.6 58.6 l6.4 6.4 M15 65 l6.4 -6.4 M58.6 21.4 l6.4 -6.4" fill="none" stroke="#EE8A2B" stroke-width="5.4" stroke-linecap="round"/>
+      </g>
+      <path d="M21 40 C 20.6 29, 29 20.6, 40.4 21 C 51 21.4, 59.4 29.6, 59 40.6 C 58.6 51.4, 50.4 59.4, 39.6 59 C 29 58.6, 21.4 50.6, 21 40 Z" fill="#F6C445"/>
+      <g class="a-blink" style="transform-origin:40px 37px">
+        <path d="M29 36.6 C 29 33.6, 31.2 31.6, 34 31.8 C 36.8 32, 38.8 34.2, 38.6 37.2 C 38.4 40, 36.4 42, 33.6 41.8 C 30.8 41.6, 29 39.4, 29 36.6 Z M41 37 C 41 34, 43.2 32, 46 32.2 C 48.8 32.4, 50.8 34.6, 50.6 37.6 C 50.4 40.4, 48.4 42.4, 45.6 42.2 C 42.8 42, 41 39.8, 41 37 Z" fill="#fff"/>
+        <g class="a-look"><circle cx="35.2" cy="37.6" r="2.3" fill="#1F1B1A"/><circle cx="47.2" cy="38" r="2.3" fill="#1F1B1A"/></g>
+      </g>
+      <path class="k" d="M35.6 47 q4.4 3.6 8.8 0" stroke-width="2.2"/>
+      <path d="M25.6 44 C 27 43, 29.6 43.4, 30 44.8 C 30.2 46.2, 27.8 46.8, 26.2 46.2 C 25 45.8, 24.8 44.6, 25.6 44 Z M50 44.4 C 51.4 43.4, 54 43.8, 54.4 45.2 C 54.6 46.6, 52.2 47.2, 50.6 46.6 C 49.4 46.2, 49.2 45, 50 44.4 Z" fill="#E0503C"/>
+    </symbol>
+
+    <symbol id="bird" viewBox="0 0 28 14">
+      <path class="a-flap k" style="transform-origin:14px 11px" d="M2 11 q6 -11 12 -1 q6 -10 12 1" stroke-width="2.6"/>
+    </symbol>
+
+    <symbol id="butterfly" viewBox="0 0 28 22">
+      <g class="a-flutter" style="transform-origin:14px 11px">
+        <path d="M14 11 C 9 1, 1 2, 2 8 C 2.6 12, 8 12.6, 14 11 Z M14 11 C 9 13, 4 15, 5.6 19 C 8 21.6, 12.6 17, 14 11 Z" fill="var(--wing,#F5A6BE)"/>
+        <path d="M14 11 C 19 1, 27 2, 26 8 C 25.4 12, 20 12.6, 14 11 Z M14 11 C 19 13, 24 15, 22.4 19 C 20 21.6, 15.4 17, 14 11 Z" fill="var(--wing,#F5A6BE)"/>
+      </g>
+      <path class="k" d="M14 6.6 v10" stroke-width="2.6"/>
+    </symbol>
+
+    <!-- 台 20 線（南橫公路）路牌 -->
+    <symbol id="sign20" viewBox="0 0 36 62">
+      <path class="k" d="M18 28 V 60" stroke-width="3.6"/>
+      <path d="M4.6 6 C 12 3, 24 3, 31.4 6 C 32.6 16, 28 25, 18 30 C 8 25, 3.4 16, 4.6 6 Z" fill="#3A8DC9"/>
+      <text x="18" y="22.4" text-anchor="middle" font-family="Quicksand, sans-serif" font-size="12.5" font-weight="700" fill="#fff">20</text>
+    </symbol>
+
+    <!-- ===== 塗鴉裝飾（顏色用 --c 換） ===== -->
+    <symbol id="sparkle" viewBox="0 0 20 20">
+      <path class="a-twinkle" style="transform-origin:10px 10px" d="M10 2 V 18 M2 10 H 18 M4.4 4.4 L 15.6 15.6 M15.6 4.4 L 4.4 15.6" fill="none" stroke="var(--c,#EE8A2B)" stroke-width="3.4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="squig" viewBox="0 0 60 24">
+      <path d="M4 16 C 10 2, 18 2, 22 12 C 26 22, 34 22, 38 12 C 42 2, 50 2, 56 14" fill="none" stroke="var(--c,#F5A6BE)" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="arc" viewBox="0 0 40 34">
+      <path d="M7 29 C 4 15, 13 6, 21.6 6 C 29.6 6, 35 12.6, 34 20" fill="none" stroke="var(--c,#F5A6BE)" stroke-width="8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="dashes" viewBox="0 0 44 12">
+      <path d="M4 7 l7 -2 M19 6 l7 -1 M34 6 l6 1" fill="none" stroke="var(--c,#3A8DC9)" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="bang" viewBox="0 0 14 36">
+      <path d="M4.6 3.4 C 6.6 2.6, 9.6 3, 11.4 4.2 L 9.2 23 C 8 23.6, 6 23.4, 4.8 22.6 Z" fill="var(--c,#2F8F6B)"/>
+      <path d="M3.6 30.6 C 3.8 28.6, 5.6 27.6, 7.2 27.8 C 9 28, 10.2 29.6, 9.8 31.4 C 9.4 33.2, 7.8 34, 6.2 33.8 C 4.6 33.6, 3.4 32.4, 3.6 30.6 Z" fill="var(--c,#2F8F6B)"/>
+    </symbol>
+    <symbol id="zig" viewBox="0 0 44 30">
+      <path d="M5 7 L 14 23 L 22 9 L 30 23 L 39 8" fill="none" stroke="var(--c,#EE8A2B)" stroke-width="6.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
     <!-- Facebook -->
     <symbol id="icon-fb" viewBox="0 0 24 24">
       <circle cx="12" cy="12" r="12" fill="#1877F2"/>
@@ -294,119 +493,280 @@
 
 <!-- ============ Hero ============ -->
 <section class="hero" aria-labelledby="hero-title">
+  <!-- 手機版的天空：太陽、雲、塗鴉（疊在標題後面） -->
+  <div class="hero-sky" aria-hidden="true">
+    <svg class="sky-sun scene" viewBox="0 0 80 80"><use href="#sun"/></svg>
+    <svg class="sky-cloud sky-cloud--1" viewBox="0 0 160 64"><use href="#cloud"/></svg>
+    <svg class="sky-cloud sky-cloud--2" viewBox="0 0 160 64"><use href="#cloud"/></svg>
+    <svg class="sky-doodle sky-doodle--2" viewBox="0 0 20 20"><use href="#sparkle" style="--c:#F5A6BE"/></svg>
+  </div>
+
  <div class="hero-stage">
+  <div class="hero-copy">
+    <h1 id="hero-title" class="hero-title"><span class="line">沒有出生，</span><span class="line">就沒有流浪。</span></h1>
+    <p class="hero-en en">Fewer births, fewer strays.<span class="hero-en-more"><br>Caring for the animals of the Southern Cross-Island Highway.</span></p>
+    <p class="hero-lead">從六龜到甲仙，我們在南橫山區抓紮、救援、送養，<br class="pc">讓每一個流浪的生命，都被友善對待。</p>
+  </div>
+
   <div class="hero-art" aria-hidden="true">
-    <svg viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid meet">
-      <!-- 太陽、雲 -->
-      <circle cx="1290" cy="150" r="58" fill="#FFE97A"/>
-      <g class="drift"><use href="#cloud" x="160" y="60" width="170" height="68"/></g>
-      <g class="drift drift--slow"><use href="#cloud" x="760" y="36" width="130" height="52"/></g>
-      <!-- 鳥 -->
-      <g class="float" fill="none" stroke="#4B3B36" stroke-width="2.4" stroke-linecap="round">
-        <path d="M980 120 q8 -8 16 0 q8 -8 16 0"/>
-        <path d="M1030 96 q6 -6 12 0 q6 -6 12 0"/>
+
+    <!-- ================= 手機版場景：南橫路邊的餵食 ================= -->
+    <svg class="hero-scene hero-scene--m scene" viewBox="0 0 390 446">
+      <!-- 遠山（藍） -->
+      <g class="rise" style="--i:0">
+        <path d="M-330 200 C -250 150, -200 110, -150 120 C -100 130, -60 180, -10 150 C 30 110, 60 62, 96 54 C 120 49, 140 78, 160 86 C 190 54, 222 22, 250 28 C 280 34, 300 74, 330 86 C 350 78, 370 64, 400 68 C 440 74, 470 110, 520 96 C 580 80, 640 130, 720 150 L 720 240 L -330 240 Z" fill="#3A8DC9"/>
+        <path d="M226 44 C 236 30, 258 28, 272 44 C 264 47, 257 58, 249 53 C 243 58, 234 51, 226 44 Z" fill="#FFFDF8"/>
+        <path d="M78 76 l9 -6 M96 68 l6 -5 M306 96 l9 5 M148 104 h10 M196 74 l8 -6" fill="none" stroke="#FFFDF8" stroke-width="3.6" stroke-linecap="round" opacity=".9"/>
+      </g>
+      <g class="float"><use href="#bird" x="132" y="30" width="22" height="11"/><use href="#bird" x="158" y="18" width="16" height="8" style="--ad:-.3s"/></g>
+      <!-- 中景山（深綠） -->
+      <g class="rise" style="--i:1">
+        <path d="M-330 230 C -260 200, -200 170, -150 180 C -90 190, -50 226, -10 196 C 40 150, 80 116, 120 122 C 150 126, 170 148, 196 144 C 230 104, 270 90, 304 104 C 340 118, 370 146, 400 142 C 450 136, 500 170, 560 160 C 620 150, 680 190, 720 200 L 720 250 L -330 250 Z" fill="#2F8F6B"/>
+        <use href="#pine" x="-120" y="170" width="17" height="35.7" style="--leaf:#1F6B50;--trunk:#1F6B50;--pine-mark:#9CC25B"/>
+        <use href="#pine" x="-98" y="182" width="13" height="27.3" style="--leaf:#1F6B50;--trunk:#1F6B50;--pine-mark:#9CC25B"/>
+        <g fill="#9CC25B"><circle cx="118" cy="144" r="3"/><circle cx="140" cy="160" r="3"/><circle cx="98" cy="160" r="3"/><circle cx="226" cy="134" r="3"/><circle cx="252" cy="122" r="3"/><circle cx="60" cy="182" r="3"/></g>
+        <use href="#pine" x="26" y="154" width="17" height="35.7" style="--leaf:#1F6B50;--trunk:#1F6B50;--pine-mark:#9CC25B"/>
+        <use href="#pine" x="45" y="164" width="13" height="27.3" style="--leaf:#1F6B50;--trunk:#1F6B50;--pine-mark:#9CC25B"/>
+        <use href="#pine" x="160" y="150" width="14" height="29.4" style="--leaf:#1F6B50;--trunk:#1F6B50;--pine-mark:#9CC25B"/>
+      </g>
+      <!-- 前景大山（萊姆綠） -->
+      <g class="rise" style="--i:2">
+        <path d="M196 250 C 236 192, 266 128, 304 120 C 340 114, 368 154, 400 172 C 450 196, 520 160, 600 190 C 650 206, 700 200, 720 210 L 720 256 L 196 256 Z" fill="#9CC25B"/>
+        <use href="#pine" x="470" y="160" width="16" height="33.6"/>
+        <use href="#pine" x="490" y="170" width="13" height="27.3"/>
+        <path d="M282 138 C 294 123, 315 120, 329 133 C 320 137, 312 149, 304 146 C 297 149, 289 143, 282 138 Z" fill="#FFFDF8"/>
+        <path d="M246 206 l8 -5 M356 178 l8 4 M270 178 l7 -4 M340 160 h8" fill="none" stroke="#2F8F6B" stroke-width="3.4" stroke-linecap="round"/>
+        <use href="#pine" x="352" y="182" width="15" height="31.5"/>
+        <use href="#pine" x="369" y="192" width="12" height="25.2"/>
       </g>
 
+      <!-- 地面 -->
+      <path d="M-330 240 C -200 228, -100 236, -10 226 C 60 214, 130 216, 200 210 C 260 205, 300 200, 400 206 C 500 212, 620 204, 720 216 L 720 450 L -330 450 Z" fill="#FFF8EC"/>
+
+      <!-- 南橫公路：從山上之字形下來，越近越寬 -->
+      <g class="road-in">
+        <path d="M321.3 124.6 L317.5 126.9 L315.4 129.7 L315.0 132.9 L316.0 135.8 L317.7 138.6 L319.7 141.3 L321.5 143.8 L323.0 146.3 L323.7 148.5 L323.5 150.3 L322.2 152.2 L319.0 154.5 L315.3 157.3 L313.4 160.8 L313.6 164.4 L315.2 167.6 L317.3 170.6 L319.7 173.5 L321.8 176.3 L323.2 178.9 L323.7 181.1 L323.3 183.0 L321.3 185.3 L316.9 187.9 L314.0 189.4 L311.2 190.9 L308.7 192.4 L306.3 193.9 L304.0 195.4 L301.9 196.9 L299.9 198.4 L297.9 199.8 L296.0 201.3 L294.1 202.8 L292.2 204.2 L290.3 205.6 L286.4 207.7 L281.5 209.0 L275.9 209.6 L269.5 209.8 L262.6 209.6 L255.4 209.2 L247.9 208.8 L240.4 208.6 L232.9 208.7 L225.5 209.4 L218.4 211.0 L211.5 213.7 L205.7 218.1 L202.7 223.8 L203.0 229.8 L205.3 234.3 L208.0 237.9 L210.4 240.7 L211.7 242.6 L211.7 242.1 L212.3 240.2 L210.8 240.8 L205.1 242.2 L195.2 243.3 L184.3 243.9 L173.7 243.7 L163.2 242.9 L152.7 241.7 L142.2 240.2 L131.5 238.6 L120.5 237.0 L109.2 235.8 L97.5 235.1 L85.2 235.1 L72.5 236.0 L59.2 238.0 L50.9 239.7 L43.0 241.3 L35.2 243.0 L27.5 244.7 L20.0 246.4 L12.6 248.2 L5.2 250.0 L-2.0 251.9 L-9.1 253.8 L-16.2 255.8 L-23.2 257.9 L-30.0 260.1 L-30.0 260.1 L-18.0 291.9 L-18.0 291.9 L-11.7 289.1 L-5.4 286.5 L1.0 283.9 L7.5 281.3 L14.1 278.8 L20.9 276.3 L27.9 273.9 L35.0 271.5 L42.2 269.1 L49.7 266.7 L57.2 264.3 L64.8 262.0 L76.0 259.2 L86.9 257.4 L97.7 256.5 L108.3 256.2 L118.9 256.4 L129.5 256.9 L140.3 257.7 L151.2 258.3 L162.2 258.8 L173.5 258.8 L185.0 258.1 L196.8 256.7 L207.7 254.6 L215.3 252.2 L220.8 248.7 L223.4 242.2 L221.8 236.8 L219.1 233.3 L216.4 230.5 L214.2 228.1 L213.2 226.4 L212.9 225.8 L213.4 224.8 L216.5 222.3 L221.3 220.0 L227.1 218.4 L233.6 217.4 L240.5 216.9 L247.8 216.8 L255.1 216.8 L262.5 216.8 L269.6 216.7 L276.5 216.2 L282.8 215.2 L288.7 213.3 L293.7 210.4 L295.7 208.8 L297.6 207.2 L299.5 205.7 L301.3 204.2 L303.2 202.6 L305.1 201.1 L307.1 199.6 L309.1 198.1 L311.3 196.6 L313.7 195.1 L316.3 193.6 L319.1 192.1 L324.2 188.7 L327.2 185.0 L328.1 181.0 L327.1 177.2 L325.2 174.0 L322.8 171.0 L320.4 168.2 L318.5 165.6 L317.3 163.3 L317.1 161.5 L318.0 159.8 L321.0 157.5 L324.7 154.7 L326.8 151.4 L327.1 148.0 L326.1 144.8 L324.3 141.9 L322.3 139.2 L320.4 136.7 L318.9 134.4 L318.2 132.4 L318.4 130.9 L319.6 129.3 L322.7 127.4Z" fill="#F5A6BE"/>
+        <path d="M-18 274 C -110 304, -220 296, -340 326" fill="none" stroke="#F5A6BE" stroke-width="34"/>
+        <path d="M292 208 C 276 220, 236 206, 214 218 C 190 232, 246 244, 196 250 C 150 256, 112 238, 62 250 C 30 258, 2 266, -24 276 C -110 304, -220 296, -340 326" fill="none" stroke="#FFFDF8" stroke-width="2.4" stroke-dasharray="9 9" stroke-linecap="round"/>
+      </g>
+      <use href="#tree" x="-150" y="196" width="34" height="58.3"/>
+      <use href="#tree" x="520" y="190" width="34" height="58.3" style="--leaf:#2F8F6B"/>
+      <use href="#bush" x="452" y="244" width="30" height="17"/>
+
+      <!-- 路邊小屋 -->
+      <g class="pop" style="--i:3">
+        <use href="#tree" x="80" y="170" width="32" height="54.9"/>
+        <use href="#house" x="10" y="160" width="76" height="63.3"/>
+        <use href="#bush" x="106" y="208" width="26" height="14.7" style="--leaf:#1F6B50"/>
+      </g>
+
+      <!-- 送飼料的小貨車（沿路開下山，越近越大） -->
+      <g class="truck">
+        <g>
+          <g transform="scale(-1 1)"><use href="#truck" x="-66" y="-72" width="132" height="76"/></g>
+          <animateTransform attributeName="transform" type="scale" values=".2;.2;.52;.52" keyTimes="0;.1;.92;1" dur="11s" repeatCount="indefinite"/>
+        </g>
+        <animateMotion dur="11s" repeatCount="indefinite" keyPoints="0;0;1;1" keyTimes="0;.1;.92;1" calcMode="linear" path="M292 208 C 276 220, 236 206, 214 218 C 190 232, 246 244, 196 250 C 150 256, 112 238, 62 250 C 30 258, 2 266, -24 276"/>
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.14;.9;1" dur="11s" repeatCount="indefinite"/>
+      </g>
+
+      <!-- 台 20 線路牌 -->
+      <g class="pop" style="--i:4"><use href="#sign20" x="244" y="222" width="18" height="31"/></g>
+
+      <!-- 狗園 -->
+      <g class="pop" style="--i:4">
+        <use href="#fence" x="266" y="250" width="62" height="22.7"/>
+        <use href="#doghouse" x="322" y="224" width="58" height="50.8"/>
+        <use href="#dog-lie" x="284" y="260" width="56" height="28.5" style="--fur:#1F1B1A;--ear:#F5A6BE;--nose:#E0503C;--k:#F3E7CF;--collar:#F6C445" data-pet/>
+      </g>
+      <g class="drop" style="--i:9"><g class="bob"><use href="#pin" x="337" y="180" width="28" height="36"/></g></g>
+
+      <!-- 地上的彩色碎紙 -->
+      <g fill="none" stroke-width="3.4" stroke-linecap="round">
+        <path d="M252 286 l6 -3" stroke="#3A8DC9"/><path d="M318 302 l5 3" stroke="#EE8A2B"/><path d="M16 300 l6 -2" stroke="#2F8F6B"/><path d="M204 272 l5 2" stroke="#F5A6BE"/><path d="M366 300 l5 -3" stroke="#3A8DC9"/><path d="M150 286 l6 2" stroke="#EE8A2B"/>
+      </g>
+
+      <!-- 前景：黃色草地 -->
+      <g class="pop pop--flat" style="--i:5">
+        <path d="M22 370 C 14 326, 96 300, 196 304 C 300 308, 380 328, 372 378 C 366 420, 284 438, 190 436 C 96 434, 30 416, 22 370 Z" fill="#F6C445"/>
+      </g>
+      <g class="pop" style="--i:6"><use href="#grass" x="6" y="370" width="26" height="17.3"/></g>
+      <g class="pop" style="--i:7"><use href="#flower" x="352" y="350" width="18" height="33.6"/></g>
+      <g class="pop" style="--i:8"><use href="#flower" x="10" y="396" width="16" height="29.9" style="--petal:#E0503C;--core:#F6C445"/></g>
+      <g class="pop" style="--i:8"><use href="#grass" x="356" y="404" width="26" height="17.3" style="--leaf:#3A8DC9"/></g>
+
+      <!-- 腳印一路走過來 -->
+      <g fill="#EE8A2B">
+        <g class="paw-step" style="--d:0s"><use href="#paw" x="234" y="286" width="12" height="12" transform="rotate(24 240 292)"/></g>
+        <g class="paw-step" style="--d:.35s"><use href="#paw" x="252" y="296" width="12" height="12" transform="rotate(34 258 302)"/></g>
+        <g class="paw-step" style="--d:.7s"><use href="#paw" x="268" y="290" width="12" height="12" transform="rotate(20 274 296)"/></g>
+        <g class="paw-step" style="--d:1.05s"><use href="#paw" x="286" y="300" width="12" height="12" transform="rotate(30 292 306)"/></g>
+      </g>
+
+      <!-- 志工蹲著餵食 -->
+      <g class="pop" style="--i:7"><use href="#person-squat" x="28" y="260" width="128" height="156" data-pet/></g>
+      <!-- 飯碗 -->
+      <g class="drop" style="--i:10"><use href="#bowl" x="140" y="398" width="44" height="22"/></g>
+      <!-- 狗（面向志工） -->
+      <g class="pop" style="--i:9">
+        <g transform="translate(271.4 315.4) scale(-1 1)"><use href="#dog" width="112.2" height="100" data-pet/></g>
+      </g>
+      <!-- 貓（剪耳的街貓） -->
+      <g class="pop" style="--i:10"><use href="#cat" x="296" y="326" width="64" height="84" style="--fur:#1F1B1A;--nose:#F5A6BE;--wh:#F5A6BE;--k:#F3E7CF;--sprout:1" data-pet/></g>
+
+      <!-- 愛心 -->
+      <g fill="#C7362B">
+        <g class="heart-up" style="--d:1.8s"><use href="#heart" x="150" y="322" width="15" height="13"/></g>
+        <g class="heart-up" style="--d:3s"><use href="#heart" x="166" y="330" width="11" height="9.6"/></g>
+        <g class="heart-up" style="--d:4.1s"><use href="#heart" x="140" y="330" width="10" height="8.8"/></g>
+      </g>
+
+      <!-- 塗鴉 -->
+      <use href="#sparkle" x="356" y="300" width="15" height="15" style="--c:#3A8DC9"/>
+      <use href="#squig" x="150" y="262" width="40" height="16" style="--c:#3A8DC9"/>
+      <use href="#bang" x="236" y="290" width="9" height="23" style="--c:#2F8F6B"/>
+      <use href="#zig" x="330" y="280" width="26" height="17.7"/>
+
+      <!-- 蝴蝶 -->
+      <g class="fly"><use href="#butterfly" x="226" y="298" width="18" height="14.1"/></g>
+      <g class="fly fly--2"><use href="#butterfly" x="76" y="236" width="14" height="11" style="--wing:#F6C445"/></g>
+    </svg>
+
+    <!-- ================= 桌機版場景：南橫地圖 ================= -->
+    <svg class="hero-scene hero-scene--d scene" viewBox="0 0 1440 860" preserveAspectRatio="xMidYMid meet">
+      <g class="rise" style="--i:0"><use href="#sun" x="1226" y="86" width="128" height="128"/></g>
+      <g class="drift"><use href="#cloud" x="160" y="60" width="170" height="68"/></g>
+      <g class="drift drift--slow"><use href="#cloud" x="760" y="36" width="130" height="52"/></g>
+      <g class="float"><use href="#bird" x="972" y="108" width="34" height="17"/><use href="#bird" x="1022" y="88" width="26" height="13" style="--ad:-.3s"/></g>
+      <use href="#zig" x="560" y="150" width="56" height="38"/>
+      <use href="#squig" x="1100" y="40" width="70" height="28"/>
+      <use href="#sparkle" x="470" y="90" width="26" height="26" style="--c:#F5A6BE"/>
+
       <!-- 山（南橫） -->
-      <path d="M360 470 C 480 360 560 300 660 310 C 760 210 850 150 930 165 C 1010 90 1100 70 1180 110 C 1280 160 1380 170 1440 160 L1440 560 L360 560 Z" fill="#CDEBDD"/>
-      <path d="M540 500 C 660 400 740 350 830 360 C 930 270 1030 250 1110 290 C 1210 330 1330 300 1440 320 L1440 600 L540 600 Z" fill="#8FD2B6"/>
-      <path d="M960 380 C 1040 250 1110 170 1200 160 C 1290 150 1350 220 1440 270 L1440 620 L960 620 Z" fill="#5DBE9E"/>
-      <path d="M1150 196 C 1180 168 1220 166 1250 190 C 1232 196 1214 214 1200 210 C 1186 214 1170 200 1150 196 Z" fill="#fff" opacity=".85"/>
-      <!-- 山上的樹 -->
-      <use href="#pine" x="700" y="300" width="22" height="46" style="--leaf:#5DBE9E"/>
-      <use href="#pine" x="724" y="312" width="18" height="38" style="--leaf:#5DBE9E"/>
-      <use href="#pine" x="1300" y="236" width="24" height="50" style="--leaf:#3E9C7E"/>
-      <use href="#pine" x="1328" y="250" width="20" height="42" style="--leaf:#3E9C7E"/>
-      <use href="#pine" x="1062" y="282" width="22" height="46" style="--leaf:#3E9C7E"/>
+      <g class="rise" style="--i:0">
+        <path d="M360 470 C 480 360 560 300 660 310 C 760 210 850 150 930 165 C 1010 90 1100 70 1180 110 C 1280 160 1380 170 1440 160 L1440 560 L360 560 Z" fill="#3A8DC9"/>
+        <path d="M894 174 C 910 156, 946 154, 962 172 C 950 176, 941 190, 930 186 C 920 190, 906 181, 894 174 Z" fill="#FFFDF8"/>
+        <path d="M600 372 l16 -9 M760 300 l14 -9 M1010 200 l16 8 M680 350 h16" fill="none" stroke="#FFFDF8" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+      </g>
+      <g class="rise" style="--i:1">
+        <path d="M540 500 C 660 400 740 350 830 360 C 930 270 1030 250 1110 290 C 1210 330 1330 300 1440 320 L1440 600 L540 600 Z" fill="#2F8F6B"/>
+        <g fill="#9CC25B"><circle cx="820" cy="400" r="5"/><circle cx="870" cy="430" r="5"/><circle cx="770" cy="436" r="5"/><circle cx="1010" cy="310" r="5"/><circle cx="1060" cy="340" r="5"/><circle cx="680" cy="470" r="5"/></g>
+        <use href="#pine" x="700" y="396" width="26" height="54.6" style="--leaf:#1F6B50;--trunk:#1F6B50;--pine-mark:#9CC25B"/>
+        <use href="#pine" x="728" y="412" width="20" height="42" style="--leaf:#1F6B50;--trunk:#1F6B50;--pine-mark:#9CC25B"/>
+      </g>
+      <g class="rise" style="--i:2">
+        <path d="M960 380 C 1040 250 1110 170 1200 160 C 1290 150 1350 220 1440 270 L1440 620 L960 620 Z" fill="#9CC25B"/>
+        <path d="M1146 198 C 1178 166 1224 164 1254 192 C 1234 198 1216 218 1200 212 C 1186 218 1168 204 1146 198 Z" fill="#FFFDF8"/>
+        <path d="M1040 330 l14 -8 M1340 300 l14 8 M1240 380 h14" fill="none" stroke="#2F8F6B" stroke-width="5" stroke-linecap="round"/>
+        <use href="#pine" x="1300" y="232" width="26" height="54.6"/>
+        <use href="#pine" x="1330" y="248" width="21" height="44"/>
+        <use href="#pine" x="1062" y="278" width="24" height="50"/>
+      </g>
 
       <!-- 地面 -->
       <path d="M0 540 C 260 490 480 470 700 462 C 920 454 1160 474 1440 440 L1440 860 L0 860 Z" fill="#FFF8EC"/>
 
-      <!-- 黃色小島：左上村落 -->
-      <path d="M210 214 C 250 160 380 150 450 190 C 510 224 500 300 430 318 C 350 340 240 330 206 290 C 186 266 192 236 210 214 Z" fill="#FFEE8A"/>
-      <use href="#house" x="300" y="196" width="96" height="80" style="--roof:#F2836B"/>
-      <use href="#tree" x="236" y="186" width="46" height="80"/>
-      <use href="#tree" x="404" y="202" width="40" height="70"/>
-      <use href="#grass" x="262" y="292" width="24" height="16"/>
-      <use href="#cat-loaf" x="398" y="280" width="50" height="31" style="--fur:#F6F1E8;--stripe:#F2C48D"/>
-
-      <!-- 粉色小島：村落與散步 -->
-      <path d="M470 300 C 520 252 660 250 730 286 C 790 318 776 384 712 404 C 640 426 520 420 482 386 C 456 362 448 324 470 300 Z" fill="#FFD9CB"/>
-      <use href="#house" x="610" y="266" width="104" height="86" style="--roof:#E5776E;--wall:#FFF8EC"/>
-      <use href="#person" x="508" y="290" width="44" height="104" style="--shirt:#3FAE93;--pants:#F2836B;--shoe:#C85D55;--hair:#3B2A26;--tail:#3B2A26"/>
-      <path d="M548 350 C 566 366 572 376 584 380" stroke="#C85D55" stroke-width="2" fill="none"/>
-      <use href="#dog" x="566" y="352" width="54" height="48" style="--fur:#F6F1E8;--fur2:#E9E1D4;--ear:#E3A15E;--chest:#FFFFFF"/>
-      <g class="bob"><use href="#pin" x="652" y="196" width="46" height="60"/></g>
-
       <!-- 南橫公路 -->
-      <path id="road" d="M840 880 C 820 800 700 760 720 690 C 740 620 940 640 960 560 C 980 480 780 470 800 400 C 820 330 1000 350 1060 290 C 1110 240 1100 200 1150 170" fill="none" stroke="#F7BDB2" stroke-width="32" stroke-linecap="round"/>
-      <path d="M840 880 C 820 800 700 760 720 690 C 740 620 940 640 960 560 C 980 480 780 470 800 400 C 820 330 1000 350 1060 290 C 1110 240 1100 200 1150 170" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="14 14" stroke-linecap="round"/>
-      <!-- 送飼料的小貨車 -->
+      <g class="road-in road-in--d">
+        <path d="M840 880 C 820 800 700 760 720 690 C 740 620 940 640 960 560 C 980 480 780 470 800 400 C 820 330 1000 350 1060 290 C 1110 240 1100 200 1150 170" fill="none" stroke="#F5A6BE" stroke-width="34" stroke-linecap="round"/>
+        <path d="M840 880 C 820 800 700 760 720 690 C 740 620 940 640 960 560 C 980 480 780 470 800 400 C 820 330 1000 350 1060 290 C 1110 240 1100 200 1150 170" fill="none" stroke="#FFFDF8" stroke-width="3.4" stroke-dasharray="14 14" stroke-linecap="round"/>
+      </g>
+      <g class="pop" style="--i:6"><use href="#sign20" x="972" y="494" width="26" height="45"/></g>
+
+      <!-- 小貨車 -->
       <g class="truck">
-        <use href="#truck" x="-36" y="-40" width="72" height="42"/>
+        <use href="#truck" x="-42" y="-48" width="84" height="48.4"/>
         <animateMotion dur="10s" repeatCount="indefinite" path="M730 694 C 760 636 924 646 952 572" calcMode="spline" keyTimes="0;1" keySplines=".45 0 .55 1"/>
         <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.85;1" dur="10s" repeatCount="indefinite"/>
       </g>
 
-      <!-- 白色小島：狗園 -->
-      <path d="M1030 520 C 1070 470 1230 456 1310 492 C 1380 524 1376 610 1300 636 C 1210 664 1080 656 1040 618 C 1010 590 1008 548 1030 520 Z" fill="#FFFFFF"/>
-      <use href="#doghouse" x="1222" y="480" width="70" height="62"/>
-      <g stroke="#F2B8A8" stroke-width="5" stroke-linecap="round">
-        <path d="M1056 560 H1180"/><path d="M1056 580 H1180"/>
-        <path d="M1064 548 V594 M1092 548 V594 M1120 548 V594 M1148 548 V594 M1176 548 V594"/>
+      <!-- 小島 A：山腳的村子 -->
+      <g class="pop pop--flat" style="--i:3"><path d="M210 214 C 250 160 380 150 450 190 C 510 224 500 300 430 318 C 350 340 240 330 206 290 C 186 266 192 236 210 214 Z" fill="#F6C445"/></g>
+      <g class="pop" style="--i:4">
+        <use href="#tree" x="232" y="176" width="52" height="89"/>
+        <use href="#house" x="296" y="186" width="108" height="90"/>
+        <use href="#tree" x="408" y="198" width="42" height="72" style="--leaf:#2F8F6B"/>
+        <use href="#grass" x="262" y="292" width="24" height="16"/>
+        <use href="#cat-loaf" x="398" y="278" width="56" height="34.7" style="--fur:#FFFDF8;--stripe:#EE8A2B" data-pet/>
       </g>
-      <use href="#dog" x="1090" y="556" width="64" height="58" style="--fur:#3F3633;--fur2:#2E2725;--ear:#2E2725;--chest:#E9D9C8;--eye:#FFFFFF"/>
-      <use href="#dog-lie" x="1178" y="574" width="80" height="41"/>
-      <use href="#dog" x="1250" y="548" width="56" height="50" style="--fur:#C9A27C;--fur2:#B58D67;--ear:#8A6648"/>
-      <use href="#bowl" x="1160" y="604" width="28" height="14"/>
-      <g class="bob bob--late"><use href="#pin" x="1150" y="412" width="46" height="60" style="--pinc:#3FAE93"/></g>
-      <rect x="1270" y="600" width="44" height="22" rx="5" fill="#FFE97A"/>
-      <text x="1292" y="616" text-anchor="middle" font-size="13" font-weight="700" fill="#4B3B36" font-family="Chiron GoRound TC, sans-serif">狗園</text>
 
-      <!-- 黃色小島：餵貓 -->
-      <path d="M506 604 C 530 566 640 556 690 582 C 736 606 730 670 680 692 C 622 716 536 708 512 678 C 494 654 492 626 506 604 Z" fill="#FFEE8A"/>
-      <use href="#person-squat" x="512" y="578" width="72" height="88" style="--shirt:#F59C8F;--pants:#3FAE93;--tail:#3B2A26"/>
-      <use href="#bowl" x="596" y="652" width="28" height="14"/>
-      <use href="#cat" x="622" y="614" width="40" height="52" style="--fur:#F2C48D"/>
-      <use href="#cat" x="654" y="630" width="32" height="42" style="--fur:#4B4040;--chest:#FFFFFF;--eye:#FFE97A"/>
-
-      <!-- 薄荷小島 -->
-      <path d="M906 708 C 930 680 1040 672 1090 696 C 1130 716 1124 770 1076 784 C 1020 800 940 796 916 772 C 900 756 896 726 906 708 Z" fill="#D6F0E4"/>
-      <use href="#dog" x="940" y="704" width="60" height="54" style="--fur:#E3A15E"/>
-      <use href="#flower" x="1010" y="718" width="20" height="38"/>
-      <use href="#flower" x="1032" y="728" width="18" height="32" style="--petal:#FFE97A;--core:#F2836B"/>
-      <use href="#flower" x="1052" y="716" width="20" height="38"/>
-      <g class="bob"><use href="#pin" x="1046" y="640" width="40" height="52" style="--pinc:#F2A65A"/></g>
-
-      <!-- 粉色小島：抱貓的人 -->
-      <path d="M1130 700 C 1170 664 1320 660 1380 694 C 1430 722 1420 790 1360 808 C 1290 828 1170 822 1138 790 C 1112 766 1110 724 1130 700 Z" fill="#FFD9CB"/>
-      <use href="#tree" x="1336" y="650" width="56" height="96"/>
-      <g style="--shirt:#FFE97A;--pants:#E5776E;--shoe:#C85D55;--hair:#5A3D33">
-        <use href="#person-hold" x="1206" y="654" width="54" height="128"/>
-        <use href="#cat" x="1214" y="690" width="38" height="50" style="--fur:#FFFFFF;--patch:#F2A65A;--chest:#FFFFFF"/>
-        <use href="#arms-front" x="1206" y="654" width="54" height="128"/>
+      <!-- 小島 B：遛狗 -->
+      <g class="pop pop--flat" style="--i:4"><path d="M470 300 C 520 252 660 250 730 286 C 790 318 776 384 712 404 C 640 426 520 420 482 386 C 456 362 448 324 470 300 Z" fill="#F7C1D6"/></g>
+      <g class="pop" style="--i:5">
+        <use href="#house" x="620" y="262" width="110" height="91.6" style="--roof:#3A8DC9;--roofline:#2E76AC;--door:#E0503C;--smoke:#FFFDF8"/>
+        <use href="#person-wave" x="496" y="276" width="52" height="122" style="--shirt:#2F8F6B;--pants:#F6C445;--pony:1;--apron-o:0;--stripe:#FFFDF8" data-pet/>
+        <path d="M505 362 C 524 392, 566 372, 598 382" fill="none" stroke="#1F1B1A" stroke-width="2.4" stroke-linecap="round"/>
+        <use href="#dog-stand" x="552" y="356" width="74" height="53.4" style="--fur:#FFFDF8;--fur2:#E9DFCC;--ear:#EE8A2B;--spot:#EE8A2B" data-pet/>
       </g>
-      <use href="#cat-loaf" x="1150" y="756" width="56" height="35" style="--fur:#8C8C8C;--stripe:#6E6E6E"/>
-      <use href="#flower" x="1290" y="746" width="18" height="34"/>
+      <g class="drop" style="--i:9"><g class="bob"><use href="#pin" x="652" y="190" width="46" height="60"/></g></g>
+
+      <!-- 小島 C：狗園 -->
+      <g class="pop pop--flat" style="--i:5"><path d="M1030 520 C 1070 470 1230 456 1310 492 C 1380 524 1376 610 1300 636 C 1210 664 1080 656 1040 618 C 1010 590 1008 548 1030 520 Z" fill="#BFDDF2"/></g>
+      <g class="pop" style="--i:6">
+        <use href="#fence" x="1052" y="540" width="130" height="47.7"/>
+        <use href="#doghouse" x="1218" y="470" width="80" height="70"/>
+        <use href="#dog" x="1084" y="548" width="74" height="66" style="--fur:#1F1B1A;--ear:#F5A6BE;--nose:#E0503C;--k:#F3E7CF;--collar:#F6C445" data-pet/>
+        <use href="#dog-lie" x="1176" y="570" width="88" height="44.8" data-pet/>
+        <use href="#dog" x="1252" y="540" width="64" height="57" style="--fur:#EDA83A;--ear:#B5452D" data-pet/>
+        <use href="#bowl" x="1160" y="606" width="30" height="15"/>
+        <rect x="1272" y="604" width="46" height="24" rx="8" fill="#1F1B1A"/>
+        <text x="1295" y="621" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFDF8" font-family="Chiron GoRound TC, sans-serif">狗園</text>
+      </g>
+      <g class="drop" style="--i:10"><g class="bob bob--late"><use href="#pin" x="1150" y="406" width="46" height="60" style="--pinc:#2F8F6B"/></g></g>
+
+      <!-- 小島 D：餵街貓 -->
+      <g class="pop pop--flat" style="--i:5"><path d="M506 604 C 530 566 640 556 690 582 C 736 606 730 670 680 692 C 622 716 536 708 512 678 C 494 654 492 626 506 604 Z" fill="#F6C445"/></g>
+      <g class="pop" style="--i:6">
+        <use href="#person-squat" x="508" y="566" width="84" height="102" data-pet/>
+        <use href="#bowl" x="596" y="652" width="30" height="15"/>
+        <use href="#cat" x="624" y="610" width="44" height="57.8" style="--chest:#F3E7CF;--fur:#EE8A2B" data-pet/>
+        <use href="#cat" x="660" y="626" width="36" height="47.2" style="--fur:#1F1B1A;--nose:#F5A6BE;--wh:#F5A6BE;--k:#F3E7CF" data-pet/>
+      </g>
+
+      <!-- 小島 E -->
+      <g class="pop pop--flat" style="--i:6"><path d="M906 708 C 930 680 1040 672 1090 696 C 1130 716 1124 770 1076 784 C 1020 800 940 796 916 772 C 900 756 896 726 906 708 Z" fill="#C5E0A5"/></g>
+      <g class="pop" style="--i:7">
+        <use href="#dog" x="936" y="696" width="70" height="62.4" style="--fur:#EDA83A;--ear:#B5452D" data-pet/>
+        <use href="#flower" x="1010" y="716" width="21" height="39"/>
+        <use href="#flower" x="1034" y="726" width="18" height="33.6" style="--petal:#E0503C;--core:#F6C445"/>
+        <use href="#flower" x="1054" y="714" width="21" height="39" style="--petal:#FFFDF8;--core:#F6C445"/>
+      </g>
+      <g class="drop" style="--i:11"><g class="bob"><use href="#pin" x="1046" y="636" width="40" height="52" style="--pinc:#EE8A2B"/></g></g>
+
+      <!-- 小島 F：帶回家 -->
+      <g class="pop pop--flat" style="--i:6"><path d="M1130 700 C 1170 664 1320 660 1380 694 C 1430 722 1420 790 1360 808 C 1290 828 1170 822 1138 790 C 1112 766 1110 724 1130 700 Z" fill="#F7C1D6"/></g>
+      <g class="pop" style="--i:7">
+        <use href="#tree" x="1334" y="644" width="60" height="103" style="--leaf:#2F8F6B"/>
+        <g style="--shirt:#F6C445;--pants:#3A8DC9;--hair:#6B3F2A;--apron-o:0;--stripe:#E0503C;--bun:1">
+          <use href="#person-hold" x="1200" y="642" width="60" height="140.6" data-pet/>
+          <use href="#cat" x="1211" y="682" width="38" height="50" style="--fur:#FFFDF8;--patch:#EE8A2B"/>
+          <use href="#arms-front" x="1200" y="642" width="60" height="140.6"/>
+        </g>
+        <use href="#cat-loaf" x="1146" y="754" width="60" height="37.1" style="--fur:#3A8DC9;--stripe:#1F1B1A" data-pet/>
+        <use href="#flower" x="1290" y="744" width="19" height="35.5" style="--petal:#E0503C;--core:#F6C445"/>
+      </g>
+      <g fill="#C7362B">
+        <g class="heart-up" style="--d:2s"><use href="#heart" x="1262" y="668" width="17" height="15"/></g>
+        <g class="heart-up" style="--d:3.4s"><use href="#heart" x="1184" y="676" width="13" height="11.4"/></g>
+      </g>
 
       <!-- 散落的小東西 -->
-      <use href="#tree" x="860" y="420" width="40" height="70"/>
-      <use href="#tree" x="380" y="430" width="38" height="66" style="--leaf:#5DBE9E"/>
-      <use href="#grass" x="860" y="640" width="26" height="17"/>
+      <g class="pop" style="--i:7"><use href="#tree" x="858" y="414" width="44" height="75.4"/></g>
+      <g class="pop" style="--i:6"><use href="#tree" x="150" y="352" width="42" height="72" style="--leaf:#2F8F6B"/></g>
+      <use href="#grass" x="860" y="640" width="26" height="17" style="--leaf:#3A8DC9"/>
       <use href="#grass" x="690" y="470" width="24" height="16"/>
-      <use href="#flower" x="430" y="470" width="18" height="34" style="--petal:#FFE97A;--core:#F2836B"/>
-      <g fill="#F2B8A8" opacity=".9">
-        <use href="#paw" x="780" y="760" width="16" height="16" transform="rotate(-20 788 768)"/>
-        <use href="#paw" x="804" y="790" width="16" height="16" transform="rotate(-10 812 798)"/>
-        <use href="#paw" x="786" y="818" width="16" height="16" transform="rotate(-24 794 826)"/>
+      <g class="pop" style="--i:8"><use href="#flower" x="200" y="392" width="19" height="35.5"/></g>
+      <use href="#arc" x="840" y="560" width="40" height="34"/>
+      <use href="#bang" x="1410" y="640" width="12" height="31" style="--c:#2F8F6B"/>
+      <use href="#dashes" x="70" y="410" width="44" height="12"/>
+      <g class="fly"><use href="#butterfly" x="880" y="600" width="22" height="17.3"/></g>
+      <g class="fly fly--2"><use href="#butterfly" x="250" y="380" width="18" height="14.1" style="--wing:#F6C445"/></g>
+      <g fill="#EE8A2B">
+        <g class="paw-step" style="--d:0s"><use href="#paw" x="780" y="760" width="16" height="16" transform="rotate(-20 788 768)"/></g>
+        <g class="paw-step" style="--d:.4s"><use href="#paw" x="804" y="790" width="16" height="16" transform="rotate(-10 812 798)"/></g>
+        <g class="paw-step" style="--d:.8s"><use href="#paw" x="786" y="818" width="16" height="16" transform="rotate(-24 794 826)"/></g>
       </g>
     </svg>
-  </div>
-
-  <div class="hero-copy">
-    <h1 id="hero-title" class="hero-title"><span class="line">沒有出生，</span><span class="line">就沒有流浪。</span></h1>
-    <p class="hero-en en">Fewer births, fewer strays.<br>Caring for the animals of the Southern Cross-Island Highway.</p>
-    <p class="hero-lead">從六龜到甲仙，我們在南橫山區抓紮、救援、送養，<br class="pc">讓每一個流浪的生命，都被友善對待。</p>
   </div>
  </div>
 
@@ -423,7 +783,7 @@
     </div>
     <ul class="impact-list">
       <li class="impact-item reveal">
-        <span class="impact-icon" aria-hidden="true"><svg viewBox="0 0 64 84"><use href="#cat" style="--fur:#F2C48D"/></svg></span>
+        <span class="impact-icon" aria-hidden="true"><svg viewBox="0 0 64 84"><use href="#cat" style="--chest:#F3E7CF"/></svg></span>
         <p class="impact-num"><span class="count" data-to="2805">2,805</span><small>隻</small></p>
         <p class="impact-label">犬貓完成結紮</p>
       </li>
@@ -433,7 +793,7 @@
         <p class="impact-label">在狗園收容照顧</p>
       </li>
       <li class="impact-item reveal">
-        <span class="impact-icon" aria-hidden="true"><svg viewBox="0 0 40 84"><use href="#pine" style="--leaf:#3FAE93"/></svg></span>
+        <span class="impact-icon" aria-hidden="true"><svg viewBox="0 0 40 84"><use href="#pine"/></svg></span>
         <p class="impact-num"><span class="count" data-to="7">7</span><small>年</small></p>
         <p class="impact-label">在南橫山區的堅持</p>
       </li>
@@ -451,8 +811,8 @@
 <section class="about" id="about" aria-labelledby="about-title">
   <svg class="wave wave--top" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true"><path d="M0 110 V40 C 300 100 620 110 900 70 C 1140 36 1300 30 1440 54 V110 Z" fill="#FFF8EC"/></svg>
   <div class="hill-deco" aria-hidden="true">
-    <svg class="hill-deco__house" viewBox="0 0 120 100"><use href="#house" style="--roof:#F2836B;--wall:#FFE2D6"/></svg>
-    <svg class="hill-deco__cat" viewBox="0 0 64 84"><use href="#cat" style="--fur:#FFFFFF;--patch:#F2A65A"/></svg>
+    <svg class="hill-deco__house" viewBox="0 0 120 100"><use href="#house"/></svg>
+    <svg class="hill-deco__cat" viewBox="0 0 64 84"><use href="#cat" style="--fur:#FFFDF8;--patch:#EE8A2B"/></svg>
   </div>
 
   <div class="container about-grid">
@@ -463,8 +823,8 @@
       <figure class="about-photo about-photo--sub">
         <img src="assets/photos/daily-deck-dogs.webp" width="960" height="720" loading="lazy" decoding="async" alt="狗園裡兩隻狗狗躺在木棧板上休息">
       </figure>
-      <svg class="about-deco about-deco--dog" viewBox="0 0 92 82" aria-hidden="true"><use href="#dog" style="--fur:#E3A15E"/></svg>
-      <svg class="about-deco about-deco--heart float" viewBox="0 0 32 28" aria-hidden="true"><use href="#heart" fill="#E5776E"/></svg>
+      <svg class="about-deco about-deco--dog" viewBox="0 0 92 82" aria-hidden="true"><use href="#dog" style="--fur:#1F1B1A;--ear:#F5A6BE;--nose:#E0503C;--k:#F3E7CF;--collar:#F6C445"/></svg>
+      <svg class="about-deco about-deco--heart float" viewBox="0 0 32 28" aria-hidden="true"><use href="#heart" fill="#C7362B"/></svg>
       <svg class="about-deco about-deco--flower" viewBox="0 0 30 56" aria-hidden="true"><use href="#flower"/></svg>
       <p class="about-caption" aria-hidden="true">在南橫公路邊，<br>餵山裡的孩子</p>
     </div>
@@ -522,7 +882,7 @@
   <svg class="wave wave--top" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true"><path d="M0 140 V90 C 200 30 420 10 640 40 C 860 70 960 120 1180 90 C 1300 74 1380 50 1440 40 V140 Z" fill="#FFE2D6"/></svg>
   <div class="container">
     <div class="bubble-wrap reveal">
-      <svg class="bubble-person" viewBox="0 0 92 112" aria-hidden="true"><use href="#person-squat" style="--shirt:#F59C8F;--pants:#3FAE93;--tail:#3B2A26"/></svg>
+      <svg class="bubble-person" viewBox="0 0 92 112" aria-hidden="true"><use href="#person-squat"/></svg>
       <p class="bubble">與其一直收容，<br>不如從<mark>源頭減量</mark>開始。</p>
     </div>
 
@@ -531,15 +891,17 @@
       <h2 id="work-title">我們在做的事</h2>
     </div>
 
-    <ul class="work-list">
+    <ul class="work-list" data-carousel>
       <li class="work-item reveal">
         <div class="work-art" aria-hidden="true">
           <svg viewBox="0 0 220 180">
-            <path d="M20 100 C 20 40 80 10 130 16 C 190 22 210 70 204 112 C 196 160 140 176 96 172 C 50 168 20 150 20 100 Z" fill="#FFEE8A"/>
-            <rect x="52" y="64" width="116" height="80" rx="8" fill="none" stroke="#7A6760" stroke-width="4"/>
-            <path d="M72 64 V144 M92 64 V144 M112 64 V144 M132 64 V144 M152 64 V144" stroke="#7A6760" stroke-width="3"/>
-            <use href="#cat" x="80" y="78" width="54" height="66" style="--fur:#F2C48D"/>
-            <g class="bob"><use href="#pin" x="160" y="22" width="36" height="46"/></g>
+            <path d="M20 100 C 20 40 80 10 130 16 C 190 22 210 70 204 112 C 196 160 140 176 96 172 C 50 168 20 150 20 100 Z" fill="#F6C445"/>
+            <use href="#cage-b" x="40" y="62" width="140" height="105"/>
+            <use href="#cat" x="83" y="80" width="54" height="70.9" style="--chest:#F3E7CF" data-pet/>
+            <use href="#cage-f" x="40" y="62" width="140" height="105"/>
+            <g class="bob"><use href="#pin" x="164" y="8" width="36" height="46"/></g>
+            <use href="#sparkle" x="22" y="40" width="20" height="20" style="--c:#3A8DC9"/>
+            <use href="#arc" x="4" y="120" width="30" height="25.5"/>
           </svg>
         </div>
         <span class="work-tag">源頭減量</span>
@@ -549,10 +911,15 @@
       <li class="work-item reveal">
         <div class="work-art" aria-hidden="true">
           <svg viewBox="0 0 220 180">
-            <path d="M24 96 C 18 46 70 14 124 18 C 184 22 212 66 206 110 C 200 156 146 178 98 172 C 52 166 28 140 24 96 Z" fill="#FFEE8A"/>
-            <use href="#dog" x="56" y="58" width="112" height="100" style="--fur:#C9A27C;--fur2:#B58D67;--ear:#8A6648"/>
-            <rect x="102" y="128" width="24" height="10" rx="3" fill="#fff" stroke="#E5776E" stroke-width="2"/>
-            <g transform="translate(150 30)"><rect width="40" height="40" rx="12" fill="#fff"/><path d="M20 9 V31 M9 20 H31" stroke="#E5776E" stroke-width="7" stroke-linecap="round"/></g>
+            <path d="M20 100 C 20 40 80 10 130 16 C 190 22 210 70 204 112 C 196 160 140 176 96 172 C 50 168 20 150 20 100 Z" fill="#F7C1D6"/>
+            <use href="#med" x="146" y="38" width="58" height="46.4"/>
+            <use href="#dog-lie" x="30" y="92" width="136" height="69.2" style="--fur:#EDA83A;--fur2:#D9952B;--ear:#B5452D" data-pet/>
+            <path d="M126.6 147 h13.4 v13.6 h-13.4 Z" fill="#FFFDF8"/><path class="k" d="M131 147.6 v12.4 M135.6 147.6 v12.4" stroke-width="1.8"/>
+            <g fill="#C7362B">
+              <g class="heart-up" style="--d:.4s"><use href="#heart" x="96" y="72" width="18" height="15.8"/></g>
+              <g class="heart-up" style="--d:1.9s"><use href="#heart" x="118" y="80" width="13" height="11.4"/></g>
+            </g>
+            <use href="#zig" x="8" y="30" width="36" height="24.5" style="--c:#3A8DC9"/>
           </svg>
         </div>
         <span class="work-tag">接獲通報就出動</span>
@@ -562,10 +929,19 @@
       <li class="work-item reveal">
         <div class="work-art" aria-hidden="true">
           <svg viewBox="0 0 220 180">
-            <path d="M18 104 C 16 52 66 16 122 18 C 182 20 210 64 206 108 C 202 156 150 176 102 174 C 54 172 20 152 18 104 Z" fill="#FFEE8A"/>
-            <use href="#house" x="104" y="54" width="96" height="80" style="--roof:#E5776E"/>
-            <use href="#cat" x="44" y="86" width="52" height="68" style="--fur:#4B4040;--chest:#FFFFFF;--eye:#FFE97A"/>
-            <g fill="#E5776E" class="float"><use href="#heart" x="88" y="40" width="30" height="26"/></g>
+            <path d="M20 100 C 20 40 80 10 130 16 C 190 22 210 70 204 112 C 196 160 140 176 96 172 C 50 168 20 150 20 100 Z" fill="#BFDDF2"/>
+            <use href="#house" x="106" y="62" width="100" height="83.3"/>
+            <g style="--shirt:#F5A6BE;--pants:#2F8F6B;--pony:1;--apron-o:0;--stripe:#FFFDF8">
+              <use href="#person-hold" x="36" y="34" width="58" height="136"/>
+              <use href="#cat" x="46.5" y="72" width="37" height="48.6" style="--fur:#1F1B1A;--nose:#F5A6BE;--wh:#F5A6BE;--k:#F3E7CF" data-pet/>
+              <use href="#arms-front" x="36" y="34" width="58" height="136"/>
+            </g>
+            <g fill="#C7362B">
+              <g class="heart-up" style="--d:.2s"><use href="#heart" x="92" y="44" width="18" height="15.8"/></g>
+              <g class="heart-up" style="--d:1.6s"><use href="#heart" x="22" y="56" width="13" height="11.4"/></g>
+            </g>
+            <use href="#flower" x="198" y="120" width="15" height="28" style="--petal:#E0503C;--core:#F6C445"/>
+            <use href="#sparkle" x="186" y="26" width="18" height="18"/>
           </svg>
         </div>
         <span class="work-tag">找一個家</span>
@@ -575,10 +951,13 @@
       <li class="work-item reveal">
         <div class="work-art" aria-hidden="true">
           <svg viewBox="0 0 220 180">
-            <path d="M22 100 C 22 44 76 14 128 18 C 186 22 208 70 204 110 C 198 158 144 178 98 172 C 50 166 22 150 22 100 Z" fill="#FFEE8A"/>
-            <use href="#doghouse" x="120" y="54" width="80" height="70"/>
-            <use href="#dog-lie" x="40" y="106" width="96" height="49"/>
-            <use href="#bowl" x="140" y="136" width="40" height="20"/>
+            <path d="M20 100 C 20 40 80 10 130 16 C 190 22 210 70 204 112 C 196 160 140 176 96 172 C 50 168 20 150 20 100 Z" fill="#C5E0A5"/>
+            <use href="#fence" x="18" y="98" width="98" height="36"/>
+            <use href="#doghouse" x="112" y="54" width="94" height="82.3"/>
+            <use href="#bag" x="180" y="112" width="30" height="38.2"/>
+            <use href="#dog" x="34" y="98" width="72" height="64.2" style="--fur:#1F1B1A;--ear:#F5A6BE;--nose:#E0503C;--k:#F3E7CF;--collar:#F6C445" data-pet/>
+            <use href="#bowl" x="106" y="148" width="38" height="19"/>
+            <use href="#squig" x="20" y="34" width="48" height="19.2"/>
           </svg>
         </div>
         <span class="work-tag">每日照護</span>
@@ -639,7 +1018,7 @@
           <figcaption>結紮場次現場</figcaption>
         </div>
         <div class="tnr-ear" aria-hidden="true">
-          <svg viewBox="0 0 80 92"><circle cx="40" cy="50" r="40" fill="#FFE2D6"/><use href="#cat" x="8" y="6" width="64" height="84" style="--fur:#F2C48D"/><circle cx="26.5" cy="19" r="7.5" fill="none" stroke="#E5776E" stroke-width="1.6" stroke-dasharray="3 2.4"/></svg>
+          <svg viewBox="0 0 80 92"><path d="M2 52 C 1 30, 18 11, 41 12 C 63 13, 79 30, 78 52 C 77 74, 61 91, 39 90 C 18 89, 3 73, 2 52 Z" fill="#F6C445"/><use href="#cat" x="8" y="6" width="64" height="84" style="--chest:#F3E7CF"/><circle cx="23.4" cy="15.2" r="9" fill="none" stroke="#1F1B1A" stroke-width="2" stroke-dasharray="3.6 3"/></svg>
           <p class="tnr-callout">剪耳缺角<br><strong>＝已結紮</strong></p>
         </div>
       </figure>
@@ -660,25 +1039,25 @@
       <ol class="steps">
         <li class="step reveal">
           <span class="step-no en">STEP 1</span>
-          <svg class="step-icon" viewBox="0 0 64 84" aria-hidden="true"><use href="#cat" style="--fur:#4B4040;--chest:#fff;--eye:#FFE97A"/></svg>
+          <svg class="step-icon" viewBox="0 0 64 84" aria-hidden="true"><use href="#cat" style="--fur:#1F1B1A;--nose:#F5A6BE;--wh:#F5A6BE;--k:#F3E7CF"/></svg>
           <h3>看看等家的孩子</h3>
           <p>粉專會不定期貼出待送養的狗狗、貓咪照片。</p>
         </li>
         <li class="step reveal">
           <span class="step-no en">STEP 2</span>
-          <svg class="step-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.9 2 11.7c0 2.6 1.3 4.9 3.4 6.5L4.6 21l3.3-1.7c1.3.4 2.6.6 4.1.6 5.5 0 10-3.9 10-8.7S17.5 3 12 3z" fill="#3FAE93"/><circle cx="8" cy="11.7" r="1.3" fill="#fff"/><circle cx="12" cy="11.7" r="1.3" fill="#fff"/><circle cx="16" cy="11.7" r="1.3" fill="#fff"/></svg>
+          <svg class="step-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.9 2 11.7c0 2.6 1.3 4.9 3.4 6.5L4.6 21l3.3-1.7c1.3.4 2.6.6 4.1.6 5.5 0 10-3.9 10-8.7S17.5 3 12 3z" fill="#3A8DC9"/><circle cx="8" cy="11.7" r="1.3" fill="#fff"/><circle cx="12" cy="11.7" r="1.3" fill="#fff"/><circle cx="16" cy="11.7" r="1.3" fill="#fff"/></svg>
           <h3>私訊或來電聊聊</h3>
           <p>說說你的生活環境，和想找什麼樣的家人。</p>
         </li>
         <li class="step reveal">
           <span class="step-no en">STEP 3</span>
-          <svg class="step-icon" viewBox="0 0 92 82" aria-hidden="true"><use href="#dog" style="--fur:#E3A15E"/></svg>
+          <svg class="step-icon" viewBox="0 0 92 82" aria-hidden="true"><use href="#dog" style="--fur:#EDA83A;--fur2:#D9952B;--ear:#B5452D"/></svg>
           <h3>見面互動</h3>
           <p>約時間認識彼此，確認你們合不合拍。</p>
         </li>
         <li class="step reveal">
           <span class="step-no en">STEP 4</span>
-          <svg class="step-icon" viewBox="0 0 120 100" aria-hidden="true"><use href="#house" style="--roof:#E5776E"/></svg>
+          <svg class="step-icon" viewBox="0 0 120 100" aria-hidden="true"><use href="#house"/></svg>
           <h3>帶牠回家</h3>
           <p>歡迎常常分享近況，讓我們也放心。</p>
         </li>
@@ -736,7 +1115,7 @@
       </li>
       <li class="support-card support-card--peach reveal">
         <div class="support-head">
-          <svg viewBox="0 0 32 28" aria-hidden="true"><use href="#heart" fill="#E5776E"/></svg>
+          <svg viewBox="0 0 32 28" aria-hidden="true"><use href="#heart" fill="#C7362B"/></svg>
           <h3>小額捐款</h3>
         </div>
         <!-- TODO：協會提供捐款帳號／收據方式後，替換這段 -->
@@ -764,11 +1143,11 @@
       <h2 id="news-title">最新消息</h2>
     </div>
 
-    <ul class="news-list">
+    <ul class="news-list" data-carousel>
       <li class="news-card card reveal">
         <a href="https://www.facebook.com/profile.php?id=100063551122273" target="_blank" rel="noopener">
           <div class="news-thumb news-thumb--peach" aria-hidden="true">
-            <svg viewBox="0 0 200 120"><use href="#dog-lie" x="40" y="48" width="120" height="61" style="--fur:#C9A27C;--fur2:#B58D67;--ear:#8A6648"/><rect x="88" y="72" width="30" height="12" rx="4" fill="#fff" stroke="#E5776E" stroke-width="2"/><g fill="#E5776E" class="float"><use href="#heart" x="140" y="22" width="22" height="19"/></g></svg>
+            <svg viewBox="0 0 200 120"><use href="#dog-lie" x="34" y="44" width="132" height="67.2" style="--fur:#B5452D;--ear:#1F1B1A;--k:#F3E7CF;--cheek:#F5A6BE;--collar:#F6C445"/><path d="M128 97.6 h12.6 v13 h-12.6 Z" fill="#FFFDF8"/><g fill="#C7362B"><g class="heart-up" style="--d:.5s"><use href="#heart" x="150" y="34" width="20" height="17.5"/></g><g class="heart-up" style="--d:2s"><use href="#heart" x="128" y="30" width="13" height="11.4"/></g></g><use href="#squig" x="14" y="14" width="44" height="17.6" style="--c:#3A8DC9"/><use href="#sparkle" x="172" y="78" width="16" height="16"/></svg>
           </div>
           <time class="news-date en" datetime="2026-10-01">2026.10.01</time>
           <h3>舞吉的由來</h3>
@@ -907,14 +1286,20 @@
 <!-- ============ Footer ============ -->
 <footer class="site-footer">
   <div class="footer-art" aria-hidden="true">
-    <svg viewBox="0 0 1440 180" preserveAspectRatio="xMidYMax slice">
-      <path d="M0 180 V120 C 120 80 220 40 320 60 C 420 80 470 30 560 20 C 660 10 720 80 820 70 C 940 58 1000 0 1120 10 C 1240 20 1320 80 1440 70 V180 Z" fill="#8FD2B6"/>
-      <path d="M0 180 V140 C 200 110 360 100 520 120 C 700 142 860 100 1020 108 C 1180 116 1300 140 1440 120 V180 Z" fill="#5DBE9E"/>
-      <use href="#pine" x="180" y="88" width="24" height="50" style="--leaf:#3E9C7E"/>
-      <use href="#pine" x="206" y="98" width="20" height="42" style="--leaf:#3E9C7E"/>
-      <use href="#pine" x="1180" y="80" width="24" height="50" style="--leaf:#3E9C7E"/>
-      <use href="#dog" x="660" y="96" width="52" height="46" style="--fur:#E3A15E"/>
-      <use href="#cat" x="716" y="94" width="36" height="48" style="--fur:#FFFFFF;--patch:#F2A65A"/>
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="xMidYMax slice">
+      <path d="M0 200 V140 C 120 100 220 60 320 80 C 420 100 470 50 560 40 C 660 30 720 100 820 90 C 940 78 1000 20 1120 30 C 1240 40 1320 100 1440 90 V200 Z" fill="#2F8F6B"/>
+      <path d="M0 200 V160 C 200 130 360 120 520 140 C 700 162 860 120 1020 128 C 1180 136 1300 160 1440 140 V200 Z" fill="#5DBE9E"/>
+      <use href="#pine" x="170" y="88" width="30" height="63" style="--leaf:#1F6B50;--trunk:#1F6B50;--pine-mark:#9CC25B"/>
+      <use href="#pine" x="202" y="102" width="24" height="50.4" style="--leaf:#1F6B50;--trunk:#1F6B50;--pine-mark:#9CC25B"/>
+      <use href="#pine" x="1180" y="84" width="30" height="63" style="--leaf:#1F6B50;--trunk:#1F6B50;--pine-mark:#9CC25B"/>
+      <use href="#pine" x="536" y="82" width="24" height="50.4" style="--leaf:#1F6B50;--trunk:#1F6B50;--pine-mark:#9CC25B"/>
+      <use href="#pine" x="884" y="76" width="26" height="54.6" style="--leaf:#1F6B50;--trunk:#1F6B50;--pine-mark:#9CC25B"/>
+      <use href="#person-wave" x="612" y="26" width="56" height="131" style="--shirt:#F5A6BE;--pants:#3A8DC9;--pony:1" data-pet/>
+      <use href="#dog" x="680" y="76" width="86" height="76.6" data-pet/>
+      <use href="#cat" x="776" y="82" width="52" height="68.3" style="--fur:#1F1B1A;--nose:#F5A6BE;--wh:#F5A6BE;--k:#F3E7CF;--sprout:1" data-pet/>
+      <use href="#flower" x="590" y="120" width="16" height="30" style="--petal:#F6C445;--core:#E0503C"/>
+      <use href="#flower" x="840" y="116" width="16" height="30"/>
+      <g fill="#C7362B"><g class="heart-up" style="--d:.6s"><use href="#heart" x="740" y="52" width="18" height="15.8"/></g><g class="heart-up" style="--d:2.2s"><use href="#heart" x="800" y="58" width="13" height="11.4"/></g></g>
     </svg>
   </div>
   <div class="footer-inner">
@@ -951,7 +1336,7 @@
 </footer>
 
 <!-- 浮動按鈕 -->
-<div class="float-cta" aria-label="快速聯絡">
+<div class="float-cta is-hidden" aria-label="快速聯絡">
   <a class="float-btn float-btn--light" href="#tnr">
     <span class="float-sub">＼ 名額有限 ／</span>
     <span class="float-main">免費結紮場次</span>
@@ -963,6 +1348,6 @@
   </a>
 </div>
 
-<script src="js/main.js?v=2" defer></script>
+<script src="js/main.js?v=5" defer></script>
 </body>
 </html>
