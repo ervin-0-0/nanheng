@@ -68,6 +68,13 @@ h1, h2, h3, p { margin: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 strong { font-weight: 700; }
 
+/* ---------- 中文斷句（配合 main.js 的 breakByPhrase） ----------
+   .seg：已經標好詞邊界的文字，只在詞與詞之間、標點之後換行
+   .ln ：一整句盡量排在同一行（放不下才整句換到下一行） */
+.seg { word-break: keep-all; overflow-wrap: anywhere; }
+.ln { display: inline-block; }
+h1, h2, h3, .sec-lead, .bubble, .impact-note, .adopt-gallery-note, .adopt-note p, .hero-en { text-wrap: balance; }
+
 mark {
   background: linear-gradient(transparent 62%, var(--yellow-2) 62%);
   color: inherit;
@@ -575,7 +582,6 @@ svg svg { max-width: none; }
 @media (min-width: 1001px) {
   @container (max-width: 1160px) {
     .hero-en-more { display: none; }
-    .hero-lead br { display: none; }
   }
 }
 
@@ -1032,7 +1038,7 @@ svg svg { max-width: none; }
   background: #fff; border-radius: 50%; flex: none;
 }
 .support-head h3 { font-size: 25px; font-weight: 800; letter-spacing: .08em; color: var(--ink); }
-.support-card p { flex: 1; }
+.support-card p:last-of-type { flex: 1; }
 .support-card .text-link { align-self: flex-start; }
 
 /* =========================================================
@@ -1167,6 +1173,7 @@ svg svg { max-width: none; }
   font-size: 19px;
 }
 .faq-a { padding: 0 28px 24px 78px; color: var(--ink-2); }
+.faq-a p + p { margin-top: .7em; }
 
 /* =========================================================
    Contact
@@ -1383,7 +1390,7 @@ svg svg { max-width: none; }
     scrollbar-width: none;
   }
   [data-carousel]::-webkit-scrollbar { display: none; }
-  [data-carousel] > li { flex: 0 0 78%; scroll-snap-align: start; }
+  [data-carousel] > li { flex: 0 0 84%; scroll-snap-align: start; }
   [data-carousel] > li.reveal { opacity: 1; transform: none; }
   .dots { display: flex; }
 
@@ -1394,7 +1401,7 @@ svg svg { max-width: none; }
   .work-item p { margin-top: 6px; }
 
   .tnr { padding-bottom: 100px; }
-  .tnr-ear { margin-top: -24px; }
+  .tnr-ear { margin-top: -4px; }
   .tnr-ear svg { width: 100px; }
   .tnr-card { padding: 28px 18px 30px; }
   .about-caption { font-size: 14px; padding: 8px 12px; }
