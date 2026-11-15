@@ -2265,3 +2265,148 @@ li:nth-child(even).impact-item { border-radius: 50% 50% 32px 24px / 104px 120px 
 @media (max-width: 760px) {
   .step-icon { border-radius: var(--blob-a); }
 }
+
+/* =========================================================
+   認養浪浪（認養前須知，插畫為主，每格一句話）
+   卡片沿用「遇到受傷的動物」的 .r-step / .r-case
+   ========================================================= */
+.ag { position: relative; background: var(--mint-lt); padding: 10px 0 40px; }
+.ag + .adopt { padding-top: 150px; }
+.wave--bot { bottom: -109px; }
+.ag-sub {
+  margin: 64px 0 22px;
+  font-size: 23px; font-weight: 800; letter-spacing: .08em;
+  text-align: center;
+  color: var(--ink);
+}
+.ag .sec-head + .ag-sub { margin-top: 0; }
+.ag .r-step { box-shadow: 0 5px 0 #B3E0C9; }
+.ag .r-case { background: rgba(255, 255, 255, .82); }
+
+/* 回家前的準備：一格一樣東西 */
+.ag-kit { display: grid; grid-template-columns: repeat(8, 1fr); gap: 14px 10px; }
+.ag-kit li {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  text-align: center;
+  transition-delay: calc(var(--i, 0) * 60ms);
+}
+.kit-icon {
+  display: grid; place-items: center;
+  width: 100%; max-width: 112px; aspect-ratio: 1;
+  border-radius: var(--br, var(--blob-a));
+  background: #fff;
+}
+.kit-icon svg { width: 76%; height: auto; overflow: visible; }
+.kit-name { font-size: 15.5px; font-weight: 700; line-height: 1.5; color: var(--ink); }
+
+/* 回家後 3 天、3 週、3 個月 */
+.ag-settle { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.ag-stage {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 18px 16px 22px;
+  border-radius: var(--hr, var(--hand-a));
+  background: #fff;
+  box-shadow: 0 5px 0 #B3E0C9;
+  text-align: center;
+  transition-delay: calc(var(--i, 0) * 120ms);
+}
+.ag-stage:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -23px; top: 50%;
+  width: 14px; height: 14px;
+  border-top: 3.4px solid var(--mint-dk);
+  border-right: 3.4px solid var(--mint-dk);
+  border-radius: 2px;
+  transform: translateY(-50%) rotate(45deg);
+}
+.ag-days {
+  display: inline-flex; align-items: baseline; gap: 2px;
+  padding: 0 16px;
+  border-radius: var(--pr, var(--pill-a));
+  background: var(--coral);
+  color: #fff;
+  font-size: calc(17px / var(--tz, 1)); font-weight: 800; line-height: 1.9; letter-spacing: .06em;
+  white-space: nowrap;
+}
+.ag-days b { margin-right: 3px; font-size: calc(25px / var(--tz, 1)); line-height: 1; }
+.ag-scene { display: block; width: 100%; height: auto; aspect-ratio: 200 / 140; margin-top: 6px; }
+.ag-stage h3 { margin-top: 6px; font-size: 21px; font-weight: 800; letter-spacing: .06em; color: var(--ink); }
+.ag-stage p { margin-top: 2px; font-size: 15.5px; line-height: 1.6; color: var(--ink-2); }
+.ag-note { margin-top: 22px; font-size: 16px; text-align: center; color: var(--ink-2); }
+
+/* 去哪裡認養 */
+.ag-where { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.ag-place {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 20px 22px 22px;
+  border-radius: var(--hr, var(--hand-a));
+  background: #fff;
+  box-shadow: 0 5px 0 #B3E0C9;
+  transition-delay: calc(var(--i, 0) * 100ms);
+}
+.ag-place-head { display: flex; align-items: center; gap: 14px; }
+.ag-badge {
+  flex: none;
+  display: grid; place-items: center;
+  width: 62px; height: 62px;
+  border-radius: var(--br, var(--blob-a));
+  background: var(--mint-lt);
+}
+.ag-badge svg { width: 36px; height: 36px; overflow: visible; }
+.ag-place h3 { font-size: 20px; font-weight: 800; line-height: 1.45; letter-spacing: .04em; color: var(--ink); }
+.ag-place-sub { font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
+.ag-facts { display: grid; gap: 6px; }
+.ag-facts li { position: relative; padding-left: 26px; font-size: 15.5px; line-height: 1.6; color: var(--ink); }
+.ag-facts li::before {
+  content: "";
+  position: absolute; left: 1px; top: .36em;
+  width: 17px; height: 17px;
+  border-radius: var(--blob-a);
+  background: var(--mint) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.6 6.3l2.2 2.2 4.6-4.8' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 11px no-repeat;
+}
+.ag-place .text-link { align-self: flex-start; margin-top: auto; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .a-tick { animation: a-tick 8s steps(8) infinite; }
+}
+@keyframes a-tick { to { transform: rotate(360deg); } }
+
+@media (max-width: 1000px) {
+  .ag-kit { grid-template-columns: repeat(4, 1fr); }
+  .ag-settle { gap: 22px; }
+  .ag-stage:not(:last-child)::after { right: -18px; }
+  .ag-where { grid-template-columns: 1fr; max-width: 620px; margin-inline: auto; }
+}
+@media (max-width: 760px) {
+  .ag { padding-bottom: 20px; }
+  .ag + .adopt { padding-top: 120px; }
+  .ag-sub { margin: 44px 0 16px; font-size: 20px; }
+  .ag-kit { gap: 12px 8px; }
+  .kit-icon { max-width: 84px; }
+  .ag-settle { grid-template-columns: 1fr; gap: 12px; }
+  .ag-stage {
+    display: grid; grid-template-columns: 46% 1fr; align-content: center; align-items: start;
+    column-gap: 12px;
+    padding: 10px 14px 12px 8px;
+    border-radius: var(--hr, var(--hand-a));
+    text-align: left;
+  }
+  .ag-stage:not(:last-child)::after { display: none; }
+  .ag-stage .ag-scene { grid-column: 1; grid-row: 1 / span 3; align-self: center; margin: 0; }
+  .ag-days { grid-column: 2; grid-row: 1; justify-self: start; padding: 0 12px; font-size: calc(15px / var(--tz, 1)); }
+  .ag-days b { font-size: calc(21px / var(--tz, 1)); }
+  .ag-stage h3 { grid-column: 2; grid-row: 2; margin-top: 4px; }
+  .ag-stage p { grid-column: 2; grid-row: 3; font-size: 14.5px; line-height: 1.55; }
+  .ag-note { margin-top: 16px; font-size: 15px; }
+  /* 6 個字的短標題：系統字體放大超過 1.35 倍時不再跟著放大，不然窄卡片放不下會被硬切 */
+  .ag .r-step h3 { font-size: calc(17px * min(var(--tz, 1), 1.35) / var(--tz, 1)); letter-spacing: .02em; }
+  .ag-stage h3 { font-size: calc(17.5px * min(var(--tz, 1), 1.35) / var(--tz, 1)); letter-spacing: .02em; }
+  .kit-name { font-size: calc(13.5px * min(var(--tz, 1), 1.35) / var(--tz, 1)); letter-spacing: 0; }
+  .ag-place { padding: 16px 16px 18px; gap: 10px; }
+  .ag-badge { width: 54px; height: 54px; }
+  .ag-badge svg { width: 32px; height: 32px; }
+  .ag-place h3 { font-size: 18.5px; }
+  .ag-facts li { font-size: 14.5px; }
+}

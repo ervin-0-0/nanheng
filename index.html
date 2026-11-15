@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=43">
+  <link rel="stylesheet" href="css/style.css?v=44">
   <noscript><style>.reveal{opacity:1!important;transform:none!important}.float-cta{transform:none!important;opacity:1!important;pointer-events:auto!important}</style></noscript>
 </head>
 <body>
@@ -501,6 +501,36 @@
       <path d="M3 40.6 h42" fill="none" stroke="#6B5C56" stroke-width="3.4" stroke-linecap="round"/>
     </symbol>
 
+    <!-- ===== 「認養浪浪」用的零件 ===== -->
+    <!-- 鬧鐘（分針會轉，顏色用 --clk 換） -->
+    <symbol id="clock" viewBox="0 0 44 48">
+      <path d="M5 13 C 3 7, 7 2.4, 12 3 C 15.4 3.4, 17.4 6, 17 8.6 Z M39 13 C 41 7, 37 2.4, 32 3 C 28.6 3.4, 26.6 6, 27 8.6 Z" fill="#E0503C"/>
+      <path class="k" d="M10 42 L 6.6 46.4 M34 42 L 37.4 46.4" stroke-width="3"/>
+      <path d="M4 27 C 4 16.6, 12 9, 22.4 9 C 32.4 9.2, 40 17, 40 27.4 C 39.8 37.6, 32 45, 21.6 45 C 11.6 44.8, 4 37, 4 27 Z" fill="var(--clk,#F6C445)"/>
+      <path d="M8.8 27 C 8.8 19.4, 14.6 13.6, 22.2 13.6 C 29.6 13.8, 35.2 19.6, 35.2 27.2 C 35 34.6, 29.4 40.4, 21.8 40.4 C 14.4 40.2, 8.8 34.4, 8.8 27 Z" fill="#FFFDF8"/>
+      <g class="a-tick" style="transform-origin:22px 27px"><path class="k" d="M22 27 V 17.4" stroke-width="2.6"/></g>
+      <path class="k" d="M22 27 L 28.4 30.4" stroke-width="2.6"/>
+      <circle cx="22" cy="27" r="2" fill="#E0503C"/>
+    </symbol>
+    <!-- 月曆（寫著 15，代表狗貓能活十幾年） -->
+    <symbol id="calendar" viewBox="0 0 52 56">
+      <path d="M4 14 C 4 10.6, 6.6 8, 10 8 L 42 8.4 C 45.4 8.4, 48 11, 48 14.4 L 47.6 48 C 47.6 51.4, 45 54, 41.6 54 L 10 53.6 C 6.6 53.6, 4 51, 4 47.6 Z" fill="#FFF0A6"/>
+      <path d="M4 14 C 4 10.6, 6.6 8, 10 8 L 42 8.4 C 45.4 8.4, 48 11, 48 14.4 L 48 21 L 4 20.6 Z" fill="#E0503C"/>
+      <path d="M16 4 V 13 M36 4 V 13" fill="none" stroke="#6B5C56" stroke-width="4" stroke-linecap="round"/>
+      <text x="26" y="45.4" text-anchor="middle" font-family="Quicksand, sans-serif" font-size="22" font-weight="700" fill="#4B3B36">15</text>
+    </symbol>
+    <!-- 針筒（針頭朝左） -->
+    <symbol id="syringe" viewBox="0 0 60 24">
+      <path d="M1 12 H 10" fill="none" stroke="#6E7C85" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M9 9.4 L 14 8.4 L 14 15.6 L 9 14.6 Z" fill="#9AA8B1"/>
+      <path d="M44 12 H 54" fill="none" stroke="#9AA8B1" stroke-width="3.6" stroke-linecap="round"/>
+      <path d="M53.4 5 C 53.4 4, 54 3.4, 55 3.4 L 56.6 3.4 C 57.6 3.4, 58.2 4, 58.2 5 L 58.2 19 C 58.2 20, 57.6 20.6, 56.6 20.6 L 55 20.6 C 54 20.6, 53.4 20, 53.4 19 Z" fill="#6E7C85"/>
+      <path d="M14 7.6 C 14 6.4, 14.8 5.6, 16 5.6 L 43 5.8 C 44.2 5.8, 45 6.6, 45 7.8 L 45 16.2 C 45 17.4, 44.2 18.2, 43 18.2 L 16 18 C 14.8 18, 14 17.2, 14 16 Z" fill="#CFEAF4"/>
+      <path d="M14 7.6 C 14 6.4, 14.8 5.6, 16 5.6 L 31 5.7 L 31 18.1 L 16 18 C 14.8 18, 14 17.2, 14 16 Z" fill="#7FC8E8"/>
+      <path d="M43.4 2.4 C 44.6 2.4, 45.6 2.8, 45.6 4 L 45.6 20 C 45.6 21.2, 44.6 21.6, 43.4 21.6 C 42.2 21.6, 41.6 21.2, 41.6 20 L 41.6 4 C 41.6 2.8, 42.2 2.4, 43.4 2.4 Z" fill="#9AA8B1"/>
+      <path d="M20 5.6 V 9 M25 5.6 V 9 M30 5.6 V 9 M35 5.6 V 9" fill="none" stroke="#3A8DC9" stroke-width="1.4" stroke-linecap="round"/>
+    </symbol>
+
     <!-- 公（♂）、母（♀）符號，白線，放在色塊圓點上 -->
     <symbol id="male" viewBox="0 0 24 24">
       <circle cx="10" cy="14" r="5.4" fill="none" stroke="#fff" stroke-width="2.6"/>
@@ -548,7 +578,15 @@
         </ul>
       </li>
       <li><a href="#tnr">免費結紮</a></li>
-      <li><a href="#adopt">送養</a></li>
+      <li class="has-sub">
+        <a href="#adopt-guide">認養浪浪</a>
+        <ul class="sub">
+          <li><a href="#adopt-guide">認養前想一想</a></li>
+          <li><a href="#ag-kit">回家前的準備</a></li>
+          <li><a href="#ag-where">去哪裡認養</a></li>
+          <li><a href="#adopt">協會送養</a></li>
+        </ul>
+      </li>
       <li class="has-sub">
         <a href="#support">一起幫忙</a>
         <ul class="sub">
@@ -583,7 +621,10 @@
       <div class="mm-sub"><a href="#work">在做的事</a><a href="#news">最新消息</a><a href="#gallery">相片集</a></div>
     </li>
     <li><a href="#tnr"><span class="en">Free TNR</span>免費結紮</a></li>
-    <li><a href="#adopt"><span class="en">Adopt</span>送養</a></li>
+    <li class="has-sub">
+      <a href="#adopt-guide"><span class="en">Adopt</span>認養浪浪</a>
+      <div class="mm-sub"><a href="#ag-kit">回家前的準備</a><a href="#ag-where">去哪裡認養</a><a href="#adopt">協會送養</a></div>
+    </li>
     <li class="has-sub">
       <a href="#support"><span class="en">Support</span>一起幫忙</a>
       <div class="mm-sub"><a href="#supplies">所需物資</a><a href="#donate">如何捐款</a><a href="#report">通報・志工</a><a href="#rescue">遇到受傷動物</a></div>
@@ -1199,6 +1240,318 @@
       </figure>
     </div>
   </div>
+</section>
+
+<!-- ============ 認養浪浪（認養前須知） ============
+     查證：2026-11-15。
+     高雄市公立收容所的條件、費用、開園時間：高雄市動物保護處官網「動物認領養－認領養程序及須知」（114-8-20 更新）。
+     收容所認養犬貓免費絕育：同官網「公立收容所認養犬、貓絕育」（115-1-2 更新，狗須在寵物登記後 1 年內、補助用完為止）。
+     取得已登記寵物要在 1 個月內辦變更登記：同官網「寵物登記應注意事項」。
+     貓也要植晶片、寵物登記（115-1-1 起未登記可罰 3,000～15,000 元）、棄養可罰 3～15 萬：動物保護法與農業部公告。
+     全國待認養動物：農業部「全國動物收容管理系統」。
+     規定改了就改這裡。 -->
+<section class="ag" id="adopt-guide" aria-labelledby="ag-title">
+  <svg class="wave wave--top" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true"><path d="M0 110 V54 C 240 10 540 4 800 40 C 1060 76 1260 72 1440 44 V110 Z" fill="#D6F0E4"/></svg>
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="en-label en">Before you adopt</span>
+      <h2 id="ag-title">認養浪浪</h2>
+      <p class="sec-lead"><span class="ln">認養，是答應牠一輩子。</span><span class="ln">帶牠回家前，</span><span class="ln">先看看這幾件事。</span></p>
+    </div>
+
+    <!-- 先問問自己 -->
+    <h3 class="ag-sub">先問問自己</h3>
+    <ul class="r-steps ag-qs">
+      <li class="r-step reveal" style="--i:0">
+        <svg class="r-scene" viewBox="0 0 200 140" role="img" aria-label="兩個大人和一隻狗站在家門前，頭上冒出愛心，表示全家都同意">
+          <ellipse cx="100" cy="131" rx="90" ry="7" fill="#C6EBD8"/>
+          <use href="#house" x="112" y="52" width="86" height="71.7"/>
+          <use href="#person-wave" x="12" y="30" width="44" height="103" style="--shirt:#E0503C;--pants:#3A8DC9;--pony:1;--apron-o:0"/>
+          <use href="#person" x="54" y="30" width="44" height="103" style="--shirt:#F6C445;--pants:#2F8F6B;--hair:#5A3A2A;--apron-o:0"/>
+          <use href="#dog" x="92" y="86" width="48" height="42.8" style="--fur:#F3E7CF;--spot:#E0CFAE;--ear:#B5452D;--collar:#E0503C"/>
+          <g class="heart-up" style="--d:.2s"><use href="#heart" x="42" y="8" width="20" height="17.5" fill="#F07AA0"/></g>
+          <g class="heart-up" style="--d:1.4s"><use href="#heart" x="72" y="16" width="14" height="12.3" fill="#E0503C"/></g>
+          <use href="#sparkle" x="100" y="26" width="12" height="12" style="--c:#F6C445"/>
+        </svg>
+        <h3>全家都同意？</h3>
+        <p>租屋要先問房東</p>
+      </li>
+      <li class="r-step reveal" style="--i:1">
+        <svg class="r-scene" viewBox="0 0 200 140" role="img" aria-label="一個人牽著狗散步，旁邊有鬧鐘和太陽">
+          <ellipse cx="100" cy="131" rx="90" ry="7" fill="#C6EBD8"/>
+          <use href="#sun" x="156" y="4" width="38" height="38"/>
+          <use href="#clock" x="86" y="10" width="30" height="32.7"/>
+          <path d="M64 92 C 92 78, 128 82, 151 100" fill="none" stroke="#E0503C" stroke-width="3" stroke-linecap="round"/>
+          <use href="#person" x="24" y="22" width="48" height="112.5" style="--shirt:#3A8DC9;--pants:#26775A;--apron-o:0;--hat-o:1"/>
+          <use href="#dog-stand" x="96" y="70" width="86" height="62.1" style="--fur:#EDA83A;--fur2:#D9952B;--ear:#B5452D;--collar:#E0503C"/>
+          <use href="#grass" x="6" y="114" width="22" height="15"/>
+        </svg>
+        <h3>每天有空陪？</h3>
+        <p>散步、陪玩、清便便</p>
+      </li>
+      <li class="r-step reveal" style="--i:2">
+        <svg class="r-scene" viewBox="0 0 200 140" role="img" aria-label="一袋飼料、醫藥箱和飯碗，旁邊坐著一隻黑狗">
+          <ellipse cx="100" cy="131" rx="90" ry="7" fill="#C6EBD8"/>
+          <use href="#bag" x="14" y="54" width="58" height="73.8" style="--bag:#EE8A2B"/>
+          <use href="#med" x="70" y="88" width="50" height="40" style="--med:#CFEAF4"/>
+          <use href="#dog" x="118" y="58" width="68" height="60.6" style="--fur:#1F1B1A;--ear:#5A4C47;--nose:#E0503C;--k:#F3E7CF;--collar:#F6C445"/>
+          <use href="#bowl" x="150" y="108" width="44" height="22"/>
+          <use href="#sparkle" x="86" y="60" width="14" height="14" style="--c:#F6C445"/>
+          <use href="#sparkle" x="30" y="24" width="12" height="12" style="--c:#F5A6BE"/>
+        </svg>
+        <h3>負擔得起嗎？</h3>
+        <p>飼料、疫苗、看醫生</p>
+      </li>
+      <li class="r-step reveal" style="--i:3">
+        <svg class="r-scene" viewBox="0 0 200 140" role="img" aria-label="寫著 15 的月曆，旁邊趴著一隻老狗和一隻睡著的貓">
+          <ellipse cx="100" cy="131" rx="90" ry="7" fill="#C6EBD8"/>
+          <use href="#calendar" x="16" y="14" width="64" height="68.9"/>
+          <use href="#cat-loaf" x="12" y="92" width="62" height="38.4" style="--fur:#7FA7C4;--stripe:#5E87A6"/>
+          <use href="#dog-lie" x="82" y="80" width="104" height="52.9" style="--fur:#E8E2D6;--ear:#A89A90;--collar:#E0503C"/>
+          <g class="heart-up" style="--d:.6s"><use href="#heart" x="148" y="40" width="20" height="17.5" fill="#F07AA0"/></g>
+          <use href="#heart" x="126" y="54" width="13" height="11.4" fill="#E0503C"/>
+          <use href="#sparkle" x="96" y="22" width="14" height="14" style="--c:#3FAE93"/>
+        </svg>
+        <h3>陪牠一輩子？</h3>
+        <p>狗貓能活十幾年</p>
+      </li>
+    </ul>
+
+    <!-- 飼主一定要做的事 -->
+    <h3 class="ag-sub">飼主一定要做的事</h3>
+    <ul class="r-cases ag-duties">
+      <li class="r-case reveal" style="--i:0">
+        <svg viewBox="0 0 120 84" role="img" aria-label="晶片掃描器正在掃一隻玳瑁貓">
+          <ellipse cx="56" cy="78" rx="46" ry="5" fill="#D3EEE1"/>
+          <use href="#cat" x="12" y="10" width="52" height="68.3" style="--fur:#2E2523;--patch:#C9772F;--nose:#F5A6BE;--wh:#F3E7CF;--k:#F3E7CF"/>
+          <path d="M78 36 c-3 3 -3 8 0 11 M72 32 c-5 5 -5 14 0 19" fill="none" stroke="#3FAE93" stroke-width="3" stroke-linecap="round"/>
+          <use href="#scanner" x="80" y="8" width="30" height="42.3" transform="rotate(-18 95 29)"/>
+        </svg>
+        <strong>晶片、寵物登記</strong>
+        <span>狗貓都要，過戶到你名下</span>
+      </li>
+      <li class="r-case reveal" style="--i:1">
+        <svg viewBox="0 0 120 84" role="img" aria-label="一隻狗和一支打疫苗的針筒">
+          <ellipse cx="56" cy="78" rx="46" ry="5" fill="#D3EEE1"/>
+          <use href="#dog" x="44" y="18" width="66" height="58.8" style="--fur:#EDA83A;--fur2:#D9952B;--ear:#B5452D;--collar:#3A8DC9"/>
+          <g transform="translate(62 47) rotate(208)"><use href="#syringe" x="-.9" y="-10.4" width="52" height="20.8"/></g>
+          <use href="#sparkle" x="8" y="52" width="12" height="12" style="--c:#F6C445"/>
+        </svg>
+        <strong>狂犬病疫苗</strong>
+        <span>每年打一次</span>
+      </li>
+      <li class="r-case reveal" style="--i:2">
+        <svg viewBox="0 0 120 84" role="img" aria-label="剛結紮完、戴著頭套休息的貓">
+          <ellipse cx="60" cy="78" rx="46" ry="5" fill="#D3EEE1"/>
+          <g transform="translate(34 7) scale(.82)">
+            <path d="M1 30 C 1 14, 15 3, 32 3 C 49 3, 63 14, 63 30 C 63 46, 49 57, 32 57 C 15 57, 1 46, 1 30 Z" fill="#BFE6F2"/>
+            <path d="M32 30 L 3 21 M32 30 L 9 8 M32 30 L 24 3.6 M32 30 L 40 3.6 M32 30 L 55 8 M32 30 L 61 21" fill="none" stroke="#E2F5FB" stroke-width="2.6" stroke-linecap="round"/>
+            <use href="#cat" width="64" height="84" style="--fur:#F3E7CF;--patch:#EE8A2B;--nose:#F5A6BE;--wh:#9C8F86"/>
+            <path d="M1.4 36 C 4 48, 18 57, 32 57 C 46 57, 60 48, 62.6 36 L 55 34 C 53 44, 44 48.6, 32 48.6 C 20 48.6, 11 44, 9 34 Z" fill="#BFE6F2"/>
+            <path d="M8 44 L 14 42 M17 51 L 21 47 M47 47 L 51 51 M50 42 L 56 44" fill="none" stroke="#E2F5FB" stroke-width="2.4" stroke-linecap="round"/>
+          </g>
+          <use href="#heart" x="94" y="14" width="16" height="14" fill="#F07AA0"/>
+          <use href="#sparkle" x="14" y="18" width="12" height="12" style="--c:#3FAE93"/>
+        </svg>
+        <strong>結紮</strong>
+        <span>沒打算繁殖就要結紮</span>
+      </li>
+      <li class="r-case reveal" style="--i:3">
+        <svg viewBox="0 0 120 84" role="img" aria-label="被放在紙箱裡的小狗，旁邊有禁止符號，表示不能棄養">
+          <ellipse cx="54" cy="78" rx="46" ry="5" fill="#D3EEE1"/>
+          <use href="#box-b" x="10" y="28" width="74" height="54"/>
+          <use href="#dog" x="22" y="9" width="50" height="44.6" style="--fur:#F3E7CF;--ear:#8A5A3B;--collar:#E0503C"/>
+          <use href="#box-f" x="10" y="28" width="74" height="54"/>
+          <use href="#nope" x="78" y="12" width="36" height="36"/>
+        </svg>
+        <strong>不棄養</strong>
+        <span>棄養最高罰 15 萬</span>
+      </li>
+    </ul>
+
+    <!-- 回家前的準備 -->
+    <h3 class="ag-sub" id="ag-kit">回家前的準備</h3>
+    <ul class="ag-kit">
+      <li class="reveal" style="--i:0">
+        <span class="kit-icon"><svg viewBox="0 0 80 64" aria-hidden="true">
+          <use href="#bowl" x="2" y="28" width="46" height="23"/>
+          <g transform="translate(34 32) scale(1.08)">
+            <path d="M6 6.4 C 9 3.4, 14 2.6, 20 2.8 C 26 2.6, 31 3.4, 34 6.4 Z" fill="#9FD8F0"/>
+            <path d="M3.6 6.4 C 3.4 5.4, 4.2 4.8, 5.2 4.8 L 34.8 5 C 35.8 5, 36.6 5.6, 36.4 6.6 C 35.6 11.6, 33.6 16, 31 18.4 L 9 18.2 C 6.4 16, 4.4 11.6, 3.6 6.4 Z" fill="#3A8DC9"/>
+            <path d="M11 12 h6 M22 12 h7" fill="none" stroke="#FFFDF8" stroke-width="2.4" stroke-linecap="round"/>
+          </g>
+          <path d="M56 10 C 52 16, 51 21, 56 22.6 C 61 21, 60 16, 56 10 Z" fill="#7FC8E8"/>
+        </svg></span>
+        <span class="kit-name">飯碗、水碗</span>
+      </li>
+      <li class="reveal" style="--i:1">
+        <span class="kit-icon"><svg viewBox="0 0 80 64" aria-hidden="true">
+          <use href="#bag" x="20" y="4" width="44" height="56" style="--bag:#EE8A2B"/>
+          <g fill="#8A4B2A"><circle cx="13" cy="54" r="3"/><circle cx="20" cy="57" r="2.6"/><circle cx="68" cy="55" r="3"/></g>
+        </svg></span>
+        <span class="kit-name">飼料</span>
+      </li>
+      <li class="reveal" style="--i:2">
+        <span class="kit-icon"><svg viewBox="0 0 80 64" aria-hidden="true">
+          <path d="M10 36 C 10 27, 17 22, 26 22 C 35 22.2, 42 27.4, 42 36.4 C 41.8 45, 35 50, 26 50 C 17 49.8, 10 44.6, 10 36 Z" fill="none" stroke="#3A8DC9" stroke-width="6"/>
+          <path d="M26 49 C 30 49, 31.6 52, 31.4 54.6 C 31 57.6, 28.6 59, 26 59 C 23 59, 20.6 57.4, 20.6 54.4 C 20.6 51.6, 22.6 49, 26 49 Z" fill="#F6C445"/>
+          <path d="M41 30 C 52 24, 50 42, 60 36 C 68 31, 63 20, 68 15" fill="none" stroke="#E0503C" stroke-width="4" stroke-linecap="round"/>
+          <path d="M64 10 C 64 6.6, 67 4.4, 70.4 4.6 C 74 4.8, 76.4 7.4, 76 10.6 C 75.6 13.8, 72.6 15.6, 69.4 15.4 C 66.2 15.2, 64 13, 64 10 Z" fill="none" stroke="#E0503C" stroke-width="4"/>
+        </svg></span>
+        <span class="kit-name">項圈、牽繩</span>
+      </li>
+      <li class="reveal" style="--i:3">
+        <span class="kit-icon"><svg viewBox="0 0 80 64" aria-hidden="true">
+          <path d="M28 16 C 28 6, 52 6, 52 16" fill="none" stroke="#3A8DC9" stroke-width="5" stroke-linecap="round"/>
+          <path d="M6 24 C 6 18, 10 15, 16 15 L 64 15.4 C 70 15.4, 74 18.4, 74 24.4 L 73.6 52 C 73.6 57, 70 60, 65 60 L 15 59.6 C 10 59.6, 6 56.6, 6 51.6 Z" fill="#F5A6BE"/>
+          <path d="M20 24 C 20 23, 21 22, 22 22 L 58 22.2 C 59 22.2, 60 23, 60 24.2 L 59.8 51 C 59.8 52, 59 53, 58 53 L 22 52.8 C 21 52.8, 20 52, 20 51 Z" fill="#2A2422"/>
+          <g class="a-blink" style="transform-origin:40px 37px">
+            <circle cx="34.6" cy="37" r="3.4" fill="#fff"/><circle cx="45.4" cy="37" r="3.4" fill="#fff"/>
+            <circle cx="35.2" cy="37.4" r="1.7" fill="#1F1B1A"/><circle cx="46" cy="37.4" r="1.7" fill="#1F1B1A"/>
+          </g>
+          <path d="M29.6 22.6 V 52.6 M40 22.6 V 52.6 M50.4 22.6 V 52.6" fill="none" stroke="#FFFDF8" stroke-width="2.2" stroke-linecap="round" opacity=".9"/>
+          <g fill="#FFFDF8"><circle cx="13" cy="30" r="1.8"/><circle cx="13" cy="38" r="1.8"/><circle cx="13" cy="46" r="1.8"/><circle cx="67" cy="30" r="1.8"/><circle cx="67" cy="38" r="1.8"/><circle cx="67" cy="46" r="1.8"/></g>
+        </svg></span>
+        <span class="kit-name">外出籠</span>
+      </li>
+      <li class="reveal" style="--i:4">
+        <span class="kit-icon"><svg viewBox="0 0 80 64" aria-hidden="true">
+          <path d="M3 44 C 3 35, 19 29, 40 29 C 61 29, 77 35, 77 44 C 77 53, 61 59, 40 59 C 19 59, 3 53, 3 44 Z" fill="#EE8A2B"/>
+          <path d="M13 42 C 13 37, 25 33, 40 33 C 55 33, 67 37, 67 42 C 67 47, 55 51, 40 51 C 25 51, 13 47, 13 42 Z" fill="#FFE2D6"/>
+          <use href="#cat-loaf" x="17" y="17" width="46" height="28.5" style="--fur:#7FA7C4;--stripe:#5E87A6"/>
+          <path d="M3 44 C 3 53, 19 59, 40 59 C 61 59, 77 53, 77 44 C 71 51, 57 54, 40 54 C 23 54, 9 51, 3 44 Z" fill="#D9762A"/>
+        </svg></span>
+        <span class="kit-name">睡窩</span>
+      </li>
+      <li class="reveal" style="--i:5">
+        <span class="kit-icon"><svg viewBox="0 0 80 64" aria-hidden="true">
+          <path d="M10 30 C 22 20, 34 23, 40 23 C 48 23, 60 20, 70 30 Z" fill="#EBD9B4"/>
+          <path d="M50 6 L 59 21" fill="none" stroke="#F6C445" stroke-width="4" stroke-linecap="round"/>
+          <path d="M54 20 L 64 15.6 L 68.4 25 L 58.4 29.4 Z" fill="#F6C445"/>
+          <path d="M5 31 C 5 29.6, 6 28.6, 7.4 28.6 L 72.6 28.8 C 74 28.8, 75 29.8, 75 31.2 L 75 33 C 75 34.4, 74 35.2, 72.6 35.2 L 7.4 35 C 6 35, 5 34, 5 32.6 Z" fill="#6890AE"/>
+          <path d="M8 35 L 72 35.2 L 66.6 56 C 66.2 57.6, 65 58.4, 63.4 58.4 L 16.6 58.2 C 15 58.2, 13.8 57.4, 13.4 55.8 Z" fill="#7FA7C4"/>
+          <use href="#paw" x="34" y="38" width="13" height="13" fill="#FFFDF8" opacity=".75"/>
+        </svg></span>
+        <span class="kit-name">貓砂盆</span>
+      </li>
+      <li class="reveal" style="--i:6">
+        <span class="kit-icon"><svg viewBox="0 0 80 64" aria-hidden="true">
+          <path d="M11 38 C 11 28.4, 18.6 21, 28.2 21 C 37.6 21.2, 45 28.6, 45 38.2 C 44.8 47.6, 37.4 55, 27.8 55 C 18.4 54.8, 11 47.4, 11 38 Z" fill="#E0503C"/>
+          <path d="M16 27 C 23 31, 23 45, 16.6 50 M40 27 C 33 31, 33 45, 39.4 50" fill="none" stroke="#FFFDF8" stroke-width="3" stroke-linecap="round"/>
+          <g transform="rotate(-30 62 34)" fill="#F6C445">
+            <path d="M52 30 h20" stroke="#F6C445" stroke-width="7" stroke-linecap="round"/>
+            <circle cx="51" cy="27.2" r="4.4"/><circle cx="51" cy="33" r="4.4"/><circle cx="73" cy="27.2" r="4.4"/><circle cx="73" cy="33" r="4.4"/>
+          </g>
+        </svg></span>
+        <span class="kit-name">玩具</span>
+      </li>
+      <li class="reveal" style="--i:7">
+        <span class="kit-icon"><svg viewBox="0 0 80 64" aria-hidden="true">
+          <use href="#med" x="8" y="8" width="64" height="51.2" style="--med:#CFEAF4"/>
+        </svg></span>
+        <span class="kit-name">動物醫院</span>
+      </li>
+    </ul>
+
+    <!-- 回家後，慢慢來（3-3-3 原則只是參考） -->
+    <h3 class="ag-sub">回家後，慢慢來</h3>
+    <ol class="ag-settle">
+      <li class="ag-stage reveal" style="--i:0">
+        <span class="ag-days nowrap"><b class="en">3</b>天</span>
+        <svg class="ag-scene" viewBox="0 0 200 140" role="img" aria-label="剛到新家的黑貓躲在紙箱裡，只露出眼睛偷看">
+          <ellipse cx="100" cy="131" rx="88" ry="7" fill="#C6EBD8"/>
+          <use href="#bush" x="6" y="104" width="46" height="26"/>
+          <use href="#box-b" x="40" y="42" width="120" height="87.5"/>
+          <use href="#cat" x="74" y="41" width="52" height="68.3" style="--fur:#1F1B1A;--nose:#F5A6BE;--wh:#F5A6BE;--k:#F3E7CF"/>
+          <use href="#box-f" x="40" y="42" width="120" height="87.5"/>
+          <g fill="#9C8F86"><circle cx="152" cy="38" r="3.4"/><circle cx="164" cy="32" r="3.4"/><circle cx="176" cy="26" r="3.4"/></g>
+        </svg>
+        <h3>躲起來很正常</h3>
+        <p>給牠安靜的角落，別硬抱</p>
+      </li>
+      <li class="ag-stage reveal" style="--i:1">
+        <span class="ag-days nowrap"><b class="en">3</b>週</span>
+        <svg class="ag-scene" viewBox="0 0 200 140" role="img" aria-label="狗狗坐在飯碗旁邊，旁邊的鬧鐘提醒吃飯時間">
+          <ellipse cx="100" cy="131" rx="88" ry="7" fill="#C6EBD8"/>
+          <use href="#sun" x="158" y="6" width="34" height="34"/>
+          <use href="#clock" x="16" y="62" width="58" height="63.3"/>
+          <use href="#dog" x="78" y="52" width="84" height="74.9" style="--fur:#F3E7CF;--spot:#E0CFAE;--ear:#B5452D;--collar:#3FAE93"/>
+          <use href="#bowl" x="146" y="106" width="48" height="24"/>
+        </svg>
+        <h3>記住生活作息</h3>
+        <p>固定時間吃飯、散步</p>
+      </li>
+      <li class="ag-stage reveal" style="--i:2">
+        <span class="ag-days nowrap"><b class="en">3</b>個月</span>
+        <svg class="ag-scene" viewBox="0 0 200 140" role="img" aria-label="家門前，主人抱著貓、黑狗趴在腳邊，頭上冒出愛心">
+          <ellipse cx="100" cy="131" rx="90" ry="7" fill="#C6EBD8"/>
+          <use href="#house" x="4" y="30" width="112" height="93.3"/>
+          <g style="--shirt:#E0503C;--pants:#3A8DC9;--apron-o:0;--bun:1">
+            <use href="#person-hold" x="116" y="20" width="48" height="112.5"/>
+            <use href="#cat" x="124.7" y="51.5" width="30.6" height="40.2" style="--fur:#EE8A2B;--stripe:#B5452D"/>
+            <use href="#arms-front" x="116" y="20" width="48" height="112.5"/>
+          </g>
+          <use href="#dog-lie" x="132" y="100" width="66" height="33.6" style="--fur:#1F1B1A;--ear:#5A4C47;--k:#F3E7CF;--collar:#F6C445"/>
+          <g class="heart-up" style="--d:.3s"><use href="#heart" x="140" y="4" width="16" height="14" fill="#F07AA0"/></g>
+          <g class="heart-up" style="--d:1.5s"><use href="#heart" x="168" y="16" width="12" height="10.5" fill="#E0503C"/></g>
+        </svg>
+        <h3>把這裡當成家</h3>
+        <p>開始撒嬌，放心睡覺</p>
+      </li>
+    </ol>
+    <p class="ag-note">每個孩子的步調不一樣，慢一點也沒關係。</p>
+
+    <!-- 去哪裡認養 -->
+    <h3 class="ag-sub" id="ag-where">去哪裡認養</h3>
+    <ul class="ag-where">
+      <li class="ag-place reveal" style="--i:0">
+        <div class="ag-place-head">
+          <span class="ag-badge" aria-hidden="true"><svg viewBox="0 0 56 36"><path d="M0 36 L18 8 L27 20 L36 2 L56 36 Z" fill="#E5776E"/><g fill="#fff"><ellipse cx="28" cy="28.5" rx="5.4" ry="4.2"/><circle cx="22.2" cy="22.6" r="2.1"/><circle cx="26.2" cy="19.8" r="2.1"/><circle cx="30.4" cy="19.8" r="2.1"/><circle cx="34.2" cy="22.6" r="2.1"/></g></svg></span>
+          <div>
+            <h3>南橫動保協會</h3>
+            <p class="ag-place-sub">六龜、甲仙山裡的孩子</p>
+          </div>
+        </div>
+        <ul class="ag-facts">
+          <li>先私訊或來電聊聊</li>
+          <li>約時間見面、互動</li>
+        </ul>
+        <a class="text-link" href="#adopt">看等家的孩子 <svg><use href="#chev"/></svg></a>
+      </li>
+      <li class="ag-place reveal" style="--i:1">
+        <div class="ag-place-head">
+          <span class="ag-badge" aria-hidden="true"><svg viewBox="0 0 48 44"><use href="#office"/></svg></span>
+          <div>
+            <h3>高雄市公立收容所</h3>
+            <p class="ag-place-sub">壽山、燕巢動保園區</p>
+          </div>
+        </div>
+        <ul class="ag-facts">
+          <li>滿 18 歲，帶身分證</li>
+          <li>免費，含晶片、登記、狂犬病疫苗</li>
+          <li>週二到週日開園，週一和國定假日休</li>
+          <li>認養後到合作醫院結紮也免費</li>
+        </ul>
+        <a class="text-link" href="https://livestock.kcg.gov.tw/Pets/DongwuShourong/RenyangChengxu.htm" target="_blank" rel="noopener">動保處認養須知 <svg><use href="#chev"/></svg></a>
+      </li>
+      <li class="ag-place reveal" style="--i:2">
+        <div class="ag-place-head">
+          <span class="ag-badge" aria-hidden="true"><svg viewBox="0 0 56 72"><use href="#pin" style="--pinc:#3FAE93"/></svg></span>
+          <div>
+            <h3>全國的收容所</h3>
+            <p class="ag-place-sub">農業部全國動物收容管理系統</p>
+          </div>
+        </div>
+        <ul class="ag-facts">
+          <li>可以選縣市、狗或貓</li>
+          <li>每隻都有照片和收容編號</li>
+        </ul>
+        <a class="text-link" href="https://www.pet.gov.tw/AnimalApp/AnnounceMent.aspx?PageType=Adopt" target="_blank" rel="noopener">查全國待認養動物 <svg><use href="#chev"/></svg></a>
+      </li>
+    </ul>
+    <p class="rescue-src">資料查證於 2026 年 11 月（高雄市動物保護處、農業部），以官方最新公告為準。</p>
+  </div>
+  <svg class="wave wave--bot" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 V52 C 300 98 620 96 900 62 C 1140 34 1300 40 1440 70 V0 Z" fill="#D6F0E4"/></svg>
 </section>
 
 <!-- ============ 送養 ============ -->
@@ -1933,7 +2286,8 @@
         <a href="#about">關於我們</a>
         <a href="#work">在做的事</a>
         <a href="#tnr">免費結紮</a>
-        <a href="#adopt">送養</a>
+        <a href="#adopt-guide">認養浪浪</a>
+        <a href="#adopt">協會送養</a>
         <a href="#support">一起幫忙</a>
         <a href="#supplies">所需物資</a>
         <a href="#donate">如何捐款</a>
@@ -1989,7 +2343,7 @@
   </svg>
 </template>
 
-<script src="js/main.js?v=32" defer></script>
+<script src="js/main.js?v=33" defer></script>
 <script src="js/sheet.js?v=3" defer></script>
 </body>
 </html>
