@@ -1313,6 +1313,16 @@ svg svg { max-width: none; }
 /* =========================================================
    RWD
    ========================================================= */
+/* 導覽列 9 項＋聯絡我們：每項維持一行，1181–1400px 收緊間距才放得下，再窄就換成選單按鈕 */
+.nav-list a, .nav-cta { white-space: nowrap; }
+@media (max-width: 1400px) {
+  .site-header { padding: 0 28px; gap: 20px; }
+  .nav { gap: 16px; }
+  .nav-list { gap: 12px; }
+  .nav-list a { font-size: 16px; letter-spacing: .02em; }
+  .nav-cta { font-size: 16px; padding: 9px 18px; }
+}
+
 @media (max-width: 1180px) {
   .nav { display: none; }
   .menu-btn { display: block; }
