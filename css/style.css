@@ -2090,6 +2090,47 @@ svg svg { max-width: none; }
   .aima-tool { padding: 20px 18px 22px; }
 }
 
+/* 愛媽 LINE 社群卡片 */
+.line-join {
+  display: grid; grid-template-columns: 220px 1fr auto; align-items: center; gap: 24px;
+  max-width: 940px;
+  margin: 40px auto 0;
+  padding: 22px 28px;
+  border-radius: var(--hand-c);
+  background: #fff;
+  box-shadow: 0 6px 0 #BDEBCB;
+}
+.line-join[hidden] { display: none; }
+.line-art { width: 100%; height: auto; }
+.line-text { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.line-badge {
+  padding: 0 12px;
+  border-radius: var(--pill-a);
+  background: #06C755;
+  color: #fff;
+  font-size: 14px; font-weight: 800; line-height: 1.9; letter-spacing: .06em;
+}
+.line-text h3 { font-size: 22px; font-weight: 800; letter-spacing: .06em; color: var(--ink); }
+.line-text p { font-size: 16px; line-height: 1.7; color: var(--ink); }
+.line-text .line-note { font-size: 14.5px; color: var(--ink-2); }
+.line-btn, .help-empty-btn.is-line { background: #06C755; box-shadow: 0 5px 0 #049A42; }
+.line-btn:hover, .help-empty-btn.is-line:hover { box-shadow: 0 2px 0 #049A42; }
+.line-btn .btn-arrow, .help-empty-btn.is-line .btn-arrow { color: #06C755; }
+.line-btn { margin-top: 6px; }
+.line-qr { width: 132px; text-align: center; font-size: 13px; color: var(--ink-2); }
+.line-qr svg { display: block; width: 132px; height: 132px; margin-bottom: 4px; }
+.line-qr:empty { display: none; }
+@media (max-width: 1000px) {
+  .line-join { grid-template-columns: 180px 1fr; }
+  .line-qr { display: none; }
+}
+@media (max-width: 760px) {
+  .line-join { grid-template-columns: 1fr; gap: 6px; margin-top: 30px; padding: 16px 18px 22px; justify-items: center; }
+  .line-art { max-width: 230px; }
+  .line-text { align-items: center; text-align: center; }
+  .line-text h3 { font-size: 20px; }
+}
+
 /* =========================================================
    試算表內容：近期結紮場次、現在等家的孩子（有資料才顯示）
    ========================================================= */

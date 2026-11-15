@@ -271,6 +271,57 @@
     helpers.breakText([box]);
   };
 
+  /* ---------- 愛媽 LINE 社群 ---------- */
+  // 網址可以寫在 index.html 的 #line-join data-url，或試算表「互助設定」的「LINE社群網址」；只接受 LINE 的網址
+  let lineUrl = '';
+  const validLine = (u) => {
+    const t = (u || '').trim();
+    return /^https:\/\/(line\.me|lin\.ee)\/\S+$/.test(t) ? t : '';
+  };
+  const chev = () => svg('<use href="#chev"/>', '0 0 12 12');
+  const pointToLine = (a, text) => {
+    a.href = lineUrl;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    const arrow = a.querySelector('.btn-arrow');
+    if (arrow) a.replaceChildren(`${text} `, arrow);
+    else a.replaceChildren(`${text} `, chev());
+  };
+  const loadQR = () => new Promise((resolve, reject) => {
+    if (window.qrcode) { resolve(window.qrcode); return; }
+    const sc = document.createElement('script');
+    sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js';
+    sc.onload = () => resolve(window.qrcode);
+    sc.onerror = reject;
+    document.head.append(sc);
+  });
+  const setupLine = (u) => {
+    const url = validLine(u);
+    const card = document.getElementById('line-join');
+    if (!url || !card) return;
+    lineUrl = url;
+    card.querySelector('.line-btn').href = url;
+    card.hidden = false;
+    // 互助看板的「我可以幫忙」、沒有需求時的按鈕，都改成到社群
+    document.querySelectorAll('#help-list .text-link').forEach((a) => pointToLine(a, '到 LINE 社群回覆'));
+    const emptyText = document.querySelector('.help-empty-text');
+    const emptyBtn = document.querySelector('.help-empty-btn');
+    if (emptyText) { emptyText.replaceChildren('需要人手代餵、借誘捕籠、載去看醫生嗎？', el('br'), '到 LINE 社群發問，附近的愛媽、愛爸會幫忙。'); emptyText.classList.remove('seg'); }
+    if (emptyBtn) { pointToLine(emptyBtn, '到 LINE 社群發問'); emptyBtn.classList.add('is-line'); }
+    helpers.breakText([card, document.getElementById('help-empty')].filter(Boolean));
+    // 電腦版加 QR code，用手機掃描加入
+    const qrBox = card.querySelector('.line-qr');
+    if (qrBox && window.matchMedia('(min-width: 1001px)').matches) {
+      loadQR().then((qrcode) => {
+        const qr = qrcode(0, 'M');
+        qr.addData(url);
+        qr.make();
+        qrBox.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+        qrBox.append(el('span', '', '手機掃描加入'));
+      }).catch(() => {});
+    }
+  };
+
   /* ---------- 愛媽互助網：互助看板 ---------- */
   // 只放人力互助；提到錢的列不顯示（協會還沒有勸募許可）
   const HELP_ICON = {
@@ -303,7 +354,8 @@
       if (when) body.append(el('p', 'help-when', when));
       const a = el('a', 'text-link', '我可以幫忙 ');
       a.href = 'tel:0977755973';
-      a.append(svg('<use href="#chev"/>', '0 0 12 12'));
+      a.append(chev());
+      if (lineUrl) pointToLine(a, '到 LINE 社群回覆');
       body.append(a);
       li.append(icon, body);
       return li;
@@ -314,9 +366,9 @@
   };
 
   /* ---------- 愛媽互助網：登記表網址、誘捕籠借用說明 ---------- */
-  // LINE 社群的邀請連結不放網站，登記後由協會私下傳，避免陌生人進群
   const renderAimaSettings = (rows) => {
     const conf = Object.fromEntries(rows.map((o) => [o['項目'], o['內容']]));
+    if (conf['LINE社群網址']) setupLine(conf['LINE社群網址']);
     const form = safeLink(conf['登記表網址']);
     const join = document.querySelector('#aima-join [data-role="join"]');
     if (form && join) {
@@ -354,6 +406,8 @@
     return data;
   };
 
-  window.NanhengSheet = { renderAll, parseCSV, toObjects, parseDate, imageUrl };
+  setupLine((document.getElementById('line-join') || {}).dataset?.url);
+
+  window.NanhengSheet = { renderAll, parseCSV, toObjects, parseDate, imageUrl, setupLine };
   if (SHEET_ID) load();
 })();

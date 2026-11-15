@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=42">
+  <link rel="stylesheet" href="css/style.css?v=43">
   <noscript><style>.reveal{opacity:1!important;transform:none!important}.float-cta{transform:none!important;opacity:1!important;pointer-events:auto!important}</style></noscript>
 </head>
 <body>
@@ -1539,6 +1539,29 @@
       <li><svg viewBox="0 0 32 28" aria-hidden="true"><use href="#heart" fill="#E0503C"/></svg>聯絡都經過協會</li>
     </ul>
 
+    <!-- 愛媽 LINE 社群：把邀請連結填在 data-url（或試算表「互助設定」的「LINE社群網址」），有連結才會出現。
+         只接受 line.me / lin.ee 的網址。社群請設成「需經管理員核准」，加入時回答一個問題。 -->
+    <div class="line-join reveal" id="line-join" data-url="" hidden>
+      <svg class="line-art" viewBox="0 0 200 140" aria-hidden="true">
+        <ellipse cx="100" cy="129" rx="84" ry="7" fill="#EFDDA0"/>
+        <path d="M30 34 C 30 24, 38 18, 48 18 L 112 18.4 C 122 18.4, 130 24.4, 130 34.4 L 129.8 62 C 129.8 72, 121.8 78, 111.8 78 L 62 78 L 44 92 L 46 78 C 36 78, 30 72, 30 62 Z" fill="#06C755"/>
+        <path d="M50 40 h58 M50 54 h40" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+        <path d="M96 66 C 96 58, 102 54, 110 54 L 160 54.4 C 168 54.4, 174 58.4, 174 66.4 L 173.8 88 C 173.8 96, 167.8 100, 159.8 100 L 158 100 L 160 112 L 144 100 L 110 100 C 102 100, 96 96, 96 88 Z" fill="#FFFDF8"/>
+        <use href="#paw" x="124" y="62" width="26" height="26" fill="#EE8A2B"/>
+        <use href="#cat" x="18" y="74" width="34" height="45" style="--fur:#EE8A2B;--stripe:#B5452D"/>
+        <use href="#dog" x="150" y="96" width="40" height="36" style="--fur:#E0CFAE;--ear:#8A5A3B;--collar:#06C755"/>
+        <use href="#sparkle" x="176" y="24" width="14" height="14" style="--c:#F6C445"/>
+      </svg>
+      <div class="line-text">
+        <span class="line-badge">LINE 社群</span>
+        <h3>愛媽互助社群</h3>
+        <p>代餵、借籠、問結紮場次，在群組裡直接問，附近的愛媽、愛爸都能幫忙。</p>
+        <p class="line-note">申請加入後由管理員確認。群組裡不貼地址和電話。</p>
+        <a class="btn line-btn" href="#" target="_blank" rel="noopener">加入 LINE 社群 <span class="btn-arrow"><svg><use href="#chev"/></svg></span></a>
+      </div>
+      <div class="line-qr" aria-hidden="true"></div>
+    </div>
+
     <h3 class="aima-sub">互助看板</h3>
     <ul class="help-list" id="help-list" hidden></ul>
     <div class="help-empty reveal" id="help-empty">
@@ -1548,8 +1571,8 @@
         <use href="#sparkle" x="130" y="16" width="14" height="14" style="--c:#F6C445"/>
       </svg>
       <p class="help-empty-title">目前沒有待幫忙的事</p>
-      <p>需要人手代餵、借誘捕籠、載去看醫生嗎？<br>打給協會，我們幫你找附近的人。</p>
-      <a class="btn" href="tel:0977755973">打給協會 <span class="btn-arrow"><svg><use href="#chev"/></svg></span></a>
+      <p class="help-empty-text">需要人手代餵、借誘捕籠、載去看醫生嗎？<br>打給協會，我們幫你找附近的人。</p>
+      <a class="btn help-empty-btn" href="tel:0977755973">打給協會 <span class="btn-arrow"><svg><use href="#chev"/></svg></span></a>
     </div>
 
     <h3 class="aima-sub">友善餵食守則</h3>
@@ -1967,6 +1990,6 @@
 </template>
 
 <script src="js/main.js?v=32" defer></script>
-<script src="js/sheet.js?v=2" defer></script>
+<script src="js/sheet.js?v=3" defer></script>
 </body>
 </html>
