@@ -2008,6 +2008,89 @@ svg svg { max-width: none; }
 }
 
 /* =========================================================
+   愛媽互助網
+   ========================================================= */
+.aima { position: relative; background: #FFF3C4; padding: 10px 0 190px; }
+.aima-promise { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: -18px 0 8px; }
+.aima-promise li {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px 6px 8px;
+  border-radius: var(--pr, var(--pill-a));
+  background: #fff;
+  font-size: 15.5px; font-weight: 700; color: var(--ink);
+}
+.aima-promise svg { width: 26px; height: 26px; }
+.aima-sub {
+  margin: 56px 0 20px;
+  font-size: 23px; font-weight: 800; letter-spacing: .08em;
+  text-align: center;
+  color: var(--ink);
+}
+.help-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.help-card {
+  display: grid; grid-template-columns: auto 1fr; align-items: start; column-gap: 14px;
+  padding: 16px 18px;
+  border-radius: var(--hr, var(--hand-a));
+  background: #fff;
+  box-shadow: 0 5px 0 #F0DC92;
+}
+.help-icon {
+  display: grid; place-items: center;
+  width: 64px; height: 64px;
+  border-radius: var(--br, var(--blob-a));
+  background: #FFF8EC;
+}
+.help-icon svg { width: 46px; height: 46px; overflow: visible; }
+.help-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.help-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.help-tags span {
+  padding: 0 10px;
+  border-radius: var(--pill-a);
+  background: var(--peach);
+  color: var(--coral-dk);
+  font-size: 13.5px; font-weight: 800; line-height: 1.8;
+}
+.help-tags .help-type { background: var(--mint-lt); color: var(--mint-dk); }
+.help-need { font-size: 16.5px; font-weight: 700; line-height: 1.6; color: var(--ink); }
+.help-when { font-size: 14px; color: var(--ink-2); }
+.help-card .text-link { align-self: flex-start; margin-top: 4px; font-size: 15px; }
+.help-empty {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 18px 24px 26px;
+  border-radius: var(--hand-b);
+  background: #fff;
+  text-align: center;
+}
+.help-list[hidden], .help-empty[hidden] { display: none; }
+.help-empty svg { width: 160px; height: auto; }
+.help-empty-title { font-size: 19px; font-weight: 800; color: var(--ink); }
+.help-empty p:not(.help-empty-title) { color: var(--ink-2); font-size: 16px; line-height: 1.7; }
+.help-empty .btn { margin-top: 10px; }
+.aima-tools { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.aima-tool { padding: 24px 22px 26px; }
+.aima-tool .support-head h3 { font-size: 20px; }
+.aima-tool .support-head svg { width: 54px; height: 54px; padding: 8px; }
+.aima-tool p { font-size: 15.5px; }
+@media (max-width: 1000px) {
+  .help-list { grid-template-columns: repeat(2, 1fr); }
+  .aima-tools { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 760px) {
+  .aima { padding-bottom: 150px; }
+  .aima-promise { gap: 8px; margin-top: -10px; }
+  .aima-promise li { font-size: 14.5px; padding: 5px 12px 5px 6px; }
+  .aima-sub { margin: 44px 0 16px; font-size: 20px; }
+  .help-list { grid-template-columns: 1fr; gap: 12px; }
+  .help-card { padding: 14px 14px; column-gap: 12px; }
+  .help-icon { width: 56px; height: 56px; }
+  .help-icon svg { width: 40px; height: 40px; }
+  .aima-tools { grid-template-columns: 1fr; gap: 12px; }
+  .aima-tool { padding: 20px 18px 22px; }
+}
+
+/* =========================================================
    試算表內容：近期結紮場次、現在等家的孩子（有資料才顯示）
    ========================================================= */
 .tnr-sessions { margin-bottom: 26px; padding-bottom: 24px; border-bottom: 2.6px dashed var(--peach-2); }

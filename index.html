@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=40">
+  <link rel="stylesheet" href="css/style.css?v=42">
   <noscript><style>.reveal{opacity:1!important;transform:none!important}.float-cta{transform:none!important;opacity:1!important;pointer-events:auto!important}</style></noscript>
 </head>
 <body>
@@ -558,6 +558,7 @@
           <li><a href="#rescue">遇到受傷動物</a></li>
         </ul>
       </li>
+      <li><a href="#aima">愛媽互助網</a></li>
       <li><a href="#faq">常見問題</a></li>
     </ul>
     <a class="nav-cta" href="#contact">
@@ -587,6 +588,7 @@
       <a href="#support"><span class="en">Support</span>一起幫忙</a>
       <div class="mm-sub"><a href="#supplies">所需物資</a><a href="#donate">如何捐款</a><a href="#report">通報・志工</a><a href="#rescue">遇到受傷動物</a></div>
     </li>
+    <li><a href="#aima"><span class="en">Caregivers</span>愛媽互助網</a></li>
     <li><a href="#faq"><span class="en">FAQ</span>常見問題</a></li>
     <li><a href="#contact"><span class="en">Contact</span>聯絡我們</a></li>
   </ul>
@@ -1518,6 +1520,141 @@
   </div>
 </section>
 
+<!-- ============ 愛媽互助網 ============
+     互助看板、加入社群的連結、誘捕籠說明，內容來自 Google 試算表「互助看板」「互助設定」分頁（見 js/sheet.js）。
+     原則：不公開餵食地點（最多寫到里）、不公開個人電話、聯絡一律經過協會；
+     看板只放人力互助（代餵、借籠、載送），飼料和錢由協會私下媒合（還沒有勸募許可）。 -->
+<section class="aima" id="aima" aria-labelledby="aima-title">
+  <svg class="wave wave--top" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true"><path d="M0 110 V48 C 220 90 520 96 780 60 C 1040 24 1260 30 1440 64 V110 Z" fill="#FFF3C4"/></svg>
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="en-label en">Caregivers helping caregivers</span>
+      <h2 id="aima-title">愛媽互助網</h2>
+      <p class="sec-lead"><span class="ln">愛媽、愛爸都歡迎。</span><span class="ln">照顧山裡的孩子，大家互相幫一把。</span></p>
+    </div>
+
+    <ul class="aima-promise reveal" aria-label="互助網的約定">
+      <li><svg viewBox="0 0 56 72" aria-hidden="true"><use href="#pin" style="--pinc:#3FAE93"/></svg>不公開餵食地點</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" fill="#3A8DC9"/></svg>不公開個人電話</li>
+      <li><svg viewBox="0 0 32 28" aria-hidden="true"><use href="#heart" fill="#E0503C"/></svg>聯絡都經過協會</li>
+    </ul>
+
+    <h3 class="aima-sub">互助看板</h3>
+    <ul class="help-list" id="help-list" hidden></ul>
+    <div class="help-empty reveal" id="help-empty">
+      <svg viewBox="0 0 160 90" role="img" aria-label="一隻貓趴著睡覺">
+        <ellipse cx="80" cy="84" rx="62" ry="5" fill="#EFDDA0"/>
+        <use href="#cat-loaf" x="36" y="22" width="92" height="57" style="--fur:#EE8A2B;--stripe:#B5452D"/>
+        <use href="#sparkle" x="130" y="16" width="14" height="14" style="--c:#F6C445"/>
+      </svg>
+      <p class="help-empty-title">目前沒有待幫忙的事</p>
+      <p>需要人手代餵、借誘捕籠、載去看醫生嗎？<br>打給協會，我們幫你找附近的人。</p>
+      <a class="btn" href="tel:0977755973">打給協會 <span class="btn-arrow"><svg><use href="#chev"/></svg></span></a>
+    </div>
+
+    <h3 class="aima-sub">友善餵食守則</h3>
+    <ol class="r-steps aima-rules">
+      <li class="r-step reveal" style="--i:0">
+        <svg class="r-scene" viewBox="0 0 200 140" role="img" aria-label="時鐘和地點標記旁，一隻貓在碗前吃飯">
+          <ellipse cx="100" cy="129" rx="86" ry="7" fill="#EFDDA0"/>
+          <circle cx="150" cy="44" r="30" fill="#3A8DC9"/>
+          <circle cx="150" cy="44" r="23" fill="#FFFDF8"/>
+          <path d="M150 23.5 v3.4 M170.5 44 h-3.4 M150 64.5 v-3.4 M129.5 44 h3.4" fill="none" stroke="#3A8DC9" stroke-width="2.6" stroke-linecap="round"/>
+          <path class="k" d="M150 44 V 30 M150 44 L 160.6 50.4" stroke-width="3.4"/>
+          <circle cx="150" cy="44" r="2.8" fill="#1F1B1A"/>
+          <use href="#cat" x="30" y="44" width="58" height="76" style="--fur:#EE8A2B;--stripe:#B5452D"/>
+          <use href="#bowl" x="86" y="104" width="48" height="24"/>
+          <g class="bob"><use href="#pin" x="158" y="80" width="28" height="36"/></g>
+        </svg>
+        <h3>定時定點</h3>
+        <p>固定時間、固定地方</p>
+      </li>
+      <li class="r-step reveal" style="--i:1">
+        <svg class="r-scene" viewBox="0 0 200 140" role="img" aria-label="吃完的空碗旁放著綁好的垃圾袋，打了一個勾">
+          <ellipse cx="100" cy="129" rx="86" ry="7" fill="#EFDDA0"/>
+          <use href="#bowl" x="26" y="100" width="56" height="28"/>
+          <path d="M112 76 C 102 92, 102 118, 118 125 L 160 125 C 176 118, 176 92, 166 76 Z" fill="#6E7C85"/>
+          <path d="M128 78 C 130 64, 148 64, 150 78" fill="#6E7C85"/>
+          <path d="M126 72 l12 6 l12 -6" fill="none" stroke="#9AA8B1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="166" cy="40" r="15" fill="#3FAE93"/>
+          <path d="M158 40 l6 6 l10 -12" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <use href="#sparkle" x="56" y="62" width="16" height="16" style="--c:#F6C445"/>
+          <use href="#sparkle" x="88" y="40" width="12" height="12" style="--c:#F5A6BE"/>
+        </svg>
+        <h3>吃完收乾淨</h3>
+        <p>碗收走，不留食物</p>
+      </li>
+      <li class="r-step reveal" style="--i:2">
+        <svg class="r-scene" viewBox="0 0 200 140" role="img" aria-label="盤子上的魚骨頭打叉，旁邊的乾飼料打勾">
+          <ellipse cx="100" cy="129" rx="86" ry="7" fill="#EFDDA0"/>
+          <ellipse cx="62" cy="98" rx="46" ry="14" fill="#FFFDF8"/>
+          <path class="k" d="M36 94 H 80 M42 88 l4 6 l-4 6 M52 87 l4 7 l-4 7 M62 87 l4 7 l-4 7 M72 88 l4 6 l-4 6" stroke-width="2.6"/>
+          <path d="M80 94 l11 -9 v18 z" fill="#B3BEC5"/>
+          <use href="#nope" x="28" y="58" width="68" height="68"/>
+          <use href="#bag" x="124" y="40" width="54" height="69" style="--bag:#3A8DC9"/>
+          <use href="#bowl" x="110" y="108" width="36" height="18"/>
+          <circle cx="178" cy="40" r="14" fill="#3FAE93"/>
+          <path d="M170.6 40 l5.4 5.4 l9.6 -11" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>只放乾飼料</h3>
+        <p>不放廚餘、魚骨頭</p>
+      </li>
+      <li class="r-step reveal" style="--i:3">
+        <svg class="r-scene" viewBox="0 0 200 140" role="img" aria-label="左耳剪了缺角的貓，旁邊有剪刀和愛心">
+          <ellipse cx="100" cy="129" rx="86" ry="7" fill="#EFDDA0"/>
+          <use href="#cat" x="68" y="24" width="64" height="84" style="--fur:#7FA7C4"/>
+          <circle cx="84" cy="33" r="12" fill="none" stroke="#E0503C" stroke-width="2.6" stroke-dasharray="4 4"/>
+          <g transform="translate(26 22) rotate(-18 12 14)">
+            <path d="M7 16 L 19 2 M13 16 L 5 2" fill="none" stroke="#7A8A94" stroke-width="3.4" stroke-linecap="round"/>
+            <circle cx="6" cy="20" r="4.6" fill="none" stroke="#E0503C" stroke-width="2.8"/>
+            <circle cx="14.6" cy="20" r="4.6" fill="none" stroke="#E0503C" stroke-width="2.8"/>
+          </g>
+          <use href="#heart" x="146" y="44" width="32" height="28" fill="#E0503C"/>
+          <use href="#sparkle" x="150" y="86" width="14" height="14" style="--c:#F6C445"/>
+        </svg>
+        <h3>餵養也要結紮</h3>
+        <p>先結紮，族群才不會變多</p>
+      </li>
+    </ol>
+
+    <h3 class="aima-sub">互助工具</h3>
+    <ul class="aima-tools">
+      <li class="support-card support-card--peach aima-tool reveal" id="aima-join">
+        <div class="support-head">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 9 C 10 7, 11 6, 13 6 L 35 6.2 C 37 6.2, 38 7.2, 38 9.2 L 37.8 41 C 37.8 43, 36.8 44, 34.8 44 L 13 43.8 C 11 43.8, 10 42.8, 10 40.8 Z" fill="#FFFDF8"/><path d="M18 4 h12 v6 h-12 Z" fill="#E0503C"/><path d="M16 19 h16 M16 26 h16 M16 33 h10" fill="none" stroke="#B3BEC5" stroke-width="3" stroke-linecap="round"/></svg>
+          <h3>加入互助愛媽</h3>
+        </div>
+        <p>登記之後，協會會幫你和附近的愛媽、愛爸牽線。</p><p>登記資料只給協會看，不會公開。</p>
+        <a class="text-link" href="tel:0977755973" data-role="join">來電登記 <svg><use href="#chev"/></svg></a>
+      </li>
+      <li class="support-card support-card--sky aima-tool reveal" id="aima-trap">
+        <div class="support-head">
+          <svg viewBox="0 0 120 90" aria-hidden="true"><use href="#cage-b"/><use href="#cat" x="38" y="16" width="44" height="58" style="--fur:#EE8A2B;--stripe:#B5452D"/><use href="#cage-f"/></svg>
+          <h3>借用誘捕籠</h3>
+        </div>
+        <p>抓不到要結紮的貓狗嗎？</p>
+        <a class="text-link" href="tel:0977755973">來電詢問借用 <svg><use href="#chev"/></svg></a>
+      </li>
+      <li class="support-card support-card--mint aima-tool reveal">
+        <div class="support-head">
+          <svg viewBox="0 0 64 84" aria-hidden="true"><use href="#cat" style="--fur:#7FA7C4"/></svg>
+          <h3>免費結紮場次</h3>
+        </div>
+        <p>餵養的孩子還沒結紮，先報名結紮場次。</p>
+        <a class="text-link" href="#tnr">看結紮資訊 <svg><use href="#chev"/></svg></a>
+      </li>
+      <li class="support-card support-card--yellow aima-tool reveal">
+        <div class="support-head">
+          <svg viewBox="0 0 60 48" aria-hidden="true"><use href="#med"/></svg>
+          <h3>遇到受傷的動物</h3>
+        </div>
+        <p>先顧好自己，再打電話找人幫忙。</p>
+        <a class="text-link" href="#rescue">看處理步驟 <svg><use href="#chev"/></svg></a>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <!-- ============ 最新消息 ============ -->
 <section class="news" id="news" aria-labelledby="news-title">
   <svg class="wave wave--top" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true"><path d="M0 110 V70 C 220 20 480 0 760 30 C 1040 60 1240 60 1440 20 V110 Z" fill="#FFE2D6"/></svg>
@@ -1780,6 +1917,7 @@
         <a href="#rescue">遇到受傷動物</a>
         <a href="#news">最新消息</a>
         <a href="#gallery">相片集</a>
+        <a href="#aima">愛媽互助網</a>
         <a href="#faq">常見問題</a>
         <a href="#contact">聯絡我們</a>
       </nav>
@@ -1828,7 +1966,7 @@
   </svg>
 </template>
 
-<script src="js/main.js?v=31" defer></script>
-<script src="js/sheet.js?v=1" defer></script>
+<script src="js/main.js?v=32" defer></script>
+<script src="js/sheet.js?v=2" defer></script>
 </body>
 </html>

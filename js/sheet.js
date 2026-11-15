@@ -10,7 +10,7 @@
    ========================================================= */
 (() => {
   const SHEET_ID = '';
-  const TABS = { supplies: '所需物資', sessions: '結紮場次', news: '最新消息', pets: '等家的孩子' };
+  const TABS = { supplies: '所需物資', sessions: '結紮場次', news: '最新消息', pets: '等家的孩子', help: '互助看板', aima: '互助設定' };
   const FB_PAGE = 'https://www.facebook.com/profile.php?id=100063551122273';
   const FB_MSG = 'https://m.me/100063551122273';
   const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -271,6 +271,69 @@
     helpers.breakText([box]);
   };
 
+  /* ---------- 愛媽互助網：互助看板 ---------- */
+  // 只放人力互助；提到錢的列不顯示（協會還沒有勸募許可）
+  const HELP_ICON = {
+    代餵: '<use href="#bowl" x="4" y="26" width="40" height="20"/><use href="#paw" x="14" y="2" width="20" height="20" fill="#EE8A2B"/>',
+    借籠: '<use href="#cage-b" x="0" y="6" width="48" height="36"/><use href="#cat" x="14" y="9" width="20" height="26" style="--fur:#EE8A2B;--stripe:#B5452D"/><use href="#cage-f" x="0" y="6" width="48" height="36"/>',
+    載送: '<use href="#truck" x="-2" y="10" width="52" height="30"/>',
+    其他: '<use href="#heart" x="8" y="8" width="32" height="28" fill="#E0503C"/>',
+  };
+  const MONEY = /捐款|匯款|轉帳|現金|募款|募集|捐錢|贊助/;
+  const renderHelp = (rows) => {
+    const listEl = document.getElementById('help-list');
+    const empty = document.getElementById('help-empty');
+    const items = rows
+      .filter((o) => o['需要什麼'] && !MONEY.test(o['需要什麼']))
+      .map((o) => ({ ...o, date: parseDate(o['日期']) }))
+      .sort((a, b) => (b.date || 0) - (a.date || 0))
+      .slice(0, 6);
+    if (!listEl || !items.length) return;
+    listEl.replaceChildren(...items.map((o) => {
+      const type = HELP_ICON[o['類型']] ? o['類型'] : '其他';
+      const li = el('li', 'help-card');
+      const icon = el('div', 'help-icon');
+      icon.append(svg(HELP_ICON[type], '0 0 48 48'));
+      const body = el('div', 'help-body');
+      const tags = el('div', 'help-tags');
+      if (o['地區']) tags.append(el('span', '', o['地區']));
+      tags.append(el('span', 'help-type', type));
+      body.append(tags, el('p', 'help-need', o['需要什麼']));
+      const when = o['期間'] || (o.date ? `${o.date.getMonth() + 1}/${o.date.getDate()} 公告` : '');
+      if (when) body.append(el('p', 'help-when', when));
+      const a = el('a', 'text-link', '我可以幫忙 ');
+      a.href = 'tel:0977755973';
+      a.append(svg('<use href="#chev"/>', '0 0 12 12'));
+      body.append(a);
+      li.append(icon, body);
+      return li;
+    }));
+    listEl.hidden = false;
+    if (empty) empty.hidden = true;
+    helpers.breakText([listEl]);
+  };
+
+  /* ---------- 愛媽互助網：登記表網址、誘捕籠借用說明 ---------- */
+  // LINE 社群的邀請連結不放網站，登記後由協會私下傳，避免陌生人進群
+  const renderAimaSettings = (rows) => {
+    const conf = Object.fromEntries(rows.map((o) => [o['項目'], o['內容']]));
+    const form = safeLink(conf['登記表網址']);
+    const join = document.querySelector('#aima-join [data-role="join"]');
+    if (form && join) {
+      join.href = form;
+      join.target = '_blank';
+      join.rel = 'noopener';
+      join.replaceChildren('填寫登記表 ', join.querySelector('svg') || '');
+    }
+    const trap = document.getElementById('aima-trap');
+    if (trap && conf['誘捕籠借用說明']) {
+      const p = trap.querySelector('p');
+      p.textContent = conf['誘捕籠借用說明'];
+      p.classList.remove('seg');
+      helpers.breakText([trap]);
+    }
+  };
+
   /* ---------- 全部一起 ---------- */
   const renderAll = (data) => {
     const run = (fn, rows) => { try { if (rows && rows.length) fn(rows); } catch (e) { /* 單一區塊出錯不影響其他 */ } };
@@ -278,6 +341,8 @@
     run(renderSessions, data.sessions);
     run(renderNews, data.news);
     run(renderPets, data.pets);
+    run(renderHelp, data.help);
+    run(renderAimaSettings, data.aima);
   };
 
   const load = async () => {
