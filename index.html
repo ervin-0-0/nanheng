@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=37">
+  <link rel="stylesheet" href="css/style.css?v=38">
   <noscript><style>.reveal{opacity:1!important;transform:none!important}.float-cta{transform:none!important;opacity:1!important;pointer-events:auto!important}</style></noscript>
 </head>
 <body>
@@ -1273,8 +1273,28 @@
           <svg viewBox="0 0 40 20" aria-hidden="true"><use href="#bowl"/></svg>
           <h3>所需物資</h3>
         </div>
-        <p>狗園照顧約 120 隻毛孩，每天用量最大的是犬貓飼料。</p>
-        <p>協會目前不公開募集物資。若您主動想捐，請先來電確認狗園缺什麼、怎麼收，避免重複或放到過期。</p>
+        <svg class="supply-art" viewBox="0 0 220 120" role="img" aria-label="一隻狗狗身上有跳蚤在跳，牠正抓癢；旁邊有一瓶除蚤滴劑">
+          <ellipse cx="110" cy="112" rx="92" ry="7" fill="#B2E0E9"/>
+          <use href="#dog" x="34" y="22" width="100" height="89" style="--fur:#E0CFAE;--ear:#8A5A3B;--collar:#E0503C"/>
+          <path class="k" d="M66 34 l-9 -5 M63 45 l-10 0 M66 56 l-9 5" stroke-width="2.8"/>
+          <g fill="#3A2E2A">
+            <ellipse class="flea" style="animation-delay:0s" cx="104" cy="20" rx="2.8" ry="2.1"/>
+            <ellipse class="flea" style="animation-delay:-.45s" cx="124" cy="13" rx="2.4" ry="1.8"/>
+            <ellipse class="flea" style="animation-delay:-.9s" cx="82" cy="16" rx="2.4" ry="1.8"/>
+          </g>
+          <path d="M98 27 q3 -7 7 -3 M118 21 q3 -6 7 -3 M76 23 q3 -6 7 -3" fill="none" stroke="#3A2E2A" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="2 3"/>
+          <g transform="translate(158 36)">
+            <path d="M6 30 C 6 26, 9 24, 13 24 L 29 24.2 C 33 24.2, 36 26.4, 36 30.4 L 35.6 66 C 35.6 69, 33.6 71, 30.6 71 L 11 70.8 C 8 70.8, 6 68.8, 6 65.8 Z" fill="#5DBE9E"/>
+            <path d="M11 37 C 11 36.4, 11.4 36, 12 36 L 30 36.2 C 30.6 36.2, 31 36.6, 31 37.2 L 30.8 55 C 30.8 55.6, 30.4 56, 29.8 56 L 12 55.8 C 11.4 55.8, 11 55.4, 11 54.8 Z" fill="#FFFDF8"/>
+            <use href="#paw" x="14.4" y="39.2" width="13" height="13" fill="#E0503C"/>
+            <path d="M13 24 L 13.6 16 L 28.4 16 L 29 24 Z" fill="#FFFDF8"/>
+            <path d="M15 16 C 14 8, 16 2, 21 2 C 26 2, 28 8, 27 16 Z" fill="#E0503C"/>
+          </g>
+          <path d="M150 58 C 147 63, 147 67, 150 68 C 153 67, 153 63, 150 58 Z" fill="#7FC8E8"/>
+          <use href="#sparkle" x="196" y="22" width="12" height="12" style="--c:#F6C445"/>
+        </svg>
+        <p>狗園最近跳蚤比較多，最常用到的是犬用除蚤藥（滴劑或口服錠）。</p>
+        <p>協會目前不公開募集物資。若您主動想捐，請先來電，確認狗狗的體重級距和數量。</p>
         <a class="text-link" href="tel:0977755973">先來電確認 <svg><use href="#chev"/></svg></a>
       </li>
       <li class="support-card support-card--peach reveal" id="donate">
@@ -1775,6 +1795,6 @@
   </a>
 </div>
 
-<script src="js/main.js?v=26" defer></script>
+<script src="js/main.js?v=28" defer></script>
 </body>
 </html>

@@ -1128,6 +1128,12 @@ svg svg { max-width: none; }
 .support-head h3 { font-size: 25px; font-weight: 800; letter-spacing: .08em; color: var(--ink); }
 .support-card p:last-of-type { flex: 1; }
 .support-card .text-link { align-self: flex-start; }
+/* 所需物資的小插畫：狗狗抓跳蚤＋除蚤滴劑 */
+.supply-art { display: block; width: 100%; max-width: 320px; height: auto; aspect-ratio: 220 / 120; margin: 2px auto 0; }
+@keyframes flea-hop { 0%, 100% { transform: translateY(0); } 35% { transform: translateY(-7px); } 55% { transform: translateY(-4px); } }
+@media (prefers-reduced-motion: no-preference) {
+  .flea { transform-box: fill-box; animation: flea-hop 1.3s ease-in-out infinite; }
+}
 
 /* =========================================================
    News
