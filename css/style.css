@@ -1958,3 +1958,110 @@ svg svg { max-width: none; }
   .daily-track li[aria-hidden="true"] { display: none; }
   .marquee { -webkit-mask-image: none; mask-image: none; }
 }
+
+/* =========================================================
+   免費結紮資訊（插畫版）
+   ========================================================= */
+.tnr-sub { font-size: 21px; font-weight: 800; letter-spacing: .06em; text-align: center; color: var(--ink); }
+.tnr-who { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 12px; }
+.tnr-pet { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+.tnr-pet svg { display: block; width: 100%; max-width: 116px; height: auto; aspect-ratio: 1; }
+.tnr-pet strong { font-size: 18px; font-weight: 800; letter-spacing: .06em; color: var(--ink); }
+.tnr-pet small { font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
+.tnr-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 0 11px 0 8px;
+  font-size: 14.5px; font-weight: 800; line-height: 1.8;
+}
+.tnr-tag svg { width: 15px; height: 15px; }
+.tnr-tag--free { background: var(--mint-lt); color: var(--mint-dk); }
+.tnr-tag--pay { background: var(--yellow); color: #7A5C0A; }
+.tnr-facts {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+  margin-top: 24px; padding-top: 24px;
+  border-top: 2.6px dashed var(--peach-2);
+}
+.tnr-fact {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 10px 10px 14px;
+  background: var(--cream);
+  text-align: center;
+}
+.tnr-fact svg { display: block; width: 100%; max-width: 160px; height: auto; aspect-ratio: 120 / 84; }
+.tnr-fact strong { margin-top: 4px; font-size: 17px; font-weight: 800; color: var(--ink); }
+.tnr-fact span { font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+@media (max-width: 760px) {
+  .tnr-sub { font-size: 19px; }
+  .tnr-who { grid-template-columns: repeat(2, 1fr); gap: 16px 10px; }
+  .tnr-pet svg { max-width: 124px; }
+  .tnr-pet strong { font-size: 17px; }
+  .tnr-facts { gap: 10px; margin-top: 20px; padding-top: 20px; }
+  .tnr-fact { padding: 8px 6px 12px; }
+  .tnr-fact strong { font-size: 15.5px; }
+  .tnr-fact span { font-size: 13px; }
+}
+
+/* =========================================================
+   兒童手繪外框（2026-11-15）
+   不畫描邊線，只把形狀改成歪歪的手繪感，像小朋友剪下來的色紙。
+   卡片用 --hand-*、膠囊按鈕用 --pill-*、圓形用 --blob-*；
+   同一排的卡片依 nth-child 換不同歪法，才不會每張都一樣。
+   拍立得、看大圖的相框維持照片的樣子。
+   ========================================================= */
+:root {
+  --hand-a: 255px 22px 225px 22px / 22px 225px 22px 255px;
+  --hand-b: 22px 255px 22px 225px / 225px 22px 255px 22px;
+  --hand-c: 225px 26px 255px 18px / 26px 255px 18px 225px;
+  --pill-a: 40px 30px 44px 32px / 30px 40px 28px 38px;
+  --pill-b: 30px 44px 32px 40px / 38px 28px 40px 30px;
+  --blob-a: 55% 45% 52% 48% / 48% 54% 46% 52%;
+  --blob-b: 46% 54% 47% 53% / 55% 45% 53% 47%;
+}
+li:nth-child(3n+2), .faq-item:nth-child(3n+2) { --hr: var(--hand-b); --pr: var(--pill-b); --br: var(--blob-b); }
+li:nth-child(3n), .faq-item:nth-child(3n) { --hr: var(--hand-c); }
+
+/* 卡片、相框、對話框 */
+.card, .about-caption, .daily-track li, .bubble, .tnr-photo, .tnr-callout,
+.support-card, .thanks-photos li, .faq-item, .contact-list, .sub,
+.r-step, .r-case, .call-card a, .g-table, .news-thumb, .tnr-fact {
+  border-radius: var(--hr, var(--hand-a));
+}
+.impact-item { border-radius: 50% 50% 26px 32px / 118px 104px 24px 30px; }
+li:nth-child(even).impact-item { border-radius: 50% 50% 32px 24px / 104px 120px 30px 22px; }
+.daily-track img, .thanks-photos img, .tnr-photo img { border-radius: 30px 8px 24px 10px / 10px 26px 8px 30px; }
+@media (min-width: 761px) {
+  .step { border-radius: var(--hr, var(--hand-a)); }
+}
+@media (max-width: 760px) {
+  .work-item { border-radius: var(--hr, var(--hand-a)); }
+}
+
+/* 對話框的尾巴：轉 45° 的白色小方塊 */
+.bubble::after {
+  top: -13px;
+  width: 26px; height: 26px;
+  margin-left: -13px;
+  clip-path: none;
+  border-radius: 5px 0 0 0;
+  transform: rotate(45deg);
+}
+
+/* 膠囊按鈕、標籤 */
+.btn, .nav-cta, .chip, .logo-pill, .tl-year, .work-tag, .step-no, .g-filter, .float-btn,
+.fb-link--footer, .marquee-track span, .mobile-menu .mm-sub a, .tnr-tag {
+  border-radius: var(--pr, var(--pill-a));
+}
+/* 原本靠珊瑚色細線框出來的白色按鈕，改成淡粉色底 */
+.btn--ghost { background: var(--peach); box-shadow: 0 5px 0 var(--peach-2); }
+.btn--ghost:hover { box-shadow: 0 2px 0 var(--peach-2); }
+.float-btn--light { box-shadow: 0 5px 0 var(--peach-2), 0 6px 18px rgba(75, 59, 54, .12); }
+.float-btn--light:hover { box-shadow: 0 2px 0 var(--peach-2), 0 4px 12px rgba(75, 59, 54, .12); }
+
+/* 圓形：圖示、照片、按鈕 */
+.header-fb, .menu-btn, .impact-icon, .about-photo--sub, .adopt-photos li, .support-head svg,
+.q, .call-badge, .call-icon, .lb-btn, .btn-arrow {
+  border-radius: var(--br, var(--blob-a));
+}
+@media (max-width: 760px) {
+  .step-icon { border-radius: var(--blob-a); }
+}
