@@ -111,7 +111,7 @@
      再由 CSS 的 .seg { word-break: keep-all } 關掉其他位置的換行。
      瀏覽器不支援斷詞器時什麼都不做，維持原本的自動換行。
      ========================================================= */
-  const breakByPhrase = () => {
+  const breakByPhrase = (roots = document.querySelectorAll('main, .site-footer')) => {
     if (typeof Intl === 'undefined' || !Intl.Segmenter) return;
     const segmenter = new Intl.Segmenter('zh-Hant', { granularity: 'word' });
 
@@ -256,13 +256,13 @@
     const BLOCKS = '.ln,h1,h2,h3,p,li,dd,dt,summary,figcaption,.bubble,.tnr-callout';
     const SKIP = 'svg,script,style,nav,.en,.btn,.chip,.marquee,.sr-only,.count,.float-cta,.nowrap,a[href^="mailto:"]';
     const groups = new Map();
-    document.querySelectorAll('main, .site-footer').forEach((root) => {
+    roots.forEach((root) => {
       const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
       for (let node = walker.nextNode(); node; node = walker.nextNode()) {
         const parent = node.parentElement;
         if (!node.nodeValue.trim() || !parent || parent.closest(SKIP)) continue;
         const blockEl = parent.closest(BLOCKS);
-        if (!blockEl) continue;
+        if (!blockEl || blockEl.classList.contains('seg')) continue;   // 已經處理過的不再處理
         if (!groups.has(blockEl)) groups.set(blockEl, []);
         groups.get(blockEl).push(node);
       }
@@ -375,32 +375,36 @@
   });
 
   /* ---------- 手機橫滑卡片：下方的小圓點 ---------- */
-  document.querySelectorAll('[data-carousel]').forEach((list) => {
-    const items = [...list.children];
-    const dots = document.createElement('div');
-    dots.className = 'dots';
-    dots.setAttribute('aria-hidden', 'true');
-    items.forEach(() => dots.appendChild(document.createElement('span')));
-    list.after(dots);
-
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-      const start = list.getBoundingClientRect().left;
-      let best = 0;
-      let bestDist = Infinity;
-      items.forEach((item, i) => {
-        const dist = Math.abs(item.getBoundingClientRect().left - start - 20);
-        if (dist < bestDist) { bestDist = dist; best = i; }
-      });
-      if (list.scrollLeft >= list.scrollWidth - list.clientWidth - 4) best = items.length - 1;
-      [...dots.children].forEach((dot, i) => dot.classList.toggle('is-on', i === best));
-    };
-    list.addEventListener('scroll', () => {
-      if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
-    }, { passive: true });
-    update();
-  });
+  const carousels = new Map();
+  const initCarousel = (list) => {
+    let state = carousels.get(list);
+    if (!state) {
+      state = { dots: document.createElement('div'), items: [], ticking: false };
+      state.dots.className = 'dots';
+      state.dots.setAttribute('aria-hidden', 'true');
+      list.after(state.dots);
+      state.update = () => {
+        state.ticking = false;
+        const start = list.getBoundingClientRect().left;
+        let best = 0;
+        let bestDist = Infinity;
+        state.items.forEach((item, i) => {
+          const dist = Math.abs(item.getBoundingClientRect().left - start - 20);
+          if (dist < bestDist) { bestDist = dist; best = i; }
+        });
+        if (list.scrollLeft >= list.scrollWidth - list.clientWidth - 4) best = state.items.length - 1;
+        [...state.dots.children].forEach((dot, i) => dot.classList.toggle('is-on', i === best));
+      };
+      list.addEventListener('scroll', () => {
+        if (!state.ticking) { state.ticking = true; window.requestAnimationFrame(state.update); }
+      }, { passive: true });
+      carousels.set(list, state);
+    }
+    state.items = [...list.children];
+    state.dots.replaceChildren(...state.items.map(() => document.createElement('span')));
+    state.update();
+  };
+  document.querySelectorAll('[data-carousel]').forEach(initCarousel);
 
   /* ---------- 進場動畫 ---------- */
   const reveals = document.querySelectorAll('.reveal');
@@ -562,6 +566,9 @@
       if (e.target === lightbox) close();
     });
   }
+
+  /* ---------- 給 js/sheet.js（試算表內容）用的小工具 ---------- */
+  window.Nanheng = { breakText: breakByPhrase, initCarousel };
 
   /* ---------- 年份 ---------- */
   const year = document.getElementById('year');

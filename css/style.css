@@ -2008,6 +2008,76 @@ svg svg { max-width: none; }
 }
 
 /* =========================================================
+   試算表內容：近期結紮場次、現在等家的孩子（有資料才顯示）
+   ========================================================= */
+.tnr-sessions { margin-bottom: 26px; padding-bottom: 24px; border-bottom: 2.6px dashed var(--peach-2); }
+.session-list { display: grid; gap: 10px; margin-top: 12px; }
+.session {
+  display: flex; align-items: center; gap: 14px;
+  padding: 10px 16px 10px 10px;
+  border-radius: var(--hr, var(--hand-a));
+  background: var(--peach);
+}
+.session-date {
+  flex: none;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  width: 70px; height: 66px;
+  padding-top: 12px;
+  border-radius: 18px 22px 16px 24px / 22px 16px 24px 18px;
+  background: #fff;
+  box-shadow: inset 0 14px 0 var(--coral);
+}
+.session-date b { font-size: calc(19px / var(--tz, 1)); line-height: 1.1; letter-spacing: -.02em; color: var(--ink); }
+.session-date small { margin-top: 1px; font-size: calc(12.5px / var(--tz, 1)); font-weight: 700; color: var(--ink-2); }
+.session-body { display: flex; flex-direction: column; min-width: 0; }
+.session-body strong { font-size: 17px; font-weight: 800; line-height: 1.45; color: var(--ink); }
+.session-meta { font-size: 15px; font-weight: 700; color: var(--coral-dk); }
+.session-note { font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+
+.pets { margin-top: 72px; text-align: center; }
+.pet-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; text-align: left; }
+.pet-card {
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--hr, var(--hand-a));
+  background: var(--cream);
+}
+.pet-photo { display: grid; place-items: center; aspect-ratio: 4 / 3; background: var(--mint-lt); }
+.pet-photo--cat { background: #FFD9E4; }
+.pet-photo img { width: 100%; height: 100%; object-fit: cover; }
+.pet-photo svg { width: 100%; height: 100%; }
+.pet-info { display: flex; flex: 1; flex-direction: column; gap: 6px; padding: 16px 18px 20px; }
+.pet-name { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 21px; font-weight: 800; color: var(--ink); }
+.pet-sex { display: grid; place-items: center; width: 26px; height: 26px; border-radius: var(--blob-a); }
+.pet-sex--male { background: #3A8DC9; }
+.pet-sex--female { background: #F07AA0; }
+.pet-sex svg { width: 18px; height: 18px; }
+.pet-meta { font-size: 15px; font-weight: 700; color: var(--ink-2); }
+.pet-trait { font-size: 16px; line-height: 1.6; color: var(--ink); }
+.pet-health { display: flex; flex-wrap: wrap; gap: 6px; }
+.pet-health li {
+  padding: 0 10px 0 8px;
+  border-radius: var(--pill-a);
+  background: var(--mint-lt);
+  color: var(--mint-dk);
+  font-size: 13.5px; font-weight: 700; line-height: 1.8;
+}
+.pet-health li::before { content: "✓ "; }
+.pet-btn { align-self: flex-start; margin-top: auto; padding: 10px 12px 10px 20px; font-size: 16px; }
+@media (max-width: 1000px) { .pet-list { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 760px) {
+  .tnr-sessions { margin-bottom: 22px; padding-bottom: 20px; }
+  .session { gap: 12px; padding: 8px 12px 8px 8px; }
+  .session-date { width: 64px; height: 62px; }
+  .session-body strong { font-size: 16px; }
+  .session-meta { font-size: 14.5px; }
+  .pets { margin-top: 56px; }
+  .pet-list { grid-template-columns: 1fr; gap: 14px; margin-top: 22px; }
+  .pet-info { padding: 14px 16px 18px; }
+  .pet-name { font-size: 19px; }
+}
+
+/* =========================================================
    兒童手繪外框（2026-11-15）
    不畫描邊線，只把形狀改成歪歪的手繪感，像小朋友剪下來的色紙。
    卡片用 --hand-*、膠囊按鈕用 --pill-*、圓形用 --blob-*；
