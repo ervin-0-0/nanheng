@@ -450,6 +450,119 @@
     counters.forEach((el) => cio.observe(el));
   }
 
+  /* ---------- 相片集：分類、看更多、全螢幕看圖 ---------- */
+  const gallery = document.querySelector('.gallery');
+  const lightbox = document.querySelector('.lightbox');
+  if (gallery && lightbox) {
+    const items = [...gallery.querySelectorAll('.g-item')];
+    const filters = [...gallery.querySelectorAll('.g-filter')];
+    const grid = gallery.querySelector('.gallery-grid');
+    const pile = gallery.querySelector('.g-pile');
+    const moreN = gallery.querySelector('.g-more-n');
+    const wide = window.matchMedia('(min-width: 761px)');
+    const desk = window.matchMedia('(min-width: 1001px)');
+    let cat = 'all';
+    let expanded = false;
+
+    const matching = () => items.filter((it) => cat === 'all' || it.dataset.cat === cat);
+    const render = () => {
+      const list = matching();
+      // 一開始攤開幾排（手機 4 排、平板電腦 3 排），最後一格放「還沒攤開的那一疊」
+      const cols = getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length || 2;
+      const first = cols * (wide.matches ? 3 : 4) - 1;
+      // 剩不到 3 張就不用疊，直接全部攤開
+      const limit = expanded || list.length <= first + 2 ? list.length : first;
+      items.forEach((it) => { it.hidden = true; });
+      list.slice(0, limit).forEach((it) => { it.hidden = false; });
+      const rest = list.length - limit;
+      pile.hidden = rest === 0;
+      moreN.textContent = rest;
+    };
+    filters.forEach((btn) => btn.addEventListener('click', () => {
+      cat = btn.dataset.cat;
+      filters.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      expanded = false;
+      render();
+    }));
+    pile.addEventListener('click', () => {
+      const firstNew = matching().find((it) => it.hidden);
+      expanded = true;
+      render();
+      if (firstNew) firstNew.focus({ preventScroll: true });
+    });
+    wide.addEventListener('change', render);
+    desk.addEventListener('change', render);
+    render();
+
+    const lbFig = lightbox.querySelector('.lb-figure');
+    const lbImg = lbFig.querySelector('img');
+    const lbTitle = lbFig.querySelector('.lb-title');
+    const lbDesc = lbFig.querySelector('.lb-desc');
+    const lbCount = lightbox.querySelector('.lb-count');
+    let list = [];
+    let idx = 0;
+    let opener = null;
+
+    const show = (i) => {
+      idx = (i + list.length) % list.length;
+      const img = list[idx].querySelector('img');
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt;
+      lbTitle.textContent = list[idx].querySelector('.g-cap').textContent;
+      lbDesc.textContent = img.alt;
+      lbCount.textContent = `${idx + 1} / ${list.length}`;
+      lbFig.classList.remove('is-in');
+      void lbFig.offsetWidth;          // 重新觸發換張動畫
+      lbFig.classList.add('is-in');
+    };
+    const open = (item) => {
+      list = matching();               // 看圖時可以一路滑完這個分類，包含還沒展開的
+      opener = item;
+      show(list.indexOf(item));
+      if (typeof lightbox.showModal === 'function') lightbox.showModal();
+      else lightbox.setAttribute('open', '');
+      document.body.style.overflow = 'hidden';
+    };
+    const close = () => {
+      if (typeof lightbox.close === 'function') lightbox.close();
+      else { lightbox.removeAttribute('open'); lightbox.dispatchEvent(new Event('close')); }
+    };
+
+    items.forEach((it) => it.addEventListener('click', () => open(it)));
+    lightbox.addEventListener('close', () => {
+      document.body.style.overflow = '';
+      if (opener) opener.focus({ preventScroll: true });
+    });
+    lightbox.querySelector('.lb-close').addEventListener('click', close);
+    lightbox.querySelector('.lb-prev').addEventListener('click', () => show(idx - 1));
+    lightbox.querySelector('.lb-next').addEventListener('click', () => show(idx + 1));
+    lightbox.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') show(idx - 1);
+      if (e.key === 'ArrowRight') show(idx + 1);
+    });
+
+    // 手機左右滑換張；點照片以外的暗處關閉（剛滑完不算點）
+    let startX = null;
+    let startY = 0;
+    let swiped = false;
+    lightbox.addEventListener('pointerdown', (e) => { startX = e.clientX; startY = e.clientY; swiped = false; });
+    lightbox.addEventListener('pointercancel', () => { startX = null; });
+    lightbox.addEventListener('pointerup', (e) => {
+      if (startX === null) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      startX = null;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        swiped = true;
+        show(idx + (dx < 0 ? 1 : -1));
+      }
+    });
+    lightbox.addEventListener('click', (e) => {
+      if (swiped) { swiped = false; return; }
+      if (e.target === lightbox) close();
+    });
+  }
+
   /* ---------- 年份 ---------- */
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();

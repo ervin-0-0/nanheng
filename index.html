@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=23">
+  <link rel="stylesheet" href="css/style.css?v=29">
   <noscript><style>.reveal{opacity:1!important;transform:none!important}.float-cta{transform:none!important;opacity:1!important;pointer-events:auto!important}</style></noscript>
 </head>
 <body>
@@ -464,6 +464,7 @@
           <li><a href="#about">協會介紹</a></li>
           <li><a href="#work">在做的事</a></li>
           <li><a href="#news">最新消息</a></li>
+          <li><a href="#gallery">相片集</a></li>
         </ul>
       </li>
       <li><a href="#tnr">免費結紮</a></li>
@@ -497,7 +498,7 @@
   <ul>
     <li class="has-sub">
       <a href="#about"><span class="en">About</span>關於我們</a>
-      <div class="mm-sub"><a href="#work">在做的事</a><a href="#news">最新消息</a></div>
+      <div class="mm-sub"><a href="#work">在做的事</a><a href="#news">最新消息</a><a href="#gallery">相片集</a></div>
     </li>
     <li><a href="#tnr"><span class="en">Free TNR</span>免費結紮</a></li>
     <li><a href="#adopt"><span class="en">Adopt</span>送養</a></li>
@@ -1219,6 +1220,73 @@
   </div>
 </section>
 
+<!-- ============ 相片集（桌上的拍立得） ============
+     新增照片：照片放進 assets/photos/（webp、長邊約 960px），在下面加一個 <button class="g-item">：
+     data-cat 填分類（daily 狗園日常／adopt 送養／tnr 結紮・救援／event 活動・感謝），
+     g-cap 是拍立得下方的短標題（7 個字以內），alt 寫完整描述；--r/--x/--y 是歪斜角度與位移，隨意給一組。
+     最後把上面篩選按鈕的張數改掉。 -->
+<section class="gallery" id="gallery" aria-labelledby="gallery-title">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="en-label en">Photos</span>
+      <h2 id="gallery-title">相片集</h2>
+      <p class="sec-lead"><span class="ln">狗園的日常、等家的小傢伙，</span><span class="ln">還有每一場結紮與活動。</span></p>
+    </div>
+
+    <div class="g-filters" role="group" aria-label="相片分類">
+      <button class="g-filter" type="button" data-cat="all" aria-pressed="true">全部<span class="g-filter-n en">21</span></button>
+      <button class="g-filter" type="button" data-cat="daily" aria-pressed="false">狗園日常<span class="g-filter-n en">6</span></button>
+      <button class="g-filter" type="button" data-cat="adopt" aria-pressed="false">送養<span class="g-filter-n en">7</span></button>
+      <button class="g-filter" type="button" data-cat="tnr" aria-pressed="false">結紮・救援<span class="g-filter-n en">3</span></button>
+      <button class="g-filter" type="button" data-cat="event" aria-pressed="false">活動・感謝<span class="g-filter-n en">5</span></button>
+    </div>
+
+    <div class="g-table">
+      <div class="gallery-grid">
+        <button class="g-item reveal" type="button" data-cat="daily" style="--r:-5deg;--x:-6px;--y:4px;--i:0"><img src="assets/photos/daily-river-dog.webp" width="600" height="600" loading="lazy" decoding="async" alt="穿著紅色背心的黑狗在溪邊石頭上玩水"><span class="g-cap">溪邊玩水</span></button>
+        <button class="g-item reveal" type="button" data-cat="adopt" style="--r:4deg;--x:8px;--y:-6px;--i:1"><img src="assets/photos/adopt-kitten.webp" width="600" height="600" loading="lazy" decoding="async" alt="被輕輕托著的三花小貓"><span class="g-cap">三花小貓</span></button>
+        <button class="g-item reveal" type="button" data-cat="tnr" style="--r:-2deg;--x:-2px;--y:8px;--i:2"><img src="assets/photos/tnr-trap.webp" width="600" height="600" loading="lazy" decoding="async" alt="協會成員和鄉親蹲在誘捕籠旁，協助浪貓結紮"><span class="g-cap">誘捕籠旁</span></button>
+        <button class="g-item reveal" type="button" data-cat="daily" style="--r:6deg;--x:4px;--y:-3px;--i:3"><img src="assets/photos/daily-deck-dogs.webp" width="600" height="600" loading="lazy" decoding="async" alt="狗園裡兩隻狗狗躺在木棧板上休息"><span class="g-cap">午後小睡</span></button>
+        <button class="g-item reveal" type="button" data-cat="adopt" style="--r:-6deg;--x:-8px;--y:2px;--i:0"><img src="assets/photos/adopt-calico-cat.webp" width="600" height="600" loading="lazy" decoding="async" alt="坐在籠邊的白底橘斑貓咪"><span class="g-cap">等一個家</span></button>
+        <button class="g-item reveal" type="button" data-cat="event" style="--r:3deg;--x:2px;--y:7px;--i:1"><img src="assets/photos/news-adoption-booth.webp" width="600" height="600" loading="lazy" decoding="async" alt="甲仙芋筍節貓咪送養會攤位，兩位成員站在送養布條旁"><span class="g-cap">芋筍節送養會</span></button>
+        <button class="g-item reveal" type="button" data-cat="daily" style="--r:-3deg;--x:6px;--y:-5px;--i:2"><img src="assets/photos/daily-black-dog-grass.webp" width="600" height="600" loading="lazy" decoding="async" alt="繫著紅色胸背帶的黑狗趴在草地上，開心吐舌"><span class="g-cap">草地上的笑臉</span></button>
+        <button class="g-item reveal" type="button" data-cat="adopt" style="--r:5deg;--x:-4px;--y:5px;--i:3"><img src="assets/photos/adopt-two-puppies.webp" width="600" height="600" loading="lazy" decoding="async" alt="黑色與虎斑兩隻幼犬湊在一起"><span class="g-cap">兩個小傢伙</span></button>
+        <button class="g-item reveal" type="button" data-cat="tnr" style="--r:-4deg;--x:3px;--y:-8px;--i:0"><img src="assets/photos/about-mountain-road.webp" width="600" height="600" loading="lazy" decoding="async" alt="協會成員蹲在南橫公路邊，餵食山邊的浪浪，背後是連綿的山"><span class="g-cap">南橫公路邊</span></button>
+        <button class="g-item reveal" type="button" data-cat="event" style="--r:2deg;--x:-7px;--y:3px;--i:1"><img src="assets/photos/feed-forklift.webp" width="600" height="600" loading="lazy" decoding="async" alt="堆高機把一整板飼料從貨車卸到狗園"><span class="g-cap">飼料到了！</span></button>
+        <button class="g-item reveal" type="button" data-cat="daily" style="--r:6deg;--x:5px;--y:-2px;--i:2"><img src="assets/photos/daily-sleepy-dog.webp" width="600" height="600" loading="lazy" decoding="async" alt="米色狗狗靠在白色抱枕上睡得很熟"><span class="g-cap">睡得好熟</span></button>
+        <button class="g-item reveal" type="button" data-cat="adopt" style="--r:-5deg;--x:-3px;--y:6px;--i:3"><img src="assets/photos/adopt-kittens-orange.webp" width="600" height="600" loading="lazy" decoding="async" alt="籠子裡擠在一起的橘白小貓"><span class="g-cap">橘白小貓們</span></button>
+        <button class="g-item reveal" type="button" data-cat="tnr" style="--r:3deg;--x:7px;--y:-4px;--i:0"><img src="assets/photos/tnr-banner.webp" width="600" height="600" loading="lazy" decoding="async" alt="協會結紮場次現場的布條，寫著免費犬貓絕育活動與合作單位"><span class="g-cap">結紮場次</span></button>
+        <button class="g-item reveal" type="button" data-cat="daily" style="--r:-6deg;--x:-5px;--y:8px;--i:1"><img src="assets/photos/daily-tan-puppy.webp" width="600" height="600" loading="lazy" decoding="async" alt="戴著格紋項圈的幼犬趴在狗窩裡"><span class="g-cap">狗窩裡</span></button>
+        <button class="g-item reveal" type="button" data-cat="adopt" style="--r:4deg;--x:1px;--y:-6px;--i:2"><img src="assets/photos/adopt-puppies-cage.webp" width="600" height="600" loading="lazy" decoding="async" alt="三隻幼犬在籠裡抬頭張望"><span class="g-cap">三隻小狗</span></button>
+        <button class="g-item reveal" type="button" data-cat="event" style="--r:-2deg;--x:6px;--y:2px;--i:3"><img src="assets/photos/feed-donors.webp" width="600" height="600" loading="lazy" decoding="async" alt="兩位助糧者站在一整排飼料前"><span class="g-cap">謝謝助糧天使</span></button>
+        <button class="g-item reveal" type="button" data-cat="daily" style="--r:5deg;--x:-6px;--y:5px;--i:0"><img src="assets/photos/daily-wet-black-dog.webp" width="600" height="600" loading="lazy" decoding="async" alt="淋了雨的黑狗坐在狗園的草地上"><span class="g-cap">淋雨也乖乖</span></button>
+        <button class="g-item reveal" type="button" data-cat="adopt" style="--r:-4deg;--x:4px;--y:-7px;--i:1"><img src="assets/photos/adopt-black-puppy.webp" width="600" height="600" loading="lazy" decoding="async" alt="被抱起來的黑色幼犬"><span class="g-cap">黑色小狗</span></button>
+        <button class="g-item reveal" type="button" data-cat="event" style="--r:2deg;--x:-2px;--y:3px;--i:2"><img src="assets/photos/news-midautumn.webp" width="600" height="600" loading="lazy" decoding="async" alt="協會的中秋節插畫：貓狗在月光下吃月餅"><span class="g-cap">中秋快樂</span></button>
+        <button class="g-item reveal" type="button" data-cat="adopt" style="--r:-3deg;--x:8px;--y:-2px;--i:3"><img src="assets/photos/adopt-brindle-puppy.webp" width="600" height="600" loading="lazy" decoding="async" alt="被抱在手上的虎斑幼犬"><span class="g-cap">虎斑幼犬</span></button>
+        <button class="g-item reveal" type="button" data-cat="event" style="--r:6deg;--x:-4px;--y:6px;--i:0"><img src="assets/photos/feed-delivery.webp" width="600" height="600" loading="lazy" decoding="async" alt="一箱箱飼料與物資堆在倉庫前"><span class="g-cap">滿滿的物資</span></button>
+        <button class="g-pile" type="button">
+          <span class="g-pile-top">
+            <span class="g-pile-photo"><b>還有 <span class="g-more-n">0</span> 張</b><small>點一下攤開</small></span>
+            <span class="g-cap">看更多相片</span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 全螢幕看圖 -->
+<dialog class="lightbox" aria-label="相片檢視">
+  <p class="lb-count en" aria-live="polite"></p>
+  <figure class="lb-figure">
+    <img src="" alt="">
+    <figcaption><strong class="lb-title"></strong><span class="lb-desc"></span></figcaption>
+  </figure>
+  <button class="lb-btn lb-close" type="button" aria-label="關閉"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button>
+  <button class="lb-btn lb-prev" type="button" aria-label="上一張"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M7.5 2.5 L4 6 L7.5 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <button class="lb-btn lb-next" type="button" aria-label="下一張"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4.5 2.5 L8 6 L4.5 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+</dialog>
+
 <!-- ============ 感謝夥伴 ============ -->
 <section class="thanks" aria-labelledby="thanks-title">
   <div class="container">
@@ -1350,6 +1418,7 @@
         <a href="#supplies">所需物資</a>
         <a href="#donate">如何捐款</a>
         <a href="#news">最新消息</a>
+        <a href="#gallery">相片集</a>
         <a href="#faq">常見問題</a>
         <a href="#contact">聯絡我們</a>
       </nav>
@@ -1376,6 +1445,6 @@
   </a>
 </div>
 
-<script src="js/main.js?v=15" defer></script>
+<script src="js/main.js?v=21" defer></script>
 </body>
 </html>
