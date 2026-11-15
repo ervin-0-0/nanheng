@@ -441,6 +441,53 @@ svg svg { max-width: none; }
   transition: background-size .3s, color .2s;
 }
 .nav-list a:hover { color: var(--coral); background-image: linear-gradient(var(--coral), var(--coral)); }
+.nav-list a, .nav-cta { white-space: nowrap; }
+
+/* 下拉選單：「關於我們」「一起幫忙」底下的細項（滑鼠移上去或 Tab 到才出現） */
+.nav-list > li { position: relative; }
+.nav-list .has-sub > a::after {
+  content: "";
+  display: inline-block;
+  width: 6px; height: 6px;
+  margin: 0 2px 0 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-4px) rotate(45deg);
+  opacity: .55;
+  transition: transform .2s;
+}
+.nav-list .has-sub:hover > a::after,
+.nav-list .has-sub:focus-within > a::after { transform: translateY(-1px) rotate(225deg); }
+.sub {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 60;
+  display: grid;
+  gap: 2px;
+  min-width: 150px;
+  margin-top: 14px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 5px 0 var(--peach-2), 0 14px 30px rgba(75, 59, 54, .12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -6px);
+  transition: opacity .2s, transform .2s, visibility .2s;
+}
+.sub::before { content: ""; position: absolute; left: 0; right: 0; top: -16px; height: 16px; }  /* 滑鼠從主項目移到下拉時不會斷掉 */
+.has-sub:hover > .sub,
+.has-sub:focus-within > .sub { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.nav-list .sub a,
+.nav-list .sub a:hover {
+  display: block;
+  padding: 9px 16px;
+  border-radius: 12px;
+  font-size: 16px;
+  background-image: none;
+}
+.nav-list .sub a:hover { background-color: var(--cream); color: var(--coral); }
 .nav-cta {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 9px 22px;
@@ -534,6 +581,23 @@ svg svg { max-width: none; }
   border-bottom: 2px dashed var(--peach-2);
 }
 .mobile-menu li a .en { order: 2; font-size: 15px; color: var(--coral); }
+/* 手機選單的細項：排在主項目下面的一列小按鈕 */
+.mobile-menu li.has-sub { border-bottom: 2px dashed var(--peach-2); padding-bottom: 14px; }
+.mobile-menu li.has-sub > a { border-bottom: 0; padding-bottom: 8px; }
+.mobile-menu .mm-sub { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 2px; }
+.mobile-menu .mm-sub a {
+  display: inline-block;
+  border-bottom: 0;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 2px 0 var(--peach-2);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: none;
+  white-space: nowrap;
+}
 .mobile-menu .btn { align-self: center; }
 
 /* =========================================================
@@ -1318,16 +1382,6 @@ svg svg { max-width: none; }
 /* =========================================================
    RWD
    ========================================================= */
-/* 導覽列 9 項＋聯絡我們：每項維持一行，1181–1400px 收緊間距才放得下，再窄就換成選單按鈕 */
-.nav-list a, .nav-cta { white-space: nowrap; }
-@media (max-width: 1400px) {
-  .site-header { padding: 0 28px; gap: 20px; }
-  .nav { gap: 16px; }
-  .nav-list { gap: 12px; }
-  .nav-list a { font-size: 16px; letter-spacing: .02em; }
-  .nav-cta { font-size: 16px; padding: 9px 18px; }
-}
-
 @media (max-width: 1180px) {
   .nav { display: none; }
   .menu-btn { display: block; }
