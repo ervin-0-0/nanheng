@@ -125,7 +125,7 @@
       '羅小姐', '李永立', '在地人', '公斤數', '捐物資', '拍張照', '貓巷口', '中秋節', '整理中',
       '更多人', '甲仙段',
       '抓紮', '結紮', '絕育', '節育', '南橫', '六龜', '甲仙', '九如', '浪浪', '毛孩', '剪耳', '缺角',
-      '送養', '領養', '棄養', '助糧', '貓巷', '舞吉', '粉專', '狗園', '狗場', '犬貓', '貓狗', '狗狗',
+      '送養', '領養', '棄養', '助糧', '貓巷', '舞吉', '粉專', '狗園', '狗場', '犬貓', '貓狗', '狗貓', '狗狗',
       '貓咪', '小貓', '幼犬', '幼貓', '公貓', '母貓', '母狗', '公狗', '飼料', '果乾', '義賣', '晶片',
       '誘捕', '回置', '動保', '等家', '來電', '私訊', '通報', '收容', '偏鄉', '鄉親', '各里', '場次',
       '志工', '公視', '見底',
@@ -179,7 +179,7 @@
     };
 
     // 詞 → 可以整塊換行的小段：標點跟著前一個詞，單一個字跟著旁邊的詞
-    const toChunks = (tokens) => {
+    const toChunks = (tokens, cap = 10) => {
       const chunks = [];
       let pending = '';        // 等著接到下一個詞前面的字（「讓」「在」「不」、上引號…）
       let pendingCount = 0;
@@ -207,7 +207,8 @@
           const prev = chunks[chunks.length - 1];
           if (!chunks.length) push(t);
           else if (!pendingCount) chunks[chunks.length - 1] += t;
-          else if (pendingCount <= 2 && !STOP.test(prev) && !/\s$/.test(prev)) {
+          else if (pendingCount <= 2 && !STOP.test(prev) && !/\s$/.test(prev)
+              && visibleLength(prev + pending) <= Math.max(cap, 4)) {
             chunks[chunks.length - 1] += pending + t;   // 「公路」＋「邊，」→「公路邊，」
             pending = ''; pendingCount = 0;
           } else push(t);
@@ -243,7 +244,9 @@
         if (prev !== undefined && !STOP.test(prev) && !/\s$/.test(prev)) {
           const afterDe = /的$/.test(prev) && visibleLength(c) <= 2;
           const clauseStart = visibleLength(prev) <= 2 && (beforePrev === undefined || STOP.test(beforePrev));
-          if (afterDe || clauseStart) { merged[merged.length - 1] += c; return; }
+          // 合起來不能比一行還長（窄卡片、系統字體放大時），不然會被硬切
+          const fits = visibleLength(prev + c) <= Math.max(cap, 4);
+          if ((afterDe || clauseStart) && fits) { merged[merged.length - 1] += c; return; }
         }
         merged.push(c);
       });
@@ -265,13 +268,27 @@
       }
     });
 
+    // 每個區塊一行大約放得下幾個字（先全部量完再改 DOM，避免手機反覆重排）。
+    // 句尾黏在一起的那一段不能比一行還寬，不然會被硬切，反而把「。」單獨擠到下一行。
+    // 手機開了「系統字體放大」時（--tz > 1），一行放得下的字更少，黏的長度跟著縮短。
+    const tz = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--tz')) || 1;
+    const tailCap = new Map();
+    groups.forEach((_, blockEl) => {
+      let box = blockEl.matches('.ln') ? blockEl.parentElement : blockEl;
+      while (box && !box.clientWidth) box = box.parentElement;   // 收合的 FAQ 答案量外層
+      const fontPx = parseFloat(getComputedStyle(blockEl).fontSize) || 17;
+      const perLine = box ? box.clientWidth / (fontPx * tz) : 18;
+      tailCap.set(blockEl, Math.max(3, Math.min(10, Math.floor(perLine * 0.6))));
+    });
+
     groups.forEach((nodes, blockEl) => {
       const isHeading = blockEl.matches('h1,h2,h3,summary') || !!blockEl.closest('h1,h2,h3,summary');
+      const cap = tailCap.get(blockEl);
       let glue = true;       // 區塊開頭不需要換行點
       let prevEnd = '';
       nodes.forEach((node, index) => {
         const text = node.nodeValue;
-        const { chunks: words, glueNext } = toChunks(tokenize(text));
+        const { chunks: words, glueNext } = toChunks(tokenize(text), cap);
         // 標題、問句：每一段至少 4 個字，讀起來才是完整的詞組（逗號後面照常可以換行）
         let chunks = words;
         if (isHeading) {
@@ -285,7 +302,7 @@
         // 最後一行至少留 4 個字，避免只剩一兩個字孤零零掉到下一行
         if (index === nodes.length - 1) {
           while (chunks.length > 1 && visibleLength(chunks[chunks.length - 1]) < 4
-              && visibleLength(chunks[chunks.length - 2] + chunks[chunks.length - 1]) <= 10) {
+              && visibleLength(chunks[chunks.length - 2] + chunks[chunks.length - 1]) <= cap) {
             // U+2060 是看不見的「不可換行」記號：讓這一小段連標點、引號前後都不會斷開
             const tail = chunks.pop()
               .replace(/([「『（《〈【])/g, '\u2060$1')

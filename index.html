@@ -3,20 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>南橫動保協會｜高雄市六龜區南橫愛護動物協會</title>
+  <title>南橫動保協會 Nanheng Paws｜高雄市六龜區南橫愛護動物協會</title>
   <meta name="description" content="高雄市六龜區南橫愛護動物協會（龜島浪攤子）。在六龜、甲仙等南橫山區抓紮、救援、送養與收容流浪犬貓，已協助 2,805 隻犬貓完成結紮。沒有出生，就沒有流浪。">
   <meta property="og:title" content="南橫動保協會｜沒有出生，就沒有流浪">
   <meta property="og:description" content="在南橫山區抓紮、救援、送養與收容流浪犬貓。已協助 2,805 隻犬貓完成結紮。">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="南橫動保協會 Nanheng Paws">
   <meta name="theme-color" content="#FFF8EC">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23FFF8EC'/%3E%3Cpath d='M6 50 L24 20 L33 33 L42 14 L58 50Z' fill='%23E5776E'/%3E%3Cg fill='%23fff'%3E%3Cellipse cx='32' cy='42' rx='6' ry='4.6'/%3E%3Ccircle cx='25.5' cy='35.5' r='2.4'/%3E%3Ccircle cx='30' cy='32.5' r='2.4'/%3E%3Ccircle cx='34.6' cy='32.5' r='2.4'/%3E%3Ccircle cx='38.8' cy='35.5' r='2.4'/%3E%3C/g%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=14">
+  <link rel="stylesheet" href="css/style.css?v=18">
   <noscript><style>.reveal{opacity:1!important;transform:none!important}.float-cta{transform:none!important;opacity:1!important;pointer-events:auto!important}</style></noscript>
 </head>
 <body>
+<!-- 手機「系統字體放大」偵測：Android 的 LINE／FB 內建瀏覽器會把所有文字放大。
+     這裡量出倍率存進 --tz，讓 logo、浮動按鈕這類固定尺寸的元件不被撐破（用法見 css/style.css）。 -->
+<script>
+(function(){try{var d=document,p=d.createElement('div');p.style.cssText='position:absolute;left:-999px;top:0;visibility:hidden;font:100px/1 sans-serif;white-space:nowrap';p.textContent='M';d.body.appendChild(p);var z=Math.max(p.offsetHeight,parseFloat(getComputedStyle(p).fontSize)||0)/100;d.body.removeChild(p);if(z>1.03||z<.97)d.documentElement.style.setProperty('--tz',z.toFixed(3));}catch(e){}})();
+</script>
 <a class="skip-link" href="#main">跳到主要內容</a>
 
 <!-- ============ SVG 插畫零件庫（全站共用） ============
@@ -439,11 +445,14 @@
 
 <!-- ============ Header ============ -->
 <header class="site-header" id="top">
-  <a class="logo" href="#top" aria-label="南橫動保協會 回到頂端">
+  <a class="logo" href="#top" aria-label="南橫動保協會 Nanheng Paws 回到頂端">
     <span class="logo-pill">沒有出生・沒有流浪</span>
     <span class="logo-main">
       <svg class="logo-mark" viewBox="0 0 56 36" aria-hidden="true"><path d="M0 36 L18 8 L27 20 L36 2 L56 36 Z" fill="#E5776E"/><g fill="#fff"><ellipse cx="28" cy="28.5" rx="5.4" ry="4.2"/><circle cx="22.2" cy="22.6" r="2.1"/><circle cx="26.2" cy="19.8" r="2.1"/><circle cx="30.4" cy="19.8" r="2.1"/><circle cx="34.2" cy="22.6" r="2.1"/></g></svg>
-      <span class="logo-text">南橫動保協會</span>
+      <span class="logo-name">
+        <span class="logo-text">南橫動保協會</span>
+        <span class="logo-en en" lang="en">Nanheng Paws</span>
+      </span>
     </span>
   </a>
 
@@ -1008,7 +1017,7 @@
           </div>
         </dl>
         <div class="tnr-actions">
-          <a class="btn" href="tel:0977755973">電洽羅小姐 0977 755 973 <span class="btn-arrow"><svg><use href="#chev"/></svg></span></a>
+          <a class="btn" href="tel:0977755973"><span>電洽羅小姐 <span class="nowrap">0977 755 973</span></span> <span class="btn-arrow"><svg><use href="#chev"/></svg></span></a>
           <a class="btn btn--ghost" href="https://www.facebook.com/profile.php?id=100063551122273" target="_blank" rel="noopener">看最新場次 <span class="btn-arrow"><svg><use href="#chev"/></svg></span></a>
         </div>
       </div>
@@ -1277,7 +1286,7 @@
       </li>
       <li>
         <span class="contact-label">Email</span>
-        <a class="contact-mid en" href="mailto:a0977755973@gmail.com">a0977755973@gmail.com</a>
+        <a class="contact-mid en" href="mailto:a0977755973@gmail.com">a0977755973<wbr><span class="nowrap">@gmail.com</span></a>
       </li>
       <li>
         <span class="contact-label">Facebook</span>
@@ -1313,7 +1322,10 @@
       <div class="footer-brand">
         <p class="footer-logo">
           <svg class="logo-mark" viewBox="0 0 56 36" aria-hidden="true"><path d="M0 36 L18 8 L27 20 L36 2 L56 36 Z" fill="#fff"/><g fill="#3E9C7E"><ellipse cx="28" cy="28.5" rx="5.4" ry="4.2"/><circle cx="22.2" cy="22.6" r="2.1"/><circle cx="26.2" cy="19.8" r="2.1"/><circle cx="30.4" cy="19.8" r="2.1"/><circle cx="34.2" cy="22.6" r="2.1"/></g></svg>
-          南橫動保協會
+          <span class="logo-name">
+            <span>南橫動保協會</span>
+            <span class="logo-en en" lang="en">Nanheng Paws</span>
+          </span>
         </p>
         <p>高雄市六龜區南橫愛護動物協會<br>（龜島浪攤子）</p>
         <p class="footer-slogan">#沒有出生沒有流浪</p>
@@ -1334,10 +1346,10 @@
       <div class="footer-contact">
         <p>服務範圍：高雄市六龜區、甲仙區等南橫沿線</p>
         <p>電話：<a href="tel:0977755973">0977 755 973</a>（羅小姐）</p>
-        <p>Email：<a href="mailto:a0977755973@gmail.com">a0977755973@gmail.com</a></p>
+        <p>Email：<a href="mailto:a0977755973@gmail.com">a0977755973<wbr><span class="nowrap">@gmail.com</span></a></p>
       </div>
     </div>
-    <p class="copyright en">© <span id="year">2026</span> Nanheng Animal Protection Association</p>
+    <p class="copyright en">© <span id="year">2026</span> Nanheng Paws</p>
   </div>
 </footer>
 
@@ -1354,6 +1366,6 @@
   </a>
 </div>
 
-<script src="js/main.js?v=10" defer></script>
+<script src="js/main.js?v=13" defer></script>
 </body>
 </html>
