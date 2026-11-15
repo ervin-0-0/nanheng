@@ -1037,8 +1037,13 @@ svg svg { max-width: none; }
 .support { padding: 20px 0 190px; }
 .support-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 28px;
+}
+@media (max-width: 1000px) {
+  .support-list { grid-template-columns: repeat(2, 1fr); }
+  /* 三張卡排兩欄時，最後一張佔滿整列，不會孤零零擺在左邊 */
+  .support-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
 .support-card {
   border-radius: 34px;
