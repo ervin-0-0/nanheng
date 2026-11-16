@@ -503,38 +503,52 @@ svg svg { max-width: none; }
 .nav-cta svg { width: 17px; height: 17px; }
 .nav-cta:hover { transform: translateY(2px); box-shadow: 0 2px 0 var(--coral-dk); }
 
-/* Facebook 連結 */
-.header-fb {
+/* 社群連結：Facebook、Instagram、Threads、LINE */
+.header-social { flex: none; display: flex; gap: 8px; }
+.social-btn {
   flex: none;
-  width: 44px; height: 44px;
+  width: 40px; height: 40px;
   border-radius: 50%;
   background: #fff;
   display: grid; place-items: center;
   box-shadow: 0 3px 0 var(--peach-2);
   transition: transform .15s, box-shadow .15s;
 }
-.header-fb svg { width: 30px; height: 30px; }
-.header-fb:hover { transform: translateY(2px); box-shadow: 0 1px 0 var(--peach-2); }
+.social-btn svg { width: 28px; height: 28px; }
+.social-btn:hover { transform: translateY(2px); box-shadow: 0 1px 0 var(--peach-2); }
 
-.fb-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+/* 手機選單底部：四個圖示＋名稱 */
+.mm-social { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.mm-social a {
+  display: grid; justify-items: center; gap: 6px;
+  padding: 10px 2px 8px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 3px 0 var(--peach-2);
+  font-size: calc(14px / var(--tz, 1));
   font-weight: 700;
-  color: #1877F2;
+  line-height: 1.2;
   text-decoration: none;
+  white-space: nowrap;
 }
-.fb-link svg { width: 28px; height: 28px; flex: none; }
-.fb-link:hover { text-decoration: underline; text-underline-offset: 4px; }
-.mobile-menu .fb-link { align-self: center; }
-.fb-link--footer {
-  margin-top: 14px;
-  color: #fff;
-  background: rgba(255, 255, 255, .2);
-  padding: 5px 18px 5px 5px;
+.mm-social svg { width: 36px; height: 36px; }
+
+/* 頁尾：半透明膠囊 */
+.footer-social { display: grid; grid-template-columns: repeat(2, max-content); gap: 10px; margin-top: 14px; }
+.social-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 5px 16px 5px 5px;
   border-radius: 999px;
+  background: rgba(255, 255, 255, .2);
+  color: #fff;
+  font-size: calc(16px / var(--tz, 1));
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: none;
+  white-space: nowrap;
 }
-.fb-link--footer svg { box-shadow: 0 0 0 2px #fff; border-radius: 50%; }
+.social-pill svg { width: 28px; height: 28px; flex: none; box-shadow: 0 0 0 2px #fff; border-radius: 50%; }
+.social-pill:hover { background: rgba(255, 255, 255, .32); }
 .contact-fb { display: inline-flex; align-items: center; gap: 10px; }
 .contact-fb svg { width: 28px; height: 28px; flex: none; }
 
@@ -1710,10 +1724,25 @@ svg svg { max-width: none; }
 /* =========================================================
    RWD
    ========================================================= */
+/* 筆電寬度：選單和四個社群圖示要擠在同一列，間距縮小、圖示拿掉白底 */
+@media (min-width: 1181px) and (max-width: 1319px) {
+  .site-header { gap: 14px; }
+  .nav { gap: 16px; }
+  .nav-list { gap: 12px; }
+  .header-social { gap: 5px; }
+  .social-btn, .social-btn:hover { width: 32px; height: 32px; background: none; box-shadow: none; }
+  .social-btn svg { width: 32px; height: 32px; }
+}
+
 @media (max-width: 1180px) {
   .nav { display: none; }
   .menu-btn { display: block; }
   .site-header { padding: 0 24px; }
+}
+
+/* 手機：頁首只放得下一個，留 Facebook；四個都在選單最下面 */
+@media (max-width: 520px) {
+  .social-btn--more { display: none; }
 }
 
 @media (max-width: 1000px) {
@@ -2248,7 +2277,7 @@ li:nth-child(even).impact-item { border-radius: 50% 50% 32px 24px / 104px 120px 
 
 /* 膠囊按鈕、標籤 */
 .btn, .nav-cta, .chip, .logo-pill, .tl-year, .work-tag, .step-no, .g-filter, .float-btn,
-.fb-link--footer, .marquee-track span, .mobile-menu .mm-sub a, .tnr-tag {
+.social-pill, .marquee-track span, .mobile-menu .mm-sub a, .tnr-tag {
   border-radius: var(--pr, var(--pill-a));
 }
 /* 原本靠珊瑚色細線框出來的白色按鈕，改成淡粉色底 */
@@ -2258,7 +2287,7 @@ li:nth-child(even).impact-item { border-radius: 50% 50% 32px 24px / 104px 120px 
 .float-btn--light:hover { box-shadow: 0 2px 0 var(--peach-2), 0 4px 12px rgba(75, 59, 54, .12); }
 
 /* 圓形：圖示、照片、按鈕 */
-.header-fb, .menu-btn, .impact-icon, .about-photo--sub, .adopt-photos li, .support-head svg,
+.social-btn, .menu-btn, .impact-icon, .about-photo--sub, .adopt-photos li, .support-head svg,
 .q, .call-badge, .call-icon, .lb-btn, .btn-arrow {
   border-radius: var(--br, var(--blob-a));
 }

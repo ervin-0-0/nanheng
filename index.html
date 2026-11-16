@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;500;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=44">
+  <link rel="stylesheet" href="css/style.css?v=45">
   <noscript><style>.reveal{opacity:1!important;transform:none!important}.float-cta{transform:none!important;opacity:1!important;pointer-events:auto!important}</style></noscript>
 </head>
 <body>
@@ -546,6 +546,31 @@
       <circle cx="12" cy="12" r="12" fill="#1877F2"/>
       <path d="M13.4 23.8v-9.2h3l.45-3.5H13.4V8.9c0-1 .3-1.7 1.75-1.7h1.85V4.1c-.32-.05-1.42-.14-2.7-.14-2.67 0-4.5 1.63-4.5 4.62v2.52H6.8v3.5h3v9.2z" fill="#fff"/>
     </symbol>
+    <!-- Instagram -->
+    <radialGradient id="ig-grad" cx=".3" cy="1.07" r="1.5">
+      <stop offset="0" stop-color="#FDF497"/>
+      <stop offset=".05" stop-color="#FDF497"/>
+      <stop offset=".45" stop-color="#FD5949"/>
+      <stop offset=".6" stop-color="#D6249F"/>
+      <stop offset=".9" stop-color="#285AEB"/>
+    </radialGradient>
+    <symbol id="icon-ig" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="12" fill="url(#ig-grad)"/>
+      <rect x="6.3" y="6.3" width="11.4" height="11.4" rx="3.4" fill="none" stroke="#fff" stroke-width="1.7"/>
+      <circle cx="12" cy="12" r="2.7" fill="none" stroke="#fff" stroke-width="1.7"/>
+      <circle cx="15.1" cy="8.9" r=".95" fill="#fff"/>
+    </symbol>
+    <!-- Threads -->
+    <symbol id="icon-threads" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="12" fill="#101010"/>
+      <path transform="translate(5.3 5.4) scale(.55)" d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z" fill="#fff"/>
+    </symbol>
+    <!-- LINE -->
+    <symbol id="icon-line" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="12" fill="#06C755"/>
+      <path d="M12 5.4c-4.1 0-7.4 2.7-7.4 6 0 3 2.6 5.4 6.2 5.9.3.1.6.3.6.6l-.1 1.6c0 .3.2.6.6.4 2.1-1.2 7.5-4.5 7.5-8.5 0-3.3-3.3-6-7.4-6z" fill="#fff"/>
+      <text x="12" y="12.85" text-anchor="middle" font-size="3.7" font-weight="700" fill="#06C755" font-family="Quicksand, Arial, sans-serif">LINE</text>
+    </symbol>
     <!-- 箭頭 -->
     <symbol id="chev" viewBox="0 0 12 12">
       <path d="M4.5 2.5 L8 6 L4.5 9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -605,9 +630,21 @@
     </a>
   </nav>
 
-  <a class="header-fb" href="https://www.facebook.com/profile.php?id=100063551122273" target="_blank" rel="noopener" aria-label="Facebook 粉絲專頁「龜島浪攤子」（另開新視窗）">
-    <svg aria-hidden="true"><use href="#icon-fb"/></svg>
-  </a>
+  <!-- 社群連結：手機太窄時只留 Facebook，其他三個在選單裡 -->
+  <div class="header-social" role="group" aria-label="社群媒體">
+    <a class="social-btn" href="https://www.facebook.com/profile.php?id=100063551122273" target="_blank" rel="noopener" aria-label="Facebook 粉絲專頁「龜島浪攤子」（另開新視窗）">
+      <svg aria-hidden="true"><use href="#icon-fb"/></svg>
+    </a>
+    <a class="social-btn social-btn--more" href="https://www.instagram.com/nanhengpaws/" target="_blank" rel="noopener" aria-label="Instagram @nanhengpaws（另開新視窗）">
+      <svg aria-hidden="true"><use href="#icon-ig"/></svg>
+    </a>
+    <a class="social-btn social-btn--more" href="https://www.threads.com/@nanhengpaws" target="_blank" rel="noopener" aria-label="Threads @nanhengpaws（另開新視窗）">
+      <svg aria-hidden="true"><use href="#icon-threads"/></svg>
+    </a>
+    <a class="social-btn social-btn--more" href="https://line.me/R/ti/p/@703xkxgt" target="_blank" rel="noopener" aria-label="LINE 官方帳號，加好友（另開新視窗）">
+      <svg aria-hidden="true"><use href="#icon-line"/></svg>
+    </a>
+  </div>
 
   <button class="menu-btn" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="mobile-menu">
     <span></span><span></span><span></span>
@@ -634,9 +671,12 @@
     <li><a href="#contact"><span class="en">Contact</span>聯絡我們</a></li>
   </ul>
   <a class="btn" href="tel:0977755973">撥打 0977 755 973 <span class="btn-arrow"><svg><use href="#chev"/></svg></span></a>
-  <a class="fb-link" href="https://www.facebook.com/profile.php?id=100063551122273" target="_blank" rel="noopener">
-    <svg aria-hidden="true"><use href="#icon-fb"/></svg>追蹤粉專「龜島浪攤子」
-  </a>
+  <div class="mm-social" role="group" aria-label="社群媒體">
+    <a href="https://www.facebook.com/profile.php?id=100063551122273" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-fb"/></svg><span class="en">Facebook</span></a>
+    <a href="https://www.instagram.com/nanhengpaws/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-ig"/></svg><span class="en">Instagram</span></a>
+    <a href="https://www.threads.com/@nanhengpaws" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-threads"/></svg><span class="en">Threads</span></a>
+    <a href="https://line.me/R/ti/p/@703xkxgt" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-line"/></svg><span class="en">LINE</span></a>
+  </div>
 </div>
 
 <main id="main">
@@ -2241,6 +2281,11 @@
         <span class="contact-label">Facebook</span>
         <a class="contact-mid contact-fb" href="https://www.facebook.com/profile.php?id=100063551122273" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-fb"/></svg>龜島浪攤子</a>
       </li>
+      <li>
+        <span class="contact-label">LINE</span>
+        <a class="contact-mid contact-fb" href="https://line.me/R/ti/p/@703xkxgt" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-line"/></svg>南橫動保協會</a>
+        <span class="contact-sub">加好友就能直接傳訊息</span>
+      </li>
     </ul>
   </div>
 </section>
@@ -2278,9 +2323,12 @@
         </p>
         <p>高雄市六龜區南橫愛護動物協會<br>（龜島浪攤子）</p>
         <p class="footer-slogan">#沒有出生沒有流浪</p>
-        <a class="fb-link fb-link--footer" href="https://www.facebook.com/profile.php?id=100063551122273" target="_blank" rel="noopener">
-          <svg aria-hidden="true"><use href="#icon-fb"/></svg>追蹤我們的 Facebook
-        </a>
+        <div class="footer-social" role="group" aria-label="社群媒體">
+          <a class="social-pill" href="https://www.facebook.com/profile.php?id=100063551122273" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-fb"/></svg><span class="en">Facebook</span></a>
+          <a class="social-pill" href="https://www.instagram.com/nanhengpaws/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-ig"/></svg><span class="en">Instagram</span></a>
+          <a class="social-pill" href="https://www.threads.com/@nanhengpaws" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-threads"/></svg><span class="en">Threads</span></a>
+          <a class="social-pill" href="https://line.me/R/ti/p/@703xkxgt" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#icon-line"/></svg><span class="en">LINE</span></a>
+        </div>
       </div>
       <nav class="footer-nav" aria-label="頁尾選單">
         <a href="#about">關於我們</a>
@@ -2343,7 +2391,7 @@
   </svg>
 </template>
 
-<script src="js/main.js?v=33" defer></script>
+<script src="js/main.js?v=34" defer></script>
 <script src="js/sheet.js?v=3" defer></script>
 </body>
 </html>
