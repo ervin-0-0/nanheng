@@ -397,8 +397,10 @@
     run(renderAimaSettings, data.aima);
   };
 
+  // 拆頁後每頁只有部分區塊，只抓這一頁用得到的分頁
+  const TARGETS = { supplies: '#supplies', sessions: '#tnr-sessions', news: '.news-list', pets: '#pets', help: '#help-list', aima: '#aima' };
   const load = async () => {
-    const keys = Object.keys(TABS);
+    const keys = Object.keys(TABS).filter((k) => document.querySelector(TARGETS[k]));
     const results = await Promise.allSettled(keys.map((k) => loadTab(TABS[k])));
     const data = {};
     results.forEach((r, i) => { if (r.status === 'fulfilled') data[keys[i]] = r.value; });
