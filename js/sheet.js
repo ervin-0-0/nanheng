@@ -1,6 +1,7 @@
 /* =========================================================
    從 Google 試算表讀「常改的內容」
-   ─ 所需物資、結紮場次、最新消息、等家的孩子 ─
+   ─ 所需物資、結紮場次、等家的孩子、愛媽互助 ─
+   （最新消息 2026-11-16 起不放網站，直接看社群貼文；試算表的「最新消息」分頁已不會讀）
 
    設定方式：
    1. 試算表右上角「共用」→ 一般存取權改成「知道連結的任何人」＝檢視者。
@@ -10,7 +11,7 @@
    ========================================================= */
 (() => {
   const SHEET_ID = '';
-  const TABS = { supplies: '所需物資', sessions: '結紮場次', news: '最新消息', pets: '等家的孩子', help: '互助看板', aima: '互助設定' };
+  const TABS = { supplies: '所需物資', sessions: '結紮場次', pets: '等家的孩子', help: '互助看板', aima: '互助設定' };
   const FB_PAGE = 'https://www.facebook.com/profile.php?id=100063551122273';
   const FB_MSG = 'https://m.me/100063551122273';
   const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -113,14 +114,6 @@
     adopt: '<use href="#cat" x="44" y="22" width="56" height="74" style="--fur:#FFFDF8;--patch:#EE8A2B"/><use href="#dog" x="96" y="30" width="76" height="68" style="--fur:#E0CFAE;--ear:#8A5A3B;--collar:#3A8DC9"/>',
     other: '<use href="#heart" x="76" y="30" width="48" height="42" fill="#E0503C"/><use href="#paw" x="40" y="64" width="22" height="22" fill="#F5A6BE"/><use href="#paw" x="140" y="22" width="18" height="18" fill="#F5A6BE"/>',
   };
-  const NEWS_STYLE = {
-    救援: ['coral', 'peach', 'rescue'],
-    送養: ['yellow', 'yellow', 'adopt'],
-    結紮: ['mint', 'mint', 'tnr'],
-    協會: ['mint', 'mint', 'other'],
-    活動: ['sky', 'yellow', 'other'],
-    媒體: ['sky', 'peach', 'other'],
-  };
 
   /* ---------- 所需物資 ---------- */
   const renderSupplies = (rows) => {
@@ -173,50 +166,6 @@
     }));
     box.hidden = false;
     helpers.breakText([box]);
-  };
-
-  /* ---------- 最新消息（新的在前，最多 6 則） ---------- */
-  const renderNews = (rows) => {
-    const listEl = document.querySelector('.news-list');
-    const items = rows
-      .map((o) => ({ ...o, date: parseDate(o['日期']) }))
-      .filter((o) => o['標題'])
-      .sort((a, b) => (b.date || 0) - (a.date || 0))
-      .slice(0, 6);
-    if (!listEl || !items.length) return;
-    listEl.replaceChildren(...items.map((o) => {
-      const [chip, bg, art] = NEWS_STYLE[o['分類']] || ['', 'peach', 'other'];
-      const li = el('li', 'news-card card');
-      const a = el('a');
-      a.href = safeLink(o['臉書連結']) || FB_PAGE;
-      a.target = '_blank';
-      a.rel = 'noopener';
-      const thumb = el('div', 'news-thumb');
-      const src = imageUrl(o['照片']);
-      if (src) {
-        const img = el('img');
-        img.src = src; img.alt = o['標題']; img.loading = 'lazy'; img.decoding = 'async';
-        img.referrerPolicy = 'no-referrer';
-        img.addEventListener('error', () => { thumb.classList.add(`news-thumb--${bg}`); img.replaceWith(svg(ART[art], '0 0 200 120')); });
-        thumb.append(img);
-      } else {
-        thumb.classList.add(`news-thumb--${bg}`);
-        thumb.append(svg(ART[art], '0 0 200 120'));
-      }
-      a.append(thumb);
-      if (o.date) {
-        const time = el('time', 'news-date en', `${o.date.getFullYear()}.${pad(o.date.getMonth() + 1)}.${pad(o.date.getDate())}`);
-        time.dateTime = `${o.date.getFullYear()}-${pad(o.date.getMonth() + 1)}-${pad(o.date.getDate())}`;
-        a.append(time);
-      }
-      a.append(el('h3', '', o['標題']));
-      if (o['內容']) a.append(el('p', '', o['內容']));
-      if (o['分類']) a.append(el('span', `chip${chip ? ` chip--${chip}` : ''}`, o['分類']));
-      li.append(a);
-      return li;
-    }));
-    helpers.breakText([listEl]);
-    helpers.initCarousel(listEl);
   };
 
   /* ---------- 等家的孩子 ---------- */
@@ -391,14 +340,13 @@
     const run = (fn, rows) => { try { if (rows && rows.length) fn(rows); } catch (e) { /* 單一區塊出錯不影響其他 */ } };
     run(renderSupplies, data.supplies);
     run(renderSessions, data.sessions);
-    run(renderNews, data.news);
     run(renderPets, data.pets);
     run(renderHelp, data.help);
     run(renderAimaSettings, data.aima);
   };
 
   // 拆頁後每頁只有部分區塊，只抓這一頁用得到的分頁
-  const TARGETS = { supplies: '#supplies', sessions: '#tnr-sessions', news: '.news-list', pets: '#pets', help: '#help-list', aima: '#aima' };
+  const TARGETS = { supplies: '#supplies', sessions: '#tnr-sessions', pets: '#pets', help: '#help-list', aima: '#aima' };
   const load = async () => {
     const keys = Object.keys(TABS).filter((k) => document.querySelector(TARGETS[k]));
     const results = await Promise.allSettled(keys.map((k) => loadTab(TABS[k])));
