@@ -2640,32 +2640,119 @@ li:nth-child(even).impact-item { border-radius: 50% 50% 32px 24px / 104px 120px 
 }
 .crumb-sep { width: 10px; height: 10px; color: var(--ink-2); opacity: .7; }
 
-/* 首頁：最新消息看社群（米色，把四大主軸和下面的聯絡我們分開） */
-.follow { position: relative; padding: 10px 0 150px; }
-.follow .sec-head { margin-bottom: 36px; }
-.follow-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1000px; margin-inline: auto; }
-.follow-list a {
-  display: flex; align-items: center; gap: 12px;
-  height: 100%;
-  padding: 14px 18px;
-  border-radius: var(--pr, var(--pill-a));
+
+/* =========================================================
+   首頁：為什麼要結紮（接在「與其一直收容…」後面）
+   ========================================================= */
+.why { max-width: 880px; margin: -40px auto 88px; text-align: center; }
+.why-title { font-size: 24px; font-weight: 800; letter-spacing: .08em; color: var(--ink); }
+.why-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 20px; }
+.why-card {
+  display: flex; flex-direction: column; align-items: center;
+  margin: 0;
+  padding: 14px 14px 18px;
+  border-radius: var(--hr, var(--hand-a));
   background: #fff;
-  box-shadow: 0 4px 0 var(--peach-2);
-  text-decoration: none;
-  transition: transform .15s, box-shadow .15s;
+  box-shadow: 0 5px 0 var(--peach-2);
 }
-.follow-list a:hover { transform: translateY(2px); box-shadow: 0 2px 0 var(--peach-2); }
-.follow-list svg { flex: none; width: 44px; height: 44px; }
-.follow-list span { display: flex; flex-direction: column; min-width: 0; line-height: 1.4; }
-.follow-list b { font-size: 18px; font-weight: 700; color: var(--ink); }
-.follow-list small { font-size: 14.5px; font-weight: 700; color: var(--ink-2); overflow-wrap: anywhere; }
+.why-card--yes { --hr: var(--hand-b); }
+.why-card svg { display: block; width: 100%; max-width: 300px; height: auto; aspect-ratio: 200 / 140; overflow: visible; }
+.why-card figcaption { display: flex; flex-direction: column; margin-top: 6px; }
+.why-card strong { font-size: 21px; font-weight: 800; letter-spacing: .06em; color: var(--coral); }
+.why-card--yes strong { color: var(--mint-dk); }
+.why-card span { font-size: 16px; line-height: 1.6; color: var(--ink-2); }
+.why-text { margin-top: 22px; font-size: 19px; font-weight: 700; line-height: 1.9; }
+
+/* =========================================================
+   首頁：你可以怎麼幫忙（在地／外地）＋關於捐款
+   ========================================================= */
+.assist { position: relative; padding: 10px 0 150px; }
+.assist .sec-head { margin-bottom: 36px; }
+.assist-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1040px; margin-inline: auto; }
+.assist-group {
+  padding: 22px 22px 24px;
+  border-radius: var(--hr, var(--hand-a));
+  background: var(--peach);
+}
+.assist-group:nth-child(2) { --hr: var(--hand-b); background: var(--sky); }
+.assist-group-title {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  font-size: 22px; font-weight: 800; letter-spacing: .08em; color: var(--ink);
+}
+.assist-group-title svg { width: 28px; height: 28px; flex: none; }
+.assist-list { display: grid; gap: 10px; margin-top: 16px; }
+.assist-act, .assist-follow {
+  display: flex; align-items: center; gap: 14px;
+  width: 100%;
+  padding: 12px 16px 12px 12px;
+  border: 0;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 3px 0 rgba(75, 59, 54, .1);
+  font: inherit;
+  color: var(--ink);
+  text-align: left;
+  text-decoration: none;
+}
+.assist-act { cursor: pointer; transition: transform .15s, box-shadow .15s; }
+.assist-act:hover { transform: translateY(2px); box-shadow: 0 1px 0 rgba(75, 59, 54, .1); }
+.assist-ico {
+  flex: none;
+  display: grid; place-items: center;
+  width: 54px; height: 54px;
+  border-radius: var(--br, var(--blob-a));
+  background: var(--ic, var(--cream));
+}
+.assist-ico svg { width: 66%; height: 66%; overflow: visible; }
+.assist-txt { flex: 1; display: flex; flex-direction: column; min-width: 0; line-height: 1.45; }
+.assist-txt b { font-size: 19px; font-weight: 800; letter-spacing: .04em; }
+.assist-txt small { font-size: 15px; font-weight: 700; color: var(--ink-2); }
+.assist-chev { flex: none; width: 12px; height: 12px; color: var(--coral); }
+.assist-follow { flex-wrap: wrap; }
+.assist-social { display: flex; gap: 6px; }
+.assist-social a { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; transition: transform .15s; }
+.assist-social a:hover { transform: translateY(-2px); }
+.assist-social svg { width: 34px; height: 34px; }
+
+.promise {
+  display: flex; align-items: flex-start; gap: 18px;
+  max-width: 1040px;
+  margin: 28px auto 0;
+  padding: 20px 24px;
+  border-radius: 24px;
+  border: 2px dashed var(--peach-2);
+  background: #fff;
+}
+.promise-icon { flex: none; width: 52px; height: auto; margin-top: 4px; }
+.promise-body h3 { font-size: 19px; font-weight: 800; letter-spacing: .06em; color: var(--ink); }
+.promise-body p { margin-top: 4px; font-size: 16px; line-height: 1.8; color: var(--ink-2); }
+.promise-body .promise-best { font-weight: 800; color: var(--coral-dk); }
+
+/* 頁尾：立案資訊 */
+.footer-reg { font-size: 14.5px; line-height: 1.7; opacity: .92; }
+
 @media (max-width: 1000px) {
-  .follow-list { grid-template-columns: repeat(2, 1fr); max-width: 620px; }
+  .assist-groups { grid-template-columns: 1fr; max-width: 620px; }
+  .promise { max-width: 620px; }
 }
 @media (max-width: 760px) {
-  .follow { padding-bottom: 100px; }
-  .follow .sec-head { margin-bottom: 24px; }
-  .follow-list { grid-template-columns: 1fr; gap: 10px; max-width: 420px; }
-  .follow-list a { padding: 10px 16px; }
-  .follow-list svg { width: 38px; height: 38px; }
+  .why { margin: -24px auto 64px; }
+  .why-title { font-size: 21px; }
+  .why-compare { gap: 10px; margin-top: 14px; }
+  .why-card { padding: 8px 8px 12px; }
+  .why-card strong { font-size: calc(18px * min(var(--tz, 1), 1.35) / var(--tz, 1)); }
+  .why-card span { font-size: 14px; }
+  .why-text { font-size: 17.5px; }
+  .assist { padding-bottom: 100px; }
+  .assist .sec-head { margin-bottom: 24px; }
+  .assist-group { padding: 16px 12px 16px; }
+  .assist-group-title { font-size: 20px; }
+  .assist-act, .assist-follow { gap: 12px; padding: 10px 12px 10px 10px; }
+  .assist-ico { width: 46px; height: 46px; }
+  .assist-txt b { font-size: 17.5px; }
+  .assist-txt small { font-size: 14px; }
+  .assist-social { width: 100%; justify-content: flex-end; }
+  .promise { flex-direction: column; align-items: center; gap: 8px; padding: 16px 16px 18px; text-align: center; }
+  .promise-icon { width: 44px; margin: 0; }
+  .promise-body p { font-size: 15px; }
 }

@@ -1,7 +1,7 @@
 /* =========================================================
    從 Google 試算表讀「常改的內容」
-   ─ 所需物資、結紮場次、等家的孩子、愛媽互助 ─
-   （最新消息 2026-11-16 起不放網站，直接看社群貼文；試算表的「最新消息」分頁已不會讀）
+   ─ 結紮場次、等家的孩子、愛媽互助 ─
+   （「最新消息」2026-11-16 起改看社群；「所需物資」2026-11-17 起不讀——公開列物資需求等於募物資，協會沒有勸募許可）
 
    設定方式：
    1. 試算表右上角「共用」→ 一般存取權改成「知道連結的任何人」＝檢視者。
@@ -11,7 +11,7 @@
    ========================================================= */
 (() => {
   const SHEET_ID = '';
-  const TABS = { supplies: '所需物資', sessions: '結紮場次', pets: '等家的孩子', help: '互助看板', aima: '互助設定' };
+  const TABS = { sessions: '結紮場次', pets: '等家的孩子', help: '互助看板', aima: '互助設定' };
   const FB_PAGE = 'https://www.facebook.com/profile.php?id=100063551122273';
   const FB_MSG = 'https://m.me/100063551122273';
   const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -113,31 +113,6 @@
     tnr: '<use href="#cage-b" x="46" y="14" width="108" height="81"/><use href="#cat" x="76" y="26" width="48" height="63" style="--fur:#EE8A2B;--stripe:#B5452D"/><use href="#cage-f" x="46" y="14" width="108" height="81"/>',
     adopt: '<use href="#cat" x="44" y="22" width="56" height="74" style="--fur:#FFFDF8;--patch:#EE8A2B"/><use href="#dog" x="96" y="30" width="76" height="68" style="--fur:#E0CFAE;--ear:#8A5A3B;--collar:#3A8DC9"/>',
     other: '<use href="#heart" x="76" y="30" width="48" height="42" fill="#E0503C"/><use href="#paw" x="40" y="64" width="22" height="22" fill="#F5A6BE"/><use href="#paw" x="140" y="22" width="18" height="18" fill="#F5A6BE"/>',
-  };
-
-  /* ---------- 所需物資 ---------- */
-  const renderSupplies = (rows) => {
-    const r = rows.find((o) => o['品項']);
-    const card = document.getElementById('supplies');
-    if (!r || !card) return;
-    const [p1, p2] = card.querySelectorAll('p');
-    const why = (r['狀況'] || '').replace(/[，。,.\s]+$/, '');
-    const extra = r['補充'] ? `（${r['補充'].replace(/^[（(]|[）)]$/g, '')}）` : '';
-    const ask = (r['來電確認'] || '品項和數量').replace(/[。.\s]+$/, '');
-    p1.textContent = `${why ? `${why}，` : ''}最常用到的是${r['品項']}${extra}。`;
-    // 這一句固定不變：協會還沒拿到勸募許可，不能寫成向大家募集
-    p2.textContent = `協會目前不公開募集物資。若您主動想捐，請先來電，確認${ask}。`;
-    [p1, p2].forEach((p) => p.classList.remove('seg'));
-
-    const pick = { 除蚤藥: null, 飼料: 'tpl-supply-feed', 其他: 'tpl-supply-box' }[r['圖示']] ?? 'tpl-supply-box';
-    const art = card.querySelector('.supply-art');
-    const tpl = pick && document.getElementById(pick);
-    if (tpl && art) {
-      const fresh = tpl.content.firstElementChild.cloneNode(true);
-      fresh.setAttribute('aria-label', r['品項']);
-      art.replaceWith(fresh);
-    }
-    helpers.breakText([card]);
   };
 
   /* ---------- 結紮場次（只顯示今天以後的，最多 4 場） ---------- */
@@ -338,7 +313,6 @@
   /* ---------- 全部一起 ---------- */
   const renderAll = (data) => {
     const run = (fn, rows) => { try { if (rows && rows.length) fn(rows); } catch (e) { /* 單一區塊出錯不影響其他 */ } };
-    run(renderSupplies, data.supplies);
     run(renderSessions, data.sessions);
     run(renderPets, data.pets);
     run(renderHelp, data.help);
@@ -346,7 +320,7 @@
   };
 
   // 拆頁後每頁只有部分區塊，只抓這一頁用得到的分頁
-  const TARGETS = { supplies: '#supplies', sessions: '#tnr-sessions', pets: '#pets', help: '#help-list', aima: '#aima' };
+  const TARGETS = { sessions: '#tnr-sessions', pets: '#pets', help: '#help-list', aima: '#aima' };
   const load = async () => {
     const keys = Object.keys(TABS).filter((k) => document.querySelector(TARGETS[k]));
     const results = await Promise.allSettled(keys.map((k) => loadTab(TABS[k])));

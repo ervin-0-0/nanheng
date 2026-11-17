@@ -133,6 +133,8 @@
       '一輩子', '房東', '租屋', '陪玩', '便便', '疫苗', '狂犬病', '寵物登記', '過戶', '名下', '外出籠', '睡窩', '貓砂盆', '牽繩', '項圈', '飯碗', '水碗',
       '身分證', '收容所', '壽山', '燕巢', '園區', '開園', '國定假日', '繁殖', '十幾年', '待認養', '認養', '合作醫院', '步調', '作息', '動保處', '撒嬌', '硬抱', '角落', '管理系統', '收容編號', '縣市',
       // 分頁（四大主軸）
+      // 首頁：為什麼要結紮、你可以怎麼幫忙、立案資訊
+      '一窩又一窩', '一窩', '越生越多', '追不上', '力氣', '受傷動物', '免費結紮', '統一編號', '立案', '分享給朋友', '對外募款', '公開募款',
       '剪耳標記', '行動不方便', '照顧到康復', '康復', '趕到', '送醫', '獸醫', '手術', '熟悉', '點藥', '除蚤', '約好時間', '互助網',
     ].sort((a, b) => b.length - a.length);
 
@@ -571,6 +573,25 @@
       if (e.target === lightbox) close();
     });
   }
+
+  /* ---------- 「分享給朋友」：手機叫出分享選單；不支援的瀏覽器（例如部分 LINE 內建瀏覽器）改成複製網址 ---------- */
+  document.querySelectorAll('[data-share]').forEach((btn) => {
+    const hint = btn.querySelector('small');
+    const original = hint ? hint.textContent : '';
+    btn.addEventListener('click', async () => {
+      const data = { title: '南橫動保協會 Nanheng Paws', text: '沒有出生，就沒有流浪。南橫山區的浪浪日常：', url: 'https://nanhengpaws.org/' };
+      if (navigator.share) {
+        try { await navigator.share(data); } catch (e) { /* 使用者取消 */ }
+        return;
+      }
+      let msg = '網址：nanhengpaws.org';
+      try { await navigator.clipboard.writeText(data.url); msg = '已複製網址，貼給朋友吧'; } catch (e) { /* 不能複製就直接顯示網址 */ }
+      if (hint) {
+        hint.textContent = msg;
+        window.setTimeout(() => { hint.textContent = original; }, 4000);
+      }
+    });
+  });
 
   /* ---------- 給 js/sheet.js（試算表內容）用的小工具 ---------- */
   window.Nanheng = { breakText: breakByPhrase, initCarousel };
