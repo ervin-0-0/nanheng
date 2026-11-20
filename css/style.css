@@ -503,7 +503,7 @@ svg svg { max-width: none; }
 .nav-cta svg { width: 17px; height: 17px; }
 .nav-cta:hover { transform: translateY(2px); box-shadow: 0 2px 0 var(--coral-dk); }
 
-/* 社群連結：Facebook、Threads、LINE（IG 已於 2026-11-20 停用） */
+/* 社群連結：Facebook、Instagram、Threads、LINE */
 .header-social { flex: none; display: flex; gap: 8px; }
 .social-btn {
   flex: none;
@@ -518,7 +518,7 @@ svg svg { max-width: none; }
 .social-btn:hover { transform: translateY(2px); box-shadow: 0 1px 0 var(--peach-2); }
 
 /* 手機選單底部：四個圖示＋名稱 */
-.mm-social { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.mm-social { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
 .mm-social a {
   display: grid; justify-items: center; gap: 6px;
   padding: 10px 2px 8px;
